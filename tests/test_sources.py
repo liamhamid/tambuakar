@@ -2,6 +2,10 @@
 
 from __future__ import annotations
 
+import urllib.error
+
+import pytest
+from tambuakar.sources import gdelt
 from tambuakar.sources.gdelt import GdeltSource
 from tambuakar.sources.google_trends import GoogleTrendsSource
 
@@ -25,6 +29,32 @@ def test_gdelt_maps_articles_and_skips_incomplete() -> None:
     assert rec.kind == "news"
     assert rec.source_id == "https://example.com/a"
     assert rec.attrs["domain"] == "example.com"
+
+
+def test_gdelt_retries_on_429_then_succeeds(monkeypatch: pytest.MonkeyPatch) -> None:
+    calls = {"n": 0}
+
+    class _Resp:
+        def __enter__(self) -> _Resp:
+            return self
+
+        def __exit__(self, *args: object) -> bool:
+            return False
+
+        def read(self) -> bytes:
+            return b'{"articles": []}'
+
+    def _fake_urlopen(req: urllib.request.Request, timeout: float, context: object) -> _Resp:
+        calls["n"] += 1
+        if calls["n"] < 3:
+            raise urllib.error.HTTPError(req.full_url, 429, "Too Many Requests", {}, None)  # type: ignore[arg-type]
+        return _Resp()
+
+    monkeypatch.setattr(gdelt.urllib.request, "urlopen", _fake_urlopen)
+    monkeypatch.setattr(gdelt.time, "sleep", lambda _s: None)
+    result = GdeltSource(retries=3, backoff=0.01).fetch()
+    assert calls["n"] == 3  # 2 kali 429 + 1 berjaya
+    assert result == []
 
 
 def test_trends_maps_rows() -> None:

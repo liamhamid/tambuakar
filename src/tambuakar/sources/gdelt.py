@@ -10,6 +10,8 @@ from __future__ import annotations
 
 import json
 import ssl
+import time
+import urllib.error
 import urllib.parse
 import urllib.request
 
@@ -19,6 +21,8 @@ _ENDPOINT = "https://api.gdeltproject.org/api/v2/doc/doc"
 _HEADERS = {
     "User-Agent": "Tambuakar/0.1 (sports-marketing data; +https://tambuakar.com)",
 }
+# Kod HTTP yang wajar dicuba semula (GDELT selalu 429 pada IP dikongsi).
+_RETRY_CODES = frozenset({429, 500, 502, 503, 504})
 
 
 class GdeltSource:
@@ -27,11 +31,18 @@ class GdeltSource:
     name = "gdelt"
 
     def __init__(
-        self, query: str = "sports sponsorship", max_records: int = 50, timeout: float = 30.0
+        self,
+        query: str = "sports sponsorship",
+        max_records: int = 50,
+        timeout: float = 30.0,
+        retries: int = 3,
+        backoff: float = 2.0,
     ) -> None:
         self._query = query
         self._max_records = max_records
         self._timeout = timeout
+        self._retries = retries
+        self._backoff = backoff
 
     def fetch(self) -> list[Record]:
         return self._to_records(self._query_api())
@@ -46,10 +57,22 @@ class GdeltSource:
                 "sort": "datedesc",
             }
         )
-        req = urllib.request.Request(f"{_ENDPOINT}?{params}", headers=_HEADERS)
+        url = f"{_ENDPOINT}?{params}"
         ctx = ssl.create_default_context()
-        with urllib.request.urlopen(req, timeout=self._timeout, context=ctx) as resp:
-            return json.loads(resp.read().decode("utf-8"))
+        # Cuba semula dengan backoff eksponen bila kena 429/5xx (transient).
+        for attempt in range(self._retries + 1):
+            try:
+                req = urllib.request.Request(url, headers=_HEADERS)
+                with urllib.request.urlopen(req, timeout=self._timeout, context=ctx) as resp:
+                    return json.loads(resp.read().decode("utf-8"))
+            except urllib.error.HTTPError as exc:
+                if attempt >= self._retries or exc.code not in _RETRY_CODES:
+                    raise
+            except urllib.error.URLError:
+                if attempt >= self._retries:
+                    raise
+            time.sleep(self._backoff * (2**attempt))
+        raise RuntimeError("unreachable")  # pragma: no cover
 
     @staticmethod
     def _to_records(raw: dict) -> list[Record]:
