@@ -3,7 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>IMPAX — Sports Data Intelligence (Sample)</title>
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<title>IMPAX — Sports Data Intelligence</title>
 <style>
   :root{
     /* light — "lab white" tech */
@@ -340,7 +343,7 @@
   function niceKind(k){ return String(k || "").replace(/_/g, " "); }
 
   function hydrate(){
-    fetch("./data.json", {cache:"no-store"})
+    fetch("./data.json?_=" + Date.now(), {cache:"no-store"})
       .then(function(r){ return r.ok ? r.json() : null; })
       .then(function(d){
         if(!d || !d.kpis || !(Number(d.kpis.entities) > 0)) return;  // no live data -> keep sample

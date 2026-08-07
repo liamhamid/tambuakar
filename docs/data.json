@@ -1,0 +1,80 @@
+{
+  "generated_at": "2026-08-07 14:45 UTC",
+  "kpis": {
+    "entities": 59,
+    "deals": 0,
+    "sources": 3,
+    "teams": 59
+  },
+  "sources": [
+    "wikidata"
+  ],
+  "entities": [
+    {
+      "name": "Johor Darul Ta'zim F.C.",
+      "kind": "football_club",
+      "sources": [
+        "wikidata"
+      ],
+      "country": "Malaysia",
+      "founded": "1972",
+      "news": [],
+      "deals": 0
+    },
+    {
+      "name": "Selangor F.C.",
+      "kind": "football_club",
+      "sources": [
+        "wikidata"
+      ],
+      "country": "Malaysia",
+      "founded": "1936",
+      "news": [],
+      "deals": 0
+    },
+    {
+      "name": "Sabah F.C.",
+      "kind": "football_club",
+      "sources": [
+        "wikidata"
+      ],
+      "country": "Malaysia",
+      "founded": "1963",
+      "news": [],
+      "deals": 0
+    },
+    {
+      "name": "Kelantan F.C.",
+      "kind": "football_club",
+      "sources": [
+        "wikidata"
+      ],
+      "country": "Malaysia",
+      "founded": "1946",
+      "news": [],
+      "deals": 0
+    },
+    {
+      "name": "Penang F.C.",
+      "kind": "football_club",
+      "sources": [
+        "wikidata"
+      ],
+      "country": "Malaysia",
+      "founded": "1921",
+      "news": [],
+      "deals": 0
+    },
+    {
+      "name": "Kedah Darul Aman F.C.",
+      "kind": "football_club",
+      "sources": [
+        "wikidata"
+      ],
+      "country": "Malaysia",
+      "founded": "1924",
+      "news": [],
+      "deals": 0
+    }
+  ]
+}
