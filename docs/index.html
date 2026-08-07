@@ -1,100 +1,133 @@
 <!doctype html>
-<html lang="ms">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>IMPAX — Kepintaran Data Sukan (Contoh)</title>
+<title>IMPAX — Sports Data Intelligence (Sample)</title>
 <style>
   :root{
-    --ground:#F5F1E8; --card:#FFFFFF; --ink:#1C2621; --muted:#5F6E66; --faint:#8A968E;
-    --jade:#0E4A42; --jade-soft:#E4EEEA; --gold:#B6891F; --gold-soft:#F3E9CE;
-    --line:#E0DBCE; --grid:#ECE8DD;
-    --s1:#127C6C; --s2:#C0851A; --s3:#B4552F;
-    --good:#2E7D5B;
-    --shadow:0 1px 2px rgba(28,38,33,.05),0 10px 30px rgba(14,74,66,.08);
+    /* light — "lab white" tech */
+    --ground:#EBEEF4; --card:#FFFFFF; --card2:#F7F9FC;
+    --ink:#0B1220; --muted:#55637A; --faint:#8592A8;
+    --accent:#0B8FA8; --accent-soft:#E0F4F7; --accent2:#6D4AFF; --accent2-soft:#ECE8FF;
+    --line:#DCE4EF; --grid:#E7ECF4; --gridline:rgba(11,143,168,.06);
+    --s1:#0B9FB8; --s2:#6D4AFF; --s3:#E0793C;
+    --good:#0AA37A;
+    --glow:0 0 0 rgba(0,0,0,0);
+    --shadow:0 1px 2px rgba(11,18,32,.05),0 12px 34px rgba(11,143,168,.08);
   }
   @media (prefers-color-scheme:dark){:root{
-    --ground:#101714; --card:#17211D; --ink:#ECEFEA; --muted:#9DAAA2; --faint:#6E7C74;
-    --jade:#5FC9B4; --jade-soft:#12332C; --gold:#E4C160; --gold-soft:#2A2415;
-    --line:#26322C; --grid:#202A25;
-    --s1:#3FD0B6; --s2:#E4B24E; --s3:#E0794E;
-    --good:#5FC98F;
-    --shadow:0 1px 2px rgba(0,0,0,.3),0 16px 44px rgba(0,0,0,.4);
+    --ground:#070B11; --card:#0F161F; --card2:#131C27;
+    --ink:#E6EDF5; --muted:#8B9AB0; --faint:#586780;
+    --accent:#22D3EE; --accent-soft:#0B2A32; --accent2:#9B8CFF; --accent2-soft:#1A183A;
+    --line:#1D2836; --grid:#141F2C; --gridline:rgba(34,211,238,.05);
+    --s1:#22D3EE; --s2:#9B8CFF; --s3:#F5A97F;
+    --good:#34E5B0;
+    --glow:0 0 22px rgba(34,211,238,.16);
+    --shadow:0 1px 2px rgba(0,0,0,.4),0 18px 46px rgba(0,0,0,.5);
   }}
   :root[data-theme="light"]{
-    --ground:#F5F1E8;--card:#FFFFFF;--ink:#1C2621;--muted:#5F6E66;--faint:#8A968E;
-    --jade:#0E4A42;--jade-soft:#E4EEEA;--gold:#B6891F;--gold-soft:#F3E9CE;--line:#E0DBCE;--grid:#ECE8DD;
-    --s1:#127C6C;--s2:#C0851A;--s3:#B4552F;--good:#2E7D5B;
-    --shadow:0 1px 2px rgba(28,38,33,.05),0 10px 30px rgba(14,74,66,.08);
+    --ground:#EBEEF4;--card:#FFFFFF;--card2:#F7F9FC;--ink:#0B1220;--muted:#55637A;--faint:#8592A8;
+    --accent:#0B8FA8;--accent-soft:#E0F4F7;--accent2:#6D4AFF;--accent2-soft:#ECE8FF;
+    --line:#DCE4EF;--grid:#E7ECF4;--gridline:rgba(11,143,168,.06);
+    --s1:#0B9FB8;--s2:#6D4AFF;--s3:#E0793C;--good:#0AA37A;
+    --glow:0 0 0 rgba(0,0,0,0);
+    --shadow:0 1px 2px rgba(11,18,32,.05),0 12px 34px rgba(11,143,168,.08);
   }
   :root[data-theme="dark"]{
-    --ground:#101714;--card:#17211D;--ink:#ECEFEA;--muted:#9DAAA2;--faint:#6E7C74;
-    --jade:#5FC9B4;--jade-soft:#12332C;--gold:#E4C160;--gold-soft:#2A2415;--line:#26322C;--grid:#202A25;
-    --s1:#3FD0B6;--s2:#E4B24E;--s3:#E0794E;--good:#5FC98F;
-    --shadow:0 1px 2px rgba(0,0,0,.3),0 16px 44px rgba(0,0,0,.4);
+    --ground:#070B11;--card:#0F161F;--card2:#131C27;--ink:#E6EDF5;--muted:#8B9AB0;--faint:#586780;
+    --accent:#22D3EE;--accent-soft:#0B2A32;--accent2:#9B8CFF;--accent2-soft:#1A183A;
+    --line:#1D2836;--grid:#141F2C;--gridline:rgba(34,211,238,.05);
+    --s1:#22D3EE;--s2:#9B8CFF;--s3:#F5A97F;--good:#34E5B0;
+    --glow:0 0 22px rgba(34,211,238,.16);
+    --shadow:0 1px 2px rgba(0,0,0,.4),0 18px 46px rgba(0,0,0,.5);
   }
   *{box-sizing:border-box;}
+  :root{
+    --mono:ui-monospace,"SF Mono","JetBrains Mono","Cascadia Code","Roboto Mono",Menlo,Consolas,monospace;
+    --sans:"Inter",ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  }
   body{margin:0;background:var(--ground);color:var(--ink);
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-    line-height:1.5;-webkit-font-smoothing:antialiased;padding:clamp(14px,3.5vw,34px);}
+    font-family:var(--sans);line-height:1.5;-webkit-font-smoothing:antialiased;
+    padding:clamp(14px,3.5vw,34px);
+    background-image:linear-gradient(var(--gridline) 1px,transparent 1px),linear-gradient(90deg,var(--gridline) 1px,transparent 1px);
+    background-size:34px 34px;}
   .wrap{max-width:1000px;margin:0 auto;}
-  .num{font-variant-numeric:tabular-nums;}
-  header.top{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;margin-bottom:20px;}
-  .brand{display:flex;align-items:center;gap:12px;}
-  .brand .mark{width:44px;height:44px;border-radius:12px;background:var(--jade);display:grid;place-items:center;flex:none;}
-  .kick{font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:700;}
-  h1{font-family:Georgia,serif;font-size:clamp(1.7rem,4.4vw,2.3rem);margin:.06em 0 0;line-height:1;letter-spacing:.02em;}
-  .subttl{font-size:.84rem;color:var(--muted);margin:.2em 0 0;}
-  .demo-badge{background:var(--gold-soft);color:var(--gold);border:1px solid var(--line);
-    border-radius:999px;padding:5px 13px;font-size:.74rem;font-weight:800;letter-spacing:.04em;white-space:nowrap;}
+  .num{font-family:var(--mono);font-variant-numeric:tabular-nums;letter-spacing:-.01em;}
+  header.top{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;margin-bottom:22px;}
+  .brand{display:flex;align-items:center;gap:13px;}
+  .brand .mark{width:46px;height:46px;border-radius:12px;background:var(--card);border:1px solid var(--accent);
+    display:grid;place-items:center;flex:none;color:var(--accent);box-shadow:var(--glow);position:relative;}
+  .brand .mark::after{content:"";position:absolute;inset:-1px;border-radius:12px;
+    background:radial-gradient(120% 120% at 30% 0%,var(--accent-soft),transparent 70%);opacity:.7;z-index:-1;}
+  .kick{font-family:var(--mono);font-size:.64rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);font-weight:600;}
+  h1{font-family:var(--mono);font-size:clamp(1.7rem,4.4vw,2.35rem);margin:.1em 0 0;line-height:1;
+    letter-spacing:.06em;font-weight:700;}
+  .subttl{font-size:.84rem;color:var(--muted);margin:.28em 0 0;}
+  .topright{display:flex;align-items:center;gap:10px;}
+  .langtoggle{background:var(--card);color:var(--accent);border:1px solid var(--line);border-radius:8px;
+    font-family:var(--mono);padding:6px 13px;font-size:.74rem;font-weight:700;cursor:pointer;letter-spacing:.06em;}
+  .langtoggle:hover{border-color:var(--accent);background:var(--accent-soft);}
+  .langtoggle:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
+  .demo-badge{background:var(--accent2-soft);color:var(--accent2);border:1px solid var(--line);
+    border-radius:8px;font-family:var(--mono);padding:6px 12px;font-size:.7rem;font-weight:700;letter-spacing:.08em;white-space:nowrap;}
   .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:16px;}
   @media (max-width:680px){.kpis{grid-template-columns:repeat(2,1fr);}}
-  .kpi{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:15px 16px;box-shadow:var(--shadow);}
-  .kpi .lab{font-size:.72rem;color:var(--muted);font-weight:600;margin-bottom:6px;}
-  .kpi .val{font-family:Georgia,serif;font-size:clamp(1.5rem,4vw,2rem);font-weight:700;line-height:1;color:var(--jade);}
-  .kpi .sub{font-size:.72rem;color:var(--good);margin-top:5px;font-weight:600;}
+  .kpi{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:15px 16px;box-shadow:var(--shadow);
+    position:relative;overflow:hidden;}
+  .kpi::before{content:"";position:absolute;top:0;left:0;height:2px;width:100%;
+    background:linear-gradient(90deg,var(--accent),transparent 70%);opacity:.8;}
+  .kpi .idx{font-family:var(--mono);font-size:.62rem;color:var(--faint);letter-spacing:.1em;}
+  .kpi .lab{font-size:.72rem;color:var(--muted);font-weight:500;margin:5px 0 8px;}
+  .kpi .val{font-family:var(--mono);font-size:clamp(1.5rem,4vw,2rem);font-weight:700;line-height:1;color:var(--ink);letter-spacing:-.01em;}
+  .kpi .sub{font-size:.72rem;color:var(--good);margin-top:6px;font-weight:600;font-family:var(--mono);}
   .grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px;}
   @media (max-width:760px){.grid2{grid-template-columns:1fr;}}
-  .panel{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:17px 18px;box-shadow:var(--shadow);}
-  .panel h2{font-family:Georgia,serif;font-size:1.06rem;margin:0 0 3px;}
+  .panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 19px;box-shadow:var(--shadow);}
+  .panel h2{font-family:var(--sans);font-size:1.02rem;margin:0 0 3px;font-weight:650;letter-spacing:-.01em;}
   .panel .cap{font-size:.76rem;color:var(--muted);margin:0 0 14px;}
-  .eyebrow{font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--jade);font-weight:700;margin-bottom:9px;}
+  .eyebrow{font-family:var(--mono);font-size:.64rem;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);
+    font-weight:600;margin-bottom:10px;display:flex;align-items:center;gap:7px;}
+  .eyebrow::before{content:"";width:6px;height:6px;border-radius:2px;background:var(--accent);box-shadow:var(--glow);flex:none;}
   .ent-head{display:flex;align-items:baseline;justify-content:space-between;gap:10px;flex-wrap:wrap;}
-  .ent-name{font-family:Georgia,serif;font-size:1.28rem;font-weight:700;}
-  .chips{display:flex;gap:6px;flex-wrap:wrap;margin:10px 0 14px;}
-  .chip{font-size:.72rem;font-weight:700;border-radius:7px;padding:3px 9px;background:var(--jade-soft);color:var(--jade);}
+  .ent-name{font-size:1.28rem;font-weight:700;letter-spacing:-.01em;}
+  .chips{display:flex;gap:6px;flex-wrap:wrap;margin:11px 0 15px;}
+  .chip{font-family:var(--mono);font-size:.68rem;font-weight:600;border-radius:6px;padding:3px 9px;
+    background:var(--accent-soft);color:var(--accent);border:1px solid var(--line);letter-spacing:.02em;}
   .rows{display:grid;gap:9px;}
   .row{display:flex;gap:10px;font-size:.9rem;}
-  .row .k{color:var(--muted);min-width:92px;flex:none;}
+  .row .k{color:var(--muted);min-width:104px;flex:none;font-family:var(--mono);font-size:.78rem;padding-top:1px;}
   .row .v{color:var(--ink);}
-  .spark{margin-top:14px;padding-top:12px;border-top:1px solid var(--line);}
+  .spark{margin-top:15px;padding-top:13px;border-top:1px solid var(--line);}
   .spark .h{display:flex;justify-content:space-between;font-size:.76rem;color:var(--muted);margin-bottom:6px;}
-  .spark .up{color:var(--good);font-weight:700;}
+  .spark .up{color:var(--good);font-weight:700;font-family:var(--mono);}
   .bars{display:grid;gap:11px;}
   .bar-row .top{display:flex;justify-content:space-between;font-size:.84rem;margin-bottom:5px;}
   .bar-row .top .v{color:var(--muted);font-weight:700;}
-  .track{height:9px;background:var(--grid);border-radius:6px;overflow:hidden;}
-  .fill{height:100%;border-radius:6px;background:var(--s1);}
+  .track{height:8px;background:var(--grid);border-radius:5px;overflow:hidden;}
+  .fill{height:100%;border-radius:5px;background:linear-gradient(90deg,var(--s1),var(--accent2));}
   .legend{display:flex;gap:16px;margin-bottom:8px;flex-wrap:wrap;}
   .lg{display:flex;align-items:center;gap:7px;font-size:.8rem;color:var(--ink);font-weight:600;}
-  .lg .dot{width:11px;height:11px;border-radius:3px;}
+  .lg .dot{width:10px;height:10px;border-radius:3px;}
   svg{display:block;width:100%;height:auto;}
-  .axlab{fill:var(--faint);font-size:11px;}
-  .endlab{font-size:12px;font-weight:800;font-variant-numeric:tabular-nums;}
-  .profile{background:linear-gradient(180deg,var(--gold-soft),var(--card) 55%);}
+  .axlab{fill:var(--faint);font-size:11px;font-family:var(--mono);}
+  .endlab{font-size:12px;font-weight:800;font-variant-numeric:tabular-nums;font-family:var(--mono);}
+  .profile{background:linear-gradient(180deg,var(--accent2-soft),var(--card) 55%);}
   .seg{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
   @media (max-width:560px){.seg{grid-template-columns:1fr;}}
   .tags{display:flex;gap:6px;flex-wrap:wrap;}
-  .tag{background:var(--jade);color:#F5F1E8;border-radius:7px;padding:3px 10px;font-size:.76rem;font-weight:700;}
-  .big-stat{display:flex;align-items:baseline;gap:10px;margin-top:6px;}
-  .big-stat .n{font-family:Georgia,serif;font-size:2rem;font-weight:700;color:var(--jade);line-height:1;}
-  .big-stat .t{font-size:.82rem;color:var(--muted);max-width:22ch;}
-  footer{margin-top:20px;padding-top:14px;border-top:1px solid var(--line);color:var(--muted);font-size:.78rem;
-    display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;}
-  footer b{color:var(--jade);}
-  .warn{background:var(--gold-soft);border:1px solid var(--line);border-radius:10px;padding:10px 13px;
-    font-size:.8rem;color:var(--ink);margin-bottom:16px;}
-  .warn b{color:var(--gold);}
+  .tag{font-family:var(--mono);background:var(--accent-soft);color:var(--accent);border:1px solid var(--line);
+    border-radius:6px;padding:3px 10px;font-size:.72rem;font-weight:600;letter-spacing:.01em;}
+  .tag.alt{background:var(--accent2-soft);color:var(--accent2);}
+  .big-stat{display:flex;align-items:baseline;gap:10px;margin-top:8px;}
+  .big-stat .n{font-family:var(--mono);font-size:2rem;font-weight:700;color:var(--accent2);line-height:1;}
+  .big-stat .t{font-size:.82rem;color:var(--muted);max-width:24ch;}
+  footer{margin-top:22px;padding-top:14px;border-top:1px solid var(--line);color:var(--muted);font-size:.76rem;
+    display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-family:var(--mono);letter-spacing:.02em;}
+  footer b{color:var(--accent);font-weight:600;}
+  .warn{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--accent2);border-radius:10px;
+    padding:11px 14px;font-size:.8rem;color:var(--ink);margin-bottom:16px;}
+  .warn b{color:var(--accent2);}
 </style>
 </head>
 <body>
@@ -103,45 +136,48 @@
     <div class="brand">
       <span class="mark">
         <svg viewBox="0 0 48 48" width="28" height="28" fill="none" aria-hidden="true">
-          <path d="M6 30c4-2 6-6 10-6s5 4 9 4 6-8 11-8c3 0 5 2 6 4" stroke="#E4C160" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
-          <path d="M42 24c-1-3-4-4-6-3M40 20l3-3M43 26l3 1" stroke="#E4C160" stroke-width="2.6" stroke-linecap="round"/>
-          <circle cx="40.5" cy="22.5" r="1.5" fill="#E4C160"/>
+          <path d="M6 30c4-2 6-6 10-6s5 4 9 4 6-8 11-8c3 0 5 2 6 4" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M42 24c-1-3-4-4-6-3M40 20l3-3M43 26l3 1" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/>
+          <circle cx="40.5" cy="22.5" r="1.5" fill="currentColor"/>
         </svg>
       </span>
       <div>
         <div class="kick">Sportswork · AI-Driven Sports Intelligence</div>
         <h1>IMPAX</h1>
-        <div class="subttl">Kepintaran Data Sukan &amp; Pemasaran</div>
+        <div class="subttl" data-i18n="subtitle">Sports &amp; Marketing Data Intelligence</div>
       </div>
     </div>
-    <span class="demo-badge">CONTOH / DEMO</span>
+    <div class="topright">
+      <button id="langbtn" class="langtoggle" onclick="toggleLang()" aria-label="Language">BM</button>
+      <span class="demo-badge" data-i18n="demo">SAMPLE / DEMO</span>
+    </div>
   </header>
 
-  <div class="warn"><b>⚠️ Ini mockup.</b> Semua angka di bawah = <b>data contoh</b> untuk tunjuk rupa &amp; keupayaan — bukan data sebenar.</div>
+  <div class="warn" data-i18n="warn"><b>⚠️ This is a mockup.</b> All figures below are <b>sample data</b> to show the look &amp; capability — not real data.</div>
 
   <div class="kpis">
-    <div class="kpi"><div class="lab">Entiti dijejak</div><div class="val num">1,247</div><div class="sub">kelab · atlet · brand</div></div>
-    <div class="kpi"><div class="lab">Deal penajaan dikesan</div><div class="val num">92</div><div class="sub">↑ 14 bulan ini</div></div>
-    <div class="kpi"><div class="lab">Sumber aktif</div><div class="val num">5</div><div class="sub">semua sah &amp; percuma</div></div>
-    <div class="kpi"><div class="lab">Pasukan dipantau minat</div><div class="val num">340</div><div class="sub">masa nyata</div></div>
+    <div class="kpi"><div class="idx">01</div><div class="lab" data-i18n="k1">Entities tracked</div><div class="val num">1,247</div><div class="sub" data-i18n="k1s">clubs · athletes · brands</div></div>
+    <div class="kpi"><div class="idx">02</div><div class="lab" data-i18n="k2">Sponsorship deals detected</div><div class="val num">92</div><div class="sub" data-i18n="k2s">↑ 14 this month</div></div>
+    <div class="kpi"><div class="idx">03</div><div class="lab" data-i18n="k3">Active sources</div><div class="val num">5</div><div class="sub" data-i18n="k3s">all legal &amp; free</div></div>
+    <div class="kpi"><div class="idx">04</div><div class="lab" data-i18n="k4">Teams tracked for interest</div><div class="val num">340</div><div class="sub" data-i18n="k4s">real-time</div></div>
   </div>
 
   <div class="grid2">
     <div class="panel">
-      <div class="eyebrow">Profil entiti bersatu</div>
+      <div class="eyebrow" data-i18n="ent_eb">Unified entity profile</div>
       <div class="ent-head">
         <span class="ent-name">Johor Darul Ta'zim</span>
         <span class="chip">football_club</span>
       </div>
       <div class="chips"><span class="chip">Wikidata</span><span class="chip">GDELT</span><span class="chip">Google Trends</span></div>
       <div class="rows">
-        <div class="row"><span class="k">Fakta</span><span class="v">Liga Super · Johor · ditubuh 1972</span></div>
-        <div class="row"><span class="k">Deal terkini</span><span class="v">Pengumuman penaja lengan baharu (berita, 3 hari lalu)</span></div>
-        <div class="row"><span class="k">Peminat unik</span><span class="v num">~1.9 juta merentas platform</span></div>
+        <div class="row"><span class="k" data-i18n="r1k">Facts</span><span class="v" data-i18n="r1v">Super League · Johor · founded 1972</span></div>
+        <div class="row"><span class="k" data-i18n="r2k">Latest deal</span><span class="v" data-i18n="r2v">New sleeve sponsor announced (news, 3 days ago)</span></div>
+        <div class="row"><span class="k" data-i18n="r3k">Unique fans</span><span class="v" data-i18n="r3v">~1.9 million across platforms</span></div>
       </div>
       <div class="spark">
-        <div class="h"><span>Minat audiens · 6 bulan</span><span class="up">↑ 31%</span></div>
-        <svg viewBox="0 0 320 60" preserveAspectRatio="none" aria-label="Trend minat naik">
+        <div class="h"><span data-i18n="spark_l">Audience interest · 6 months</span><span class="up">↑ 31%</span></div>
+        <svg viewBox="0 0 320 60" preserveAspectRatio="none" aria-label="interest trend up">
           <polyline points="4,44 60,40 116,42 172,34 228,24 300,10" fill="none" stroke="var(--s1)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
           <circle cx="300" cy="10" r="3.5" fill="var(--s1)"/>
         </svg>
@@ -149,28 +185,28 @@
     </div>
 
     <div class="panel">
-      <div class="eyebrow">Benchmark nilai media <span style="color:var(--muted);font-weight:600;">(anggaran)</span></div>
-      <h2 style="font-size:.98rem;">Nilai media dilihat · top kelab</h2>
-      <p class="cap">Anggaran bermetodologi dari jangkauan + demografi. Bukan nombor mutlak.</p>
+      <div class="eyebrow" data-i18n="bench_eb">Media value benchmark <span style="color:var(--muted);font-weight:600;">(estimated)</span></div>
+      <h2 style="font-size:.98rem;" data-i18n="bench_h">Media value seen · top clubs</h2>
+      <p class="cap" data-i18n="bench_cap">Methodological estimate from reach + demographics. Not an absolute figure.</p>
       <div class="bars">
-        <div class="bar-row"><div class="top"><span>Johor Darul Ta'zim</span><span class="v num">RM 3.2j</span></div><div class="track"><div class="fill" style="width:100%"></div></div></div>
-        <div class="bar-row"><div class="top"><span>Selangor FC</span><span class="v num">RM 2.1j</span></div><div class="track"><div class="fill" style="width:66%"></div></div></div>
-        <div class="bar-row"><div class="top"><span>Kuala Lumpur City</span><span class="v num">RM 1.4j</span></div><div class="track"><div class="fill" style="width:44%"></div></div></div>
-        <div class="bar-row"><div class="top"><span>Terengganu FC</span><span class="v num">RM 1.1j</span></div><div class="track"><div class="fill" style="width:34%"></div></div></div>
-        <div class="bar-row"><div class="top"><span>Sabah FC</span><span class="v num">RM 0.8j</span></div><div class="track"><div class="fill" style="width:25%"></div></div></div>
+        <div class="bar-row"><div class="top"><span>Johor Darul Ta'zim</span><span class="v num" data-i18n="bv1">RM 3.2M</span></div><div class="track"><div class="fill" style="width:100%"></div></div></div>
+        <div class="bar-row"><div class="top"><span>Selangor FC</span><span class="v num" data-i18n="bv2">RM 2.1M</span></div><div class="track"><div class="fill" style="width:66%"></div></div></div>
+        <div class="bar-row"><div class="top"><span>Kuala Lumpur City</span><span class="v num" data-i18n="bv3">RM 1.4M</span></div><div class="track"><div class="fill" style="width:44%"></div></div></div>
+        <div class="bar-row"><div class="top"><span>Terengganu FC</span><span class="v num" data-i18n="bv4">RM 1.1M</span></div><div class="track"><div class="fill" style="width:34%"></div></div></div>
+        <div class="bar-row"><div class="top"><span>Sabah FC</span><span class="v num" data-i18n="bv5">RM 0.8M</span></div><div class="track"><div class="fill" style="width:25%"></div></div></div>
       </div>
     </div>
   </div>
 
   <div class="panel" style="margin-bottom:14px;">
-    <div class="eyebrow">Trend minat audiens</div>
-    <h2 style="font-size:.98rem;">Indeks minat · Mac–Ogos 2026</h2>
-    <p class="cap">Bila minat memuncak = masa terbaik untuk aktifkan campaign penaja.</p>
+    <div class="eyebrow" data-i18n="trend_eb">Audience interest trend</div>
+    <h2 style="font-size:.98rem;" data-i18n="trend_h">Interest index · Mar–Aug 2026</h2>
+    <p class="cap" data-i18n="trend_cap">Peak interest = the best time to activate sponsor campaigns.</p>
     <div class="legend">
       <span class="lg"><span class="dot" style="background:var(--s1)"></span>Johor Darul Ta'zim</span>
       <span class="lg"><span class="dot" style="background:var(--s2)"></span>Selangor FC</span>
     </div>
-    <svg viewBox="0 0 680 260" role="img" aria-label="Carta garis trend minat JDT vs Selangor">
+    <svg viewBox="0 0 680 260" role="img" aria-label="interest trend line chart">
       <g stroke="var(--grid)" stroke-width="1">
         <line x1="50" y1="20" x2="650" y2="20"/><line x1="50" y1="70" x2="650" y2="70"/>
         <line x1="50" y1="120" x2="650" y2="120"/><line x1="50" y1="170" x2="650" y2="170"/>
@@ -180,8 +216,8 @@
         <text x="42" y="24">100</text><text x="42" y="74">75</text><text x="42" y="124">50</text><text x="42" y="174">25</text><text x="42" y="224">0</text>
       </g>
       <g class="axlab" text-anchor="middle">
-        <text x="60" y="242">Mac</text><text x="172" y="242">Apr</text><text x="284" y="242">Mei</text>
-        <text x="396" y="242">Jun</text><text x="508" y="242">Jul</text><text x="620" y="242">Ogos</text>
+        <text x="60" y="242" data-i18n="m1">Mar</text><text x="172" y="242" data-i18n="m2">Apr</text><text x="284" y="242" data-i18n="m3">May</text>
+        <text x="396" y="242" data-i18n="m4">Jun</text><text x="508" y="242" data-i18n="m5">Jul</text><text x="620" y="242" data-i18n="m6">Aug</text>
       </g>
       <polyline points="60,110 172,104 284,112 396,100 508,94 620,86" fill="none" stroke="var(--s2)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
       <circle cx="620" cy="86" r="4" fill="var(--s2)"/>
@@ -193,12 +229,12 @@
   </div>
 
   <div class="panel profile">
-    <div class="eyebrow">Kad Profil Audience — untuk penaja 💰</div>
-    <h2>Peminat Johor Darul Ta'zim</h2>
-    <p class="cap">Contoh output yang dijual kepada penaja (segmen, bukan individu — patuh PDPA).</p>
+    <div class="eyebrow" data-i18n="kad_eb">Audience Profile Card — for sponsors 💰</div>
+    <h2 data-i18n="kad_h">Johor Darul Ta'zim fans</h2>
+    <p class="cap" data-i18n="kad_cap">Sample output sold to sponsors (segments, not individuals — PDPA-compliant).</p>
     <div class="seg">
       <div>
-        <div class="eyebrow" style="margin-top:4px;">Umur</div>
+        <div class="eyebrow" style="margin-top:4px;" data-i18n="age">Age</div>
         <div class="bars">
           <div class="bar-row"><div class="top"><span>18–25</span><span class="v num">46%</span></div><div class="track"><div class="fill" style="width:46%"></div></div></div>
           <div class="bar-row"><div class="top"><span>26–35</span><span class="v num">31%</span></div><div class="track"><div class="fill" style="width:31%;background:var(--s2)"></div></div></div>
@@ -206,19 +242,89 @@
         </div>
       </div>
       <div>
-        <div class="eyebrow" style="margin-top:4px;">Lokasi teratas</div>
-        <div class="tags" style="margin-bottom:16px;"><span class="tag">Johor Bahru</span><span class="tag">Kuala Lumpur</span><span class="tag">Singapura</span></div>
-        <div class="eyebrow">Minat</div>
-        <div class="tags"><span class="tag" style="background:var(--gold);color:#1C2621;">Jersi</span><span class="tag" style="background:var(--gold);color:#1C2621;">Tiket</span><span class="tag" style="background:var(--gold);color:#1C2621;">Futsal</span></div>
-        <div class="big-stat"><span class="n num">38%</span><span class="t">berkemungkinan beli jersi musim baharu</span></div>
+        <div class="eyebrow" style="margin-top:4px;" data-i18n="loc">Top locations</div>
+        <div class="tags" style="margin-bottom:16px;"><span class="tag" data-i18n="loc1">Johor Bahru</span><span class="tag" data-i18n="loc2">Kuala Lumpur</span><span class="tag" data-i18n="loc3">Singapore</span></div>
+        <div class="eyebrow" data-i18n="intr">Interests</div>
+        <div class="tags"><span class="tag alt" data-i18n="in1">Jersey</span><span class="tag alt" data-i18n="in2">Tickets</span><span class="tag alt" data-i18n="in3">Futsal</span></div>
+        <div class="big-stat"><span class="n num">38%</span><span class="t" data-i18n="bigt">likely to buy the new-season jersey</span></div>
       </div>
     </div>
   </div>
 
   <footer>
-    <span>Mockup · <b>data DEMO (contoh)</b> · IMPAX by <b>Sportswork</b></span>
-    <span>Sportswork · Ogos 2026</span>
+    <span data-i18n="foot1">Mockup · <b>SAMPLE data (demo)</b> · IMPAX by <b>Sportswork</b></span>
+    <span data-i18n="foot2">Sportswork · Aug 2026</span>
   </footer>
 </div>
+
+<script>
+  const I18N = {
+    en:{
+      subtitle:"Sports &amp; Marketing Data Intelligence", demo:"SAMPLE / DEMO",
+      warn:"<b>⚠️ This is a mockup.</b> All figures below are <b>sample data</b> to show the look &amp; capability — not real data.",
+      k1:"Entities tracked", k1s:"clubs · athletes · brands",
+      k2:"Sponsorship deals detected", k2s:"↑ 14 this month",
+      k3:"Active sources", k3s:"all legal &amp; free",
+      k4:"Teams tracked for interest", k4s:"real-time",
+      ent_eb:"Unified entity profile",
+      r1k:"Facts", r1v:"Super League · Johor · founded 1972",
+      r2k:"Latest deal", r2v:"New sleeve sponsor announced (news, 3 days ago)",
+      r3k:"Unique fans", r3v:"~1.9 million across platforms",
+      spark_l:"Audience interest · 6 months",
+      bench_eb:'Media value benchmark <span style="color:var(--muted);font-weight:600;">(estimated)</span>',
+      bench_h:"Media value seen · top clubs",
+      bench_cap:"Methodological estimate from reach + demographics. Not an absolute figure.",
+      bv1:"RM 3.2M", bv2:"RM 2.1M", bv3:"RM 1.4M", bv4:"RM 1.1M", bv5:"RM 0.8M",
+      trend_eb:"Audience interest trend", trend_h:"Interest index · Mar–Aug 2026",
+      trend_cap:"Peak interest = the best time to activate sponsor campaigns.",
+      m1:"Mar", m2:"Apr", m3:"May", m4:"Jun", m5:"Jul", m6:"Aug",
+      kad_eb:"Audience Profile Card — for sponsors 💰", kad_h:"Johor Darul Ta'zim fans",
+      kad_cap:"Sample output sold to sponsors (segments, not individuals — PDPA-compliant).",
+      age:"Age", loc:"Top locations", loc1:"Johor Bahru", loc2:"Kuala Lumpur", loc3:"Singapore",
+      intr:"Interests", in1:"Jersey", in2:"Tickets", in3:"Futsal",
+      bigt:"likely to buy the new-season jersey",
+      foot1:"Mockup · <b>SAMPLE data (demo)</b> · IMPAX by <b>Sportswork</b>", foot2:"Sportswork · Aug 2026"
+    },
+    ms:{
+      subtitle:"Kepintaran Data Sukan &amp; Pemasaran", demo:"CONTOH / DEMO",
+      warn:"<b>⚠️ Ini mockup.</b> Semua angka di bawah = <b>data contoh</b> untuk tunjuk rupa &amp; keupayaan — bukan data sebenar.",
+      k1:"Entiti dijejak", k1s:"kelab · atlet · brand",
+      k2:"Deal penajaan dikesan", k2s:"↑ 14 bulan ini",
+      k3:"Sumber aktif", k3s:"semua sah &amp; percuma",
+      k4:"Pasukan dipantau minat", k4s:"masa nyata",
+      ent_eb:"Profil entiti bersatu",
+      r1k:"Fakta", r1v:"Liga Super · Johor · ditubuh 1972",
+      r2k:"Deal terkini", r2v:"Pengumuman penaja lengan baharu (berita, 3 hari lalu)",
+      r3k:"Peminat unik", r3v:"~1.9 juta merentas platform",
+      spark_l:"Minat audiens · 6 bulan",
+      bench_eb:'Benchmark nilai media <span style="color:var(--muted);font-weight:600;">(anggaran)</span>',
+      bench_h:"Nilai media dilihat · top kelab",
+      bench_cap:"Anggaran bermetodologi dari jangkauan + demografi. Bukan nombor mutlak.",
+      bv1:"RM 3.2j", bv2:"RM 2.1j", bv3:"RM 1.4j", bv4:"RM 1.1j", bv5:"RM 0.8j",
+      trend_eb:"Trend minat audiens", trend_h:"Indeks minat · Mac–Ogos 2026",
+      trend_cap:"Bila minat memuncak = masa terbaik untuk aktifkan campaign penaja.",
+      m1:"Mac", m2:"Apr", m3:"Mei", m4:"Jun", m5:"Jul", m6:"Ogos",
+      kad_eb:"Kad Profil Audience — untuk penaja 💰", kad_h:"Peminat Johor Darul Ta'zim",
+      kad_cap:"Contoh output yang dijual kepada penaja (segmen, bukan individu — patuh PDPA).",
+      age:"Umur", loc:"Lokasi teratas", loc1:"Johor Bahru", loc2:"Kuala Lumpur", loc3:"Singapura",
+      intr:"Minat", in1:"Jersi", in2:"Tiket", in3:"Futsal",
+      bigt:"berkemungkinan beli jersi musim baharu",
+      foot1:"Mockup · <b>data DEMO (contoh)</b> · IMPAX by <b>Sportswork</b>", foot2:"Sportswork · Ogos 2026"
+    }
+  };
+  let LANG = localStorage.getItem('impax_lang') || 'en';
+  function applyLang(){
+    document.documentElement.lang = LANG;
+    document.querySelectorAll('[data-i18n]').forEach(function(el){
+      var v = I18N[LANG][el.getAttribute('data-i18n')];
+      if(v == null) return;
+      if(v.indexOf('<') >= 0){ el.innerHTML = v; } else { el.textContent = v; }
+    });
+    var b = document.getElementById('langbtn');
+    if(b){ b.textContent = (LANG === 'en') ? 'BM' : 'EN'; }
+  }
+  function toggleLang(){ LANG = (LANG === 'en') ? 'ms' : 'en'; localStorage.setItem('impax_lang', LANG); applyLang(); }
+  applyLang();
+</script>
 </body>
 </html>
