@@ -51,7 +51,7 @@ def main(out: Path | None = None, data_dir: Path | None = None) -> dict[str, obj
     sources = _sources()
     entities, results = collect(sources, data_dir)
     generated = datetime.now(UTC).strftime("%Y-%m-%d %H:%M UTC")
-    payload = build_site(entities, generated_at=generated)
+    payload = build_site(entities, generated_at=generated, connectors=len(sources))
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
     for name, stats in results.items():

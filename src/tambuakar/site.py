@@ -45,10 +45,14 @@ def _rank(entity: Entity) -> tuple[int, int, int]:
     return (len(entity.sources), len(entity.mentions), news)
 
 
-def build_site(entities: list[Entity], *, generated_at: str) -> dict[str, object]:
+def build_site(
+    entities: list[Entity], *, generated_at: str, connectors: int = 0
+) -> dict[str, object]:
     """Bina payload awam Layer A. Fungsi tulen — tiada rangkaian/fail.
 
     `generated_at`: cap masa (dibekalkan oleh pemanggil, cth ISO date).
+    `connectors`: bilangan penyambung data yang diintegrasi (untuk KPI "sumber
+        aktif" yang stabil — sesetengah sumber percuma kadang kena had-kadar).
     Susunan `entities` dianggap mengikut keterkenalan (sumber utama tertibkan).
     """
     real_entities = [e for e in entities if e.kind in ENTITY_KINDS]
@@ -56,8 +60,9 @@ def build_site(entities: list[Entity], *, generated_at: str) -> dict[str, object
         1 for e in entities for m in e.mentions if m.get("kind") == "news"
     )
     teams = sum(1 for e in real_entities if e.kind in _TEAM_KINDS)
-    # Hanya sumber yang benar-benar menyumbang data (bukan sekadar dikonfigur).
+    # Sumber yang benar-benar menyumbang data kitaran ini (untuk rujukan).
     present_sources = sorted({s for e in entities for s in e.sources})
+    active_sources = connectors if connectors else len(present_sources)
 
     ranked = sorted(real_entities, key=_rank, reverse=True)[:_MAX_ENTITIES]
     entity_cards: list[dict[str, object]] = []
@@ -78,7 +83,7 @@ def build_site(entities: list[Entity], *, generated_at: str) -> dict[str, object
         "kpis": {
             "entities": len(real_entities),
             "deals": deals,
-            "sources": len(present_sources),
+            "sources": active_sources,
             "teams": teams,
         },
         "sources": present_sources,
