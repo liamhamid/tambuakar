@@ -18,7 +18,9 @@ tambuakar/
       gdelt.py          # berita/deal global (GDELT DOC 2.0, 🟢, tiada API key)
       google_trends.py  # minat audiens (pytrends, 🟢) — import dilindungi
     medallion.py        # Bronze (mentah) + Silver (dedup/normalisasi), JSONL
-    pipeline.py         # orkestrasi: fetch -> Bronze -> Silver (run + run_all)
+    identity.py         # Identity Resolution Engine (IRE): satukan entiti sama
+    gold.py             # Gold: profil entiti bersatu + identity_map (JSONL)
+    pipeline.py         # orkestrasi: fetch -> Bronze -> Silver -> IRE -> Gold
     __main__.py         # CLI: `python -m tambuakar` (jalan semua sumber)
   tests/                # ujian offline (tiada rangkaian)
   requirements.txt      # deps pihak ketiga (pytrends); teras = stdlib sahaja
@@ -40,10 +42,11 @@ PYTHONPATH=tambuakar/src python -m tambuakar
 
 ## Status & seterusnya
 
-- ✅ v1: port + adapter **Wikidata + GDELT + Google Trends** + Medallion
-  (Bronze/Silver, multi-sumber, resilient) + ujian.
-- ⏭️ **Identity Resolution Engine** (entiti dulu: `rapidfuzz` + deterministik).
-- ⏭️ **Gold** + Serving API (FastAPI) + sambung Ajis (read-only, Tailscale).
+- ✅ v1: adapter **Wikidata + GDELT + Google Trends** + Medallion (Bronze/Silver,
+  multi-sumber, resilient) + **IRE** (entiti: deterministik + fuzzy difflib) + **Gold**
+  (profil bersatu + identity_map) + 9 ujian.
+- ⏭️ **Serving API** (FastAPI) + sambung Ajis (read-only, Tailscale).
+- ⏭️ Alias/abbreviation untuk IRE ("Man Utd" = "Manchester United"); swap ke `rapidfuzz`.
 - ⏭️ Layer B (Person/CDP) — hanya bila consent sedia (lihat `../BLUEPRINT-TAMBUAKAR-LAYER-B.md`).
 
 ## Prinsip (dikunci)
