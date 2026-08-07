@@ -3,16 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Tambuakar — Dashboard Kepintaran Data (Contoh)</title>
-</head>
-<body>
-<title>Tambuakar — Dashboard Kepintaran Data (Contoh)</title>
+<title>IMPAX — Kepintaran Data Sukan (Contoh)</title>
 <style>
   :root{
     --ground:#F5F1E8; --card:#FFFFFF; --ink:#1C2621; --muted:#5F6E66; --faint:#8A968E;
     --jade:#0E4A42; --jade-soft:#E4EEEA; --gold:#B6891F; --gold-soft:#F3E9CE;
     --line:#E0DBCE; --grid:#ECE8DD;
-    --s1:#127C6C; --s2:#C0851A; --s3:#B4552F;   /* siri kategori */
+    --s1:#127C6C; --s2:#C0851A; --s3:#B4552F;
     --good:#2E7D5B;
     --shadow:0 1px 2px rgba(28,38,33,.05),0 10px 30px rgba(14,74,66,.08);
   }
@@ -42,30 +39,26 @@
     line-height:1.5;-webkit-font-smoothing:antialiased;padding:clamp(14px,3.5vw,34px);}
   .wrap{max-width:1000px;margin:0 auto;}
   .num{font-variant-numeric:tabular-nums;}
-
   header.top{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;margin-bottom:20px;}
   .brand{display:flex;align-items:center;gap:12px;}
-  .brand .mark{width:40px;height:40px;border-radius:11px;background:var(--jade);display:grid;place-items:center;flex:none;}
-  .kick{font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);font-weight:700;}
-  h1{font-family:Georgia,serif;font-size:clamp(1.4rem,3.6vw,1.9rem);margin:.1em 0 0;line-height:1.1;}
+  .brand .mark{width:44px;height:44px;border-radius:12px;background:var(--jade);display:grid;place-items:center;flex:none;}
+  .kick{font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:700;}
+  h1{font-family:Georgia,serif;font-size:clamp(1.7rem,4.4vw,2.3rem);margin:.06em 0 0;line-height:1;letter-spacing:.02em;}
+  .subttl{font-size:.84rem;color:var(--muted);margin:.2em 0 0;}
   .demo-badge{background:var(--gold-soft);color:var(--gold);border:1px solid var(--line);
     border-radius:999px;padding:5px 13px;font-size:.74rem;font-weight:800;letter-spacing:.04em;white-space:nowrap;}
-
   .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:16px;}
   @media (max-width:680px){.kpis{grid-template-columns:repeat(2,1fr);}}
   .kpi{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:15px 16px;box-shadow:var(--shadow);}
   .kpi .lab{font-size:.72rem;color:var(--muted);font-weight:600;margin-bottom:6px;}
   .kpi .val{font-family:Georgia,serif;font-size:clamp(1.5rem,4vw,2rem);font-weight:700;line-height:1;color:var(--jade);}
   .kpi .sub{font-size:.72rem;color:var(--good);margin-top:5px;font-weight:600;}
-
   .grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px;}
   @media (max-width:760px){.grid2{grid-template-columns:1fr;}}
   .panel{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:17px 18px;box-shadow:var(--shadow);}
   .panel h2{font-family:Georgia,serif;font-size:1.06rem;margin:0 0 3px;}
   .panel .cap{font-size:.76rem;color:var(--muted);margin:0 0 14px;}
   .eyebrow{font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--jade);font-weight:700;margin-bottom:9px;}
-
-  /* Entity spotlight */
   .ent-head{display:flex;align-items:baseline;justify-content:space-between;gap:10px;flex-wrap:wrap;}
   .ent-name{font-family:Georgia,serif;font-size:1.28rem;font-weight:700;}
   .chips{display:flex;gap:6px;flex-wrap:wrap;margin:10px 0 14px;}
@@ -77,23 +70,17 @@
   .spark{margin-top:14px;padding-top:12px;border-top:1px solid var(--line);}
   .spark .h{display:flex;justify-content:space-between;font-size:.76rem;color:var(--muted);margin-bottom:6px;}
   .spark .up{color:var(--good);font-weight:700;}
-
-  /* Horizontal bars */
   .bars{display:grid;gap:11px;}
   .bar-row .top{display:flex;justify-content:space-between;font-size:.84rem;margin-bottom:5px;}
   .bar-row .top .v{color:var(--muted);font-weight:700;}
   .track{height:9px;background:var(--grid);border-radius:6px;overflow:hidden;}
   .fill{height:100%;border-radius:6px;background:var(--s1);}
-
-  /* Line chart */
   .legend{display:flex;gap:16px;margin-bottom:8px;flex-wrap:wrap;}
   .lg{display:flex;align-items:center;gap:7px;font-size:.8rem;color:var(--ink);font-weight:600;}
   .lg .dot{width:11px;height:11px;border-radius:3px;}
   svg{display:block;width:100%;height:auto;}
   .axlab{fill:var(--faint);font-size:11px;}
   .endlab{font-size:12px;font-weight:800;font-variant-numeric:tabular-nums;}
-
-  /* Kad Profil */
   .profile{background:linear-gradient(180deg,var(--gold-soft),var(--card) 55%);}
   .seg{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
   @media (max-width:560px){.seg{grid-template-columns:1fr;}}
@@ -102,7 +89,6 @@
   .big-stat{display:flex;align-items:baseline;gap:10px;margin-top:6px;}
   .big-stat .n{font-family:Georgia,serif;font-size:2rem;font-weight:700;color:var(--jade);line-height:1;}
   .big-stat .t{font-size:.82rem;color:var(--muted);max-width:22ch;}
-
   footer{margin-top:20px;padding-top:14px;border-top:1px solid var(--line);color:var(--muted);font-size:.78rem;
     display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;}
   footer b{color:var(--jade);}
@@ -110,28 +96,29 @@
     font-size:.8rem;color:var(--ink);margin-bottom:16px;}
   .warn b{color:var(--gold);}
 </style>
-
+</head>
+<body>
 <div class="wrap">
   <header class="top">
     <div class="brand">
       <span class="mark">
-        <svg viewBox="0 0 48 48" width="26" height="26" fill="none" aria-hidden="true">
+        <svg viewBox="0 0 48 48" width="28" height="28" fill="none" aria-hidden="true">
           <path d="M6 30c4-2 6-6 10-6s5 4 9 4 6-8 11-8c3 0 5 2 6 4" stroke="#E4C160" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
           <path d="M42 24c-1-3-4-4-6-3M40 20l3-3M43 26l3 1" stroke="#E4C160" stroke-width="2.6" stroke-linecap="round"/>
           <circle cx="40.5" cy="22.5" r="1.5" fill="#E4C160"/>
         </svg>
       </span>
       <div>
-        <div class="kick">Tambuakar · Sportswork</div>
-        <h1>Dashboard Kepintaran Data Sukan</h1>
+        <div class="kick">Sportswork · dikuasakan Tambuakar 🐉</div>
+        <h1>IMPAX</h1>
+        <div class="subttl">Kepintaran Data Sukan &amp; Pemasaran</div>
       </div>
     </div>
     <span class="demo-badge">🐉 CONTOH / DEMO</span>
   </header>
 
-  <div class="warn"><b>⚠️ Ini mockup.</b> Semua angka di bawah = <b>data contoh</b> untuk tunjuk rupa & keupayaan — bukan data sebenar.</div>
+  <div class="warn"><b>⚠️ Ini mockup.</b> Semua angka di bawah = <b>data contoh</b> untuk tunjuk rupa &amp; keupayaan — bukan data sebenar.</div>
 
-  <!-- KPI -->
   <div class="kpis">
     <div class="kpi"><div class="lab">Entiti dijejak</div><div class="val num">1,247</div><div class="sub">kelab · atlet · brand</div></div>
     <div class="kpi"><div class="lab">Deal penajaan dikesan</div><div class="val num">92</div><div class="sub">↑ 14 bulan ini</div></div>
@@ -140,16 +127,13 @@
   </div>
 
   <div class="grid2">
-    <!-- Entity spotlight -->
     <div class="panel">
       <div class="eyebrow">Profil entiti bersatu</div>
       <div class="ent-head">
         <span class="ent-name">Johor Darul Ta'zim</span>
         <span class="chip">football_club</span>
       </div>
-      <div class="chips">
-        <span class="chip">Wikidata</span><span class="chip">GDELT</span><span class="chip">Google Trends</span>
-      </div>
+      <div class="chips"><span class="chip">Wikidata</span><span class="chip">GDELT</span><span class="chip">Google Trends</span></div>
       <div class="rows">
         <div class="row"><span class="k">Fakta</span><span class="v">Liga Super · Johor · ditubuh 1972</span></div>
         <div class="row"><span class="k">Deal terkini</span><span class="v">Pengumuman penaja lengan baharu (berita, 3 hari lalu)</span></div>
@@ -164,7 +148,6 @@
       </div>
     </div>
 
-    <!-- Sponsorship benchmark -->
     <div class="panel">
       <div class="eyebrow">Benchmark nilai media <span style="color:var(--muted);font-weight:600;">(anggaran)</span></div>
       <h2 style="font-size:.98rem;">Nilai media dilihat · top kelab</h2>
@@ -179,7 +162,6 @@
     </div>
   </div>
 
-  <!-- Interest trend line chart -->
   <div class="panel" style="margin-bottom:14px;">
     <div class="eyebrow">Trend minat audiens</div>
     <h2 style="font-size:.98rem;">Indeks minat · Mac–Ogos 2026</h2>
@@ -189,7 +171,6 @@
       <span class="lg"><span class="dot" style="background:var(--s2)"></span>Selangor FC</span>
     </div>
     <svg viewBox="0 0 680 260" role="img" aria-label="Carta garis trend minat JDT vs Selangor">
-      <!-- grid -->
       <g stroke="var(--grid)" stroke-width="1">
         <line x1="50" y1="20" x2="650" y2="20"/><line x1="50" y1="70" x2="650" y2="70"/>
         <line x1="50" y1="120" x2="650" y2="120"/><line x1="50" y1="170" x2="650" y2="170"/>
@@ -202,18 +183,15 @@
         <text x="60" y="242">Mac</text><text x="172" y="242">Apr</text><text x="284" y="242">Mei</text>
         <text x="396" y="242">Jun</text><text x="508" y="242">Jul</text><text x="620" y="242">Ogos</text>
       </g>
-      <!-- Selangor (s2) -->
       <polyline points="60,110 172,104 284,112 396,100 508,94 620,86" fill="none" stroke="var(--s2)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
       <circle cx="620" cy="86" r="4" fill="var(--s2)"/>
       <text class="endlab" x="632" y="90" fill="var(--s2)">67</text>
-      <!-- JDT (s1) -->
       <polyline points="60,96 172,84 284,78 396,90 508,64 620,40" fill="none" stroke="var(--s1)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
       <circle cx="620" cy="40" r="4" fill="var(--s1)"/>
       <text class="endlab" x="632" y="44" fill="var(--s1)">90</text>
     </svg>
   </div>
 
-  <!-- Kad Profil Audience -->
   <div class="panel profile">
     <div class="eyebrow">Kad Profil Audience — untuk penaja 💰</div>
     <h2>Peminat Johor Darul Ta'zim</h2>
@@ -238,8 +216,8 @@
   </div>
 
   <footer>
-    <span>Mockup · <b>data DEMO (contoh)</b> · Disediakan oleh <b>GUMUM</b></span>
-    <span>Tambuakar 🐉 · Ogos 2026</span>
+    <span>Mockup · <b>data DEMO (contoh)</b> · IMPAX dikuasakan <b>Tambuakar</b> 🐉</span>
+    <span>Sportswork · Ogos 2026</span>
   </footer>
 </div>
 </body>
