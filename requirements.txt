@@ -1,0 +1,4 @@
+# Kebergantungan runtime untuk Tambuakar collector (Layer A).
+# Teras v1 = pustaka standard sahaja (Wikidata, GDELT). Baris di bawah untuk
+# sumber yang perlukan pihak ketiga:
+pytrends>=4.9   # Google Trends (minat audiens) — import dilindungi dalam adapter

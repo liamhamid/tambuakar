@@ -14,11 +14,14 @@ tambuakar/
   src/tambuakar/
     ports.py            # port KnowledgeSource + Record (Clean Architecture)
     sources/
-      wikidata.py       # adapter #1: kelab bola sepak (SPARQL, 🟢 CC0, tiada API key)
+      wikidata.py       # kelab bola sepak (SPARQL, 🟢 CC0, tiada API key)
+      gdelt.py          # berita/deal global (GDELT DOC 2.0, 🟢, tiada API key)
+      google_trends.py  # minat audiens (pytrends, 🟢) — import dilindungi
     medallion.py        # Bronze (mentah) + Silver (dedup/normalisasi), JSONL
-    pipeline.py         # orkestrasi: fetch -> Bronze -> Silver
-    __main__.py         # CLI: `python -m tambuakar`
+    pipeline.py         # orkestrasi: fetch -> Bronze -> Silver (run + run_all)
+    __main__.py         # CLI: `python -m tambuakar` (jalan semua sumber)
   tests/                # ujian offline (tiada rangkaian)
+  requirements.txt      # deps pihak ketiga (pytrends); teras = stdlib sahaja
   collect.yml.template  # templat GitHub Actions (cron) — aktif bila repo sendiri
 ```
 
@@ -28,14 +31,17 @@ tambuakar/
 # Ujian (offline, tiada rangkaian):
 PYTHONPATH=tambuakar/src python -m pytest tambuakar/tests -q
 
+# (Pilihan) pasang deps pihak ketiga untuk Google Trends:
+pip install -r tambuakar/requirements.txt
+
 # Satu kitaran kutipan sebenar (perlu internet) -> tulis ke ./data:
 PYTHONPATH=tambuakar/src python -m tambuakar
 ```
 
 ## Status & seterusnya
 
-- ✅ v1: port + adapter Wikidata + Medallion (Bronze/Silver) + ujian.
-- ⏭️ Sumber: **GDELT** (berita/deal), **Google Trends** (`pytrends`).
+- ✅ v1: port + adapter **Wikidata + GDELT + Google Trends** + Medallion
+  (Bronze/Silver, multi-sumber, resilient) + ujian.
 - ⏭️ **Identity Resolution Engine** (entiti dulu: `rapidfuzz` + deterministik).
 - ⏭️ **Gold** + Serving API (FastAPI) + sambung Ajis (read-only, Tailscale).
 - ⏭️ Layer B (Person/CDP) — hanya bila consent sedia (lihat `../BLUEPRINT-TAMBUAKAR-LAYER-B.md`).
