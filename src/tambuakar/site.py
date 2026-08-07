@@ -37,27 +37,27 @@ def _news_of(entity: Entity) -> list[dict[str, str]]:
     return out
 
 
-def _rank(entity: Entity) -> tuple[int, int, int, str]:
+def _rank(entity: Entity) -> tuple[int, int, int]:
     news = sum(1 for m in entity.mentions if m.get("kind") == "news")
     # Utamakan entiti paling aktif: banyak sumber, banyak mention (minat+berita),
-    # banyak berita. Nama sebagai pemecah seri terakhir (stabil).
-    return (len(entity.sources), len(entity.mentions), news, entity.canonical_name.lower())
+    # banyak berita. Seri dikekalkan ikut susunan input (Wikidata sudah tertib
+    # keterkenalan) — `sorted` stabil, jadi kelab besar kekal di atas.
+    return (len(entity.sources), len(entity.mentions), news)
 
 
-def build_site(
-    entities: list[Entity], *, generated_at: str, source_names: list[str]
-) -> dict[str, object]:
+def build_site(entities: list[Entity], *, generated_at: str) -> dict[str, object]:
     """Bina payload awam Layer A. Fungsi tulen — tiada rangkaian/fail.
 
     `generated_at`: cap masa (dibekalkan oleh pemanggil, cth ISO date).
-    `source_names`: sumber yang cuba dijalankan kitaran ini (untuk KPI/label).
+    Susunan `entities` dianggap mengikut keterkenalan (sumber utama tertibkan).
     """
     real_entities = [e for e in entities if e.kind in ENTITY_KINDS]
     deals = sum(
         1 for e in entities for m in e.mentions if m.get("kind") == "news"
     )
     teams = sum(1 for e in real_entities if e.kind in _TEAM_KINDS)
-    present_sources = sorted({s for e in entities for s in e.sources} | set(source_names))
+    # Hanya sumber yang benar-benar menyumbang data (bukan sekadar dikonfigur).
+    present_sources = sorted({s for e in entities for s in e.sources})
 
     ranked = sorted(real_entities, key=_rank, reverse=True)[:_MAX_ENTITIES]
     entity_cards: list[dict[str, object]] = []

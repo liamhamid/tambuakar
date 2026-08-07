@@ -33,9 +33,7 @@ def _records() -> list[Record]:
 
 def _payload() -> dict[str, object]:
     entities, _ = resolve(_records())
-    return build_site(
-        entities, generated_at="2026-08-07", source_names=["wikidata", "gdelt", "google_trends"]
-    )
+    return build_site(entities, generated_at="2026-08-07")
 
 
 def test_kpis_count_real_entities_and_deals() -> None:

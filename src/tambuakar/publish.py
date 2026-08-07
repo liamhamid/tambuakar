@@ -26,7 +26,12 @@ def _sources() -> list[KnowledgeSource]:
     # Fokus pasaran Sportswork: kelab Malaysia + minat audiens kelab utama.
     return [
         WikidataSource(limit=60),
-        GdeltSource(query="football sponsorship", max_records=75, retries=4, backoff=3.0),
+        GdeltSource(
+            query='"Johor Darul Ta\'zim" OR "Selangor FC" OR "Malaysia Super League" sponsor',
+            max_records=75,
+            retries=4,
+            backoff=3.0,
+        ),
         GoogleTrendsSource(
             terms=[
                 "Johor Darul Ta'zim",
@@ -46,9 +51,7 @@ def main(out: Path | None = None, data_dir: Path | None = None) -> dict[str, obj
     sources = _sources()
     entities, results = collect(sources, data_dir)
     generated = datetime.now(UTC).strftime("%Y-%m-%d %H:%M UTC")
-    payload = build_site(
-        entities, generated_at=generated, source_names=[s.name for s in sources]
-    )
+    payload = build_site(entities, generated_at=generated)
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
     for name, stats in results.items():
