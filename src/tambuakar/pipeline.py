@@ -12,7 +12,7 @@ from __future__ import annotations
 from pathlib import Path
 
 from .gold import write_gold
-from .identity import resolve
+from .identity import Entity, resolve
 from .medallion import to_silver, write_bronze, write_silver
 from .ports import KnowledgeSource, Record
 
@@ -31,8 +31,14 @@ def run(source: KnowledgeSource, data_dir: Path) -> dict[str, int]:
     return {"fetched": len(records), "silver": len(silver)}
 
 
-def run_all(sources: list[KnowledgeSource], data_dir: Path) -> dict[str, dict[str, object]]:
-    """Semua sumber -> Silver, kemudian IRE merentas semua -> Gold. Resilient."""
+def collect(
+    sources: list[KnowledgeSource], data_dir: Path
+) -> tuple[list[Entity], dict[str, dict[str, object]]]:
+    """Semua sumber -> Silver, IRE merentas semua -> Gold. Resilient.
+
+    Pulang (entities, results) supaya pemanggil boleh bina lapisan sajian
+    (cth. ringkasan awam untuk papan pemuka) tanpa membaca semula Gold.
+    """
     results: dict[str, dict[str, object]] = {}
     all_silver: list[Record] = []
     for source in sources:
@@ -46,4 +52,10 @@ def run_all(sources: list[KnowledgeSource], data_dir: Path) -> dict[str, dict[st
     entities, identity_map = resolve(all_silver)
     write_gold(entities, identity_map, data_dir / "gold")
     results["_gold"] = {"entities": len(entities), "mapped": len(identity_map)}
+    return entities, results
+
+
+def run_all(sources: list[KnowledgeSource], data_dir: Path) -> dict[str, dict[str, object]]:
+    """Semua sumber -> Silver, kemudian IRE merentas semua -> Gold. Resilient."""
+    _, results = collect(sources, data_dir)
     return results

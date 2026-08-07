@@ -129,9 +129,17 @@ def _link_mentions(
         if best is None:
             identity_map[key] = {"method": "unlinked", "confidence": "0.00", "entity_id": ""}
             continue
-        best.mentions.append(
-            {"kind": rec.kind, "source": rec.source, "source_id": rec.source_id, "ref": rec.name}
-        )
+        mention = {
+            "kind": rec.kind,
+            "source": rec.source,
+            "source_id": rec.source_id,
+            "ref": rec.name,
+        }
+        # Bawa metadata berguna untuk paparan (bila/di mana), jika ada.
+        for meta in ("seendate", "domain", "value", "date"):
+            if meta in rec.attrs:
+                mention[meta] = rec.attrs[meta]
+        best.mentions.append(mention)
         best.sources.add(rec.source)
         identity_map[key] = {
             "method": "mention",

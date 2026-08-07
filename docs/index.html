@@ -71,6 +71,8 @@
   .langtoggle:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
   .demo-badge{background:var(--accent2-soft);color:var(--accent2);border:1px solid var(--line);
     border-radius:8px;font-family:var(--mono);padding:6px 12px;font-size:.7rem;font-weight:700;letter-spacing:.08em;white-space:nowrap;}
+  .demo-badge.live{background:var(--accent-soft);color:var(--good);border-color:var(--good);}
+  .upd{font-family:var(--mono);font-size:.66rem;color:var(--muted);letter-spacing:.04em;white-space:nowrap;}
   .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:16px;}
   @media (max-width:680px){.kpis{grid-template-columns:repeat(2,1fr);}}
   .kpi{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:15px 16px;box-shadow:var(--shadow);
@@ -149,27 +151,28 @@
     </div>
     <div class="topright">
       <button id="langbtn" class="langtoggle" onclick="toggleLang()" aria-label="Language">BM</button>
-      <span class="demo-badge" data-i18n="demo">SAMPLE / DEMO</span>
+      <span id="demobadge" class="demo-badge" data-i18n="demo">SAMPLE / DEMO</span>
+      <span id="updated" class="upd" hidden></span>
     </div>
   </header>
 
   <div class="warn" data-i18n="warn"><b>⚠️ This is a mockup.</b> All figures below are <b>sample data</b> to show the look &amp; capability — not real data.</div>
 
   <div class="kpis">
-    <div class="kpi"><div class="idx">01</div><div class="lab" data-i18n="k1">Entities tracked</div><div class="val num">1,247</div><div class="sub" data-i18n="k1s">clubs · athletes · brands</div></div>
-    <div class="kpi"><div class="idx">02</div><div class="lab" data-i18n="k2">Sponsorship deals detected</div><div class="val num">92</div><div class="sub" data-i18n="k2s">↑ 14 this month</div></div>
-    <div class="kpi"><div class="idx">03</div><div class="lab" data-i18n="k3">Active sources</div><div class="val num">5</div><div class="sub" data-i18n="k3s">all legal &amp; free</div></div>
-    <div class="kpi"><div class="idx">04</div><div class="lab" data-i18n="k4">Teams tracked for interest</div><div class="val num">340</div><div class="sub" data-i18n="k4s">real-time</div></div>
+    <div class="kpi"><div class="idx">01</div><div class="lab" data-i18n="k1">Entities tracked</div><div class="val num" id="kpiEntities">1,247</div><div class="sub" data-i18n="k1s">clubs · athletes · brands</div></div>
+    <div class="kpi"><div class="idx">02</div><div class="lab" data-i18n="k2">Sponsorship deals detected</div><div class="val num" id="kpiDeals">92</div><div class="sub" data-i18n="k2s">↑ 14 this month</div></div>
+    <div class="kpi"><div class="idx">03</div><div class="lab" data-i18n="k3">Active sources</div><div class="val num" id="kpiSources">5</div><div class="sub" data-i18n="k3s">all legal &amp; free</div></div>
+    <div class="kpi"><div class="idx">04</div><div class="lab" data-i18n="k4">Teams tracked for interest</div><div class="val num" id="kpiTeams">340</div><div class="sub" data-i18n="k4s">real-time</div></div>
   </div>
 
   <div class="grid2">
     <div class="panel">
       <div class="eyebrow" data-i18n="ent_eb">Unified entity profile</div>
       <div class="ent-head">
-        <span class="ent-name">Johor Darul Ta'zim</span>
-        <span class="chip">football_club</span>
+        <span class="ent-name" id="entName">Johor Darul Ta'zim</span>
+        <span class="chip" id="entKind">football_club</span>
       </div>
-      <div class="chips"><span class="chip">Wikidata</span><span class="chip">GDELT</span><span class="chip">Google Trends</span></div>
+      <div class="chips" id="entSources"><span class="chip">Wikidata</span><span class="chip">GDELT</span><span class="chip">Google Trends</span></div>
       <div class="rows">
         <div class="row"><span class="k" data-i18n="r1k">Facts</span><span class="v" data-i18n="r1v">Super League · Johor · founded 1972</span></div>
         <div class="row"><span class="k" data-i18n="r2k">Latest deal</span><span class="v" data-i18n="r2v">New sleeve sponsor announced (news, 3 days ago)</span></div>
@@ -325,6 +328,61 @@
   }
   function toggleLang(){ LANG = (LANG === 'en') ? 'ms' : 'en'; localStorage.setItem('impax_lang', LANG); applyLang(); }
   applyLang();
+
+  // ---- Live data (Layer A) hydration ----------------------------------------
+  // Reads ./data.json (produced by the collector). If real entities are present,
+  // it fills the KPIs + the top entity profile and flips the badge to LIVE.
+  // If the file is missing/empty, the page keeps the sample values above.
+  function srcLabel(s){ return ({wikidata:"Wikidata", gdelt:"GDELT", google_trends:"Google Trends"})[s] || s; }
+  function setText(id, v){ var el = document.getElementById(id); if(el){ el.textContent = v; } }
+  function overrideI18N(key, en, ms){ I18N.en[key] = en; I18N.ms[key] = ms; }
+  function clean(s){ return String(s == null ? "" : s).replace(/[<>]/g, " ").trim(); }
+  function niceKind(k){ return String(k || "").replace(/_/g, " "); }
+
+  function hydrate(){
+    fetch("./data.json", {cache:"no-store"})
+      .then(function(r){ return r.ok ? r.json() : null; })
+      .then(function(d){
+        if(!d || !d.kpis || !(Number(d.kpis.entities) > 0)) return;  // no live data -> keep sample
+        var k = d.kpis;
+        setText("kpiEntities", Number(k.entities).toLocaleString());
+        setText("kpiDeals", Number(k.deals).toLocaleString());
+        setText("kpiSources", String(k.sources));
+        setText("kpiTeams", Number(k.teams).toLocaleString());
+
+        var e = (d.entities && d.entities[0]) || null;
+        if(e){
+          setText("entName", clean(e.name));
+          setText("entKind", clean(e.kind));
+          var box = document.getElementById("entSources");
+          if(box){
+            box.innerHTML = "";
+            (e.sources || []).forEach(function(s){
+              var sp = document.createElement("span"); sp.className = "chip"; sp.textContent = srcLabel(s); box.appendChild(sp);
+            });
+          }
+          var facts = e.country ? (niceKind(e.kind) + " · " + clean(e.country)) : niceKind(e.kind);
+          var deal = (e.news && e.news[0] && e.news[0].title) ? clean(e.news[0].title) : "—";
+          var srcs = (e.sources || []).map(srcLabel).join(" · ");
+          overrideI18N("r1k", "Facts", "Fakta");            overrideI18N("r1v", facts, facts);
+          overrideI18N("r2k", "Latest signal", "Isyarat terkini"); overrideI18N("r2v", deal, deal);
+          overrideI18N("r3k", "Sources", "Sumber");         overrideI18N("r3v", srcs, srcs);
+        }
+
+        overrideI18N("k2s", "news & deal signals", "isyarat berita & deal");
+        var badge = document.getElementById("demobadge");
+        if(badge){ badge.classList.add("live"); overrideI18N("demo", "● LIVE", "● LIVE"); }
+        var upd = document.getElementById("updated");
+        if(upd && d.generated_at){ upd.hidden = false; upd.textContent = "updated " + clean(d.generated_at); }
+
+        overrideI18N("warn",
+          '<b>Live public data (Layer A):</b> entities, deal signals &amp; the top profile are real. The audience &amp; media-value cards below are still <b>sample</b>.',
+          '<b>Data awam langsung (Layer A):</b> entiti, isyarat deal &amp; profil teratas adalah betul. Kad audiens &amp; nilai media di bawah masih <b>contoh</b>.');
+        applyLang();
+      })
+      .catch(function(){ /* offline / no file -> keep sample */ });
+  }
+  hydrate();
 </script>
 </body>
 </html>

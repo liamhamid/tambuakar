@@ -1,6 +1,7 @@
-# Tambuakar collect (repo sendiri) — kutip data sukan dunia berjadual.
-# Berjalan atas GitHub runner (internet penuh) ATAU kekal sebagai sandaran; kutipan
-# utama berlaku di server Oracle (cron). Muat naik Gold sebagai artifact.
+# Tambuakar — refresh data langsung (Layer A) untuk papan pemuka IMPAX.
+# Runner GitHub ada internet penuh: kutip Wikidata + GDELT + Google Trends -> Gold
+# -> tulis docs/data.json (selamat-klien) -> commit balik supaya GitHub Pages
+# (impax.tambuakar.com) rebuild dengan data betul. Tiada tindakan pemilik.
 
 name: collect
 
@@ -10,7 +11,11 @@ on:
     - cron: "0 2 * * *"   # ~10 pagi Malaysia
 
 permissions:
-  contents: read
+  contents: write          # perlu untuk commit docs/data.json balik ke repo
+
+concurrency:
+  group: collect
+  cancel-in-progress: false
 
 jobs:
   collect:
@@ -21,12 +26,24 @@ jobs:
         with:
           python-version: "3.12"
       - run: pip install -r requirements.txt
-      - name: Kutip (Wikidata + GDELT + Google Trends -> Gold)
+      - name: Kutip Layer A -> Gold -> docs/data.json
         env:
           PYTHONPATH: src
-        run: python -m tambuakar
-      - uses: actions/upload-artifact@v4
+        run: python -m tambuakar.publish
+      - name: Simpan data langsung (artifact + Gold)
+        uses: actions/upload-artifact@v4
         with:
           name: tambuakar-data
           path: data/
           if-no-files-found: warn
+      - name: Commit data langsung (cetus rebuild Pages)
+        run: |
+          git config user.name  "tambuakar-bot"
+          git config user.email "bot@users.noreply.github.com"
+          if [ -n "$(git status --porcelain docs/data.json)" ]; then
+            git add docs/data.json
+            git commit -m "data: refresh live Layer A ($(date -u +%Y-%m-%dT%H:%MZ))"
+            git push
+          else
+            echo "Tiada perubahan data.json — langkau commit."
+          fi

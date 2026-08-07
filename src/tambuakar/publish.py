@@ -1,0 +1,52 @@
+"""Publish — jalankan satu kitaran kutipan lalu tulis ringkasan awam untuk page.
+
+Purpose: titik masuk yang GitHub Actions guna untuk menjadikan papan pemuka IMPAX
+    "hidup": kutip Layer A (Wikidata/GDELT/Google Trends) -> Gold -> tulis
+    `docs/data.json` (selamat-klien) yang page statik baca.
+Responsibilities: pilih sumber, orkestrasi kutipan, serialisasi payload site.
+Dependencies: pustaka standard + modul tempatan.
+Future: parameter query per-projek/klien; tulis banyak fail (per-klien).
+"""
+
+from __future__ import annotations
+
+import json
+from datetime import UTC, datetime
+from pathlib import Path
+
+from .pipeline import collect
+from .ports import KnowledgeSource
+from .site import build_site
+from .sources.gdelt import GdeltSource
+from .sources.google_trends import GoogleTrendsSource
+from .sources.wikidata import WikidataSource
+
+
+def _sources() -> list[KnowledgeSource]:
+    return [
+        WikidataSource(limit=60),
+        GdeltSource(query="sports sponsorship", max_records=60),
+        GoogleTrendsSource(terms=["Johor Darul Ta'zim", "Selangor FC"], geo="MY"),
+    ]
+
+
+def main(out: Path | None = None, data_dir: Path | None = None) -> dict[str, object]:
+    """Kutip -> Gold -> tulis payload site. Pulang payload (untuk ujian)."""
+    out = out or Path("docs/data.json")
+    data_dir = data_dir or Path("data")
+    sources = _sources()
+    entities, results = collect(sources, data_dir)
+    generated = datetime.now(UTC).strftime("%Y-%m-%d %H:%M UTC")
+    payload = build_site(
+        entities, generated_at=generated, source_names=[s.name for s in sources]
+    )
+    out.parent.mkdir(parents=True, exist_ok=True)
+    out.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
+    for name, stats in results.items():
+        print(f"[tambuakar] {name}: {stats}")
+    print(f"[tambuakar] site -> {out} kpis={payload['kpis']}")
+    return payload
+
+
+if __name__ == "__main__":
+    main()
