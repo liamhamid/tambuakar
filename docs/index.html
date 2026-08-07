@@ -81,8 +81,8 @@
     border:1px solid var(--line);border-radius:9px;padding:9px 12px;letter-spacing:.01em;}
   .search input::placeholder{color:var(--faint);}
   .search input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft);}
-  .results{position:absolute;left:0;right:0;top:calc(100% + 4px);z-index:5;background:var(--card);
-    border:1px solid var(--line);border-radius:10px;box-shadow:var(--shadow);max-height:230px;overflow:auto;padding:5px;}
+  .results{margin-top:6px;background:var(--card2);
+    border:1px solid var(--line);border-radius:10px;max-height:240px;overflow:auto;padding:5px;}
   .results button{display:flex;width:100%;justify-content:space-between;gap:10px;align-items:baseline;
     background:none;border:0;border-radius:7px;padding:8px 10px;cursor:pointer;text-align:left;color:var(--ink);
     font-family:var(--sans);font-size:.88rem;}
@@ -435,6 +435,10 @@
       results.hidden = false;
     }
     input.addEventListener("input", function(){ render(input.value); });
+    input.addEventListener("keyup", function(ev){
+      if(ev.key === "ArrowDown" || ev.key === "ArrowUp" || ev.key === "Enter" || ev.key === "Escape") return;
+      render(input.value);  // fallback for browsers/IMEs where 'input' is flaky
+    });
     input.addEventListener("focus", function(){ if(input.value){ render(input.value); } });
     input.addEventListener("keydown", function(ev){
       if(ev.key === "ArrowDown"){ ev.preventDefault(); if(results.hidden){ render(input.value); } setActive(active + 1); }
@@ -478,8 +482,8 @@
           'Live Layer-A data · IMPAX by <b>Sportswork</b>',
           'Data langsung Layer A · IMPAX oleh <b>Sportswork</b>');
 
-        showEntity((d.entities && d.entities[0]) || null);
-        initSearch();
+        initSearch();  // wire search first so a later error can't disable it
+        try { showEntity((d.entities && d.entities[0]) || null); } catch(err){ /* keep featured */ }
         applyLang();
       })
       .catch(function(){ /* offline / no file -> keep sample */ });
