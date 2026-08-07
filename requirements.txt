@@ -2,3 +2,5 @@
 # Teras v1 = pustaka standard sahaja (Wikidata, GDELT). Baris di bawah untuk
 # sumber yang perlukan pihak ketiga:
 pytrends>=4.9   # Google Trends (minat audiens) — import dilindungi dalam adapter
+fastapi>=0.110  # Serving API (dedah Gold read-only)
+uvicorn>=0.29   # server ASGI untuk Serving API

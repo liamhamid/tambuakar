@@ -20,6 +20,7 @@ tambuakar/
     medallion.py        # Bronze (mentah) + Silver (dedup/normalisasi), JSONL
     identity.py         # Identity Resolution Engine (IRE): satukan entiti sama
     gold.py             # Gold: profil entiti bersatu + identity_map (JSONL)
+    api.py              # Serving API (FastAPI): dedah Gold read-only, bertoken
     pipeline.py         # orkestrasi: fetch -> Bronze -> Silver -> IRE -> Gold
     __main__.py         # CLI: `python -m tambuakar` (jalan semua sumber)
   tests/                # ujian offline (tiada rangkaian)
@@ -38,14 +39,19 @@ pip install -r tambuakar/requirements.txt
 
 # Satu kitaran kutipan sebenar (perlu internet) -> tulis ke ./data:
 PYTHONPATH=tambuakar/src python -m tambuakar
+
+# Serving API (dedah Gold) — set TAMBUAKAR_TOKEN dalam prod:
+PYTHONPATH=tambuakar/src TAMBUAKAR_GOLD=data/gold uvicorn tambuakar.api:app --port 8790
+# -> GET /health · GET /entities?kind=football_club&q=man · GET /entities/{id}
 ```
 
 ## Status & seterusnya
 
 - ✅ v1: adapter **Wikidata + GDELT + Google Trends** + Medallion (Bronze/Silver,
   multi-sumber, resilient) + **IRE** (entiti: deterministik + fuzzy difflib) + **Gold**
-  (profil bersatu + identity_map) + 9 ujian.
-- ⏭️ **Serving API** (FastAPI) + sambung Ajis (read-only, Tailscale).
+  (profil bersatu + identity_map) + **Serving API** (FastAPI, bertoken) + 13 ujian.
+- ⏭️ **Sambung Ajis** — Ajis tarik Gold dari Serving API (read-only, atas Tailscale),
+  bila Tambuakar dah deploy (repo sendiri + server).
 - ⏭️ Alias/abbreviation untuk IRE ("Man Utd" = "Manchester United"); swap ke `rapidfuzz`.
 - ⏭️ Layer B (Person/CDP) — hanya bila consent sedia (lihat `../BLUEPRINT-TAMBUAKAR-LAYER-B.md`).
 
