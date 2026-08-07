@@ -45,3 +45,36 @@ def test_ire_blocks_by_kind() -> None:
     ]
     entities, _ = resolve(records)
     assert len(entities) == 2
+
+
+def test_mentions_link_to_entity_not_treated_as_entities() -> None:
+    records = [
+        _club("wikidata", "Q1", "Manchester United F.C."),
+        Record(source="gdelt", source_id="n1", kind="news",
+               name="Manchester United signs Adidas deal"),
+        Record(source="google_trends", source_id="MU:2026", kind="trend",
+               name="Manchester United"),
+        Record(source="gdelt", source_id="n2", kind="news",
+               name="Chelsea appoints new manager"),
+    ]
+    entities, imap = resolve(records)
+    # Hanya kelab = entiti; berita/trend = mention, bukan entiti.
+    assert len(entities) == 1
+    club = entities[0]
+    assert {m["kind"] for m in club.mentions} == {"news", "trend"}
+    assert imap["gdelt:n1"]["entity_id"] == club.entity_id
+    assert imap["google_trends:MU:2026"]["entity_id"] == club.entity_id
+    # Berita tanpa entiti sepadan -> unlinked, BUKAN digabung salah.
+    assert imap["gdelt:n2"]["method"] == "unlinked"
+
+
+def test_distinct_news_not_merged_into_one_entity() -> None:
+    records = [
+        Record(source="g", source_id="a", kind="news",
+               name="Nike signs sponsorship deal with Arsenal"),
+        Record(source="g", source_id="b", kind="news",
+               name="Nike signs sponsorship deal with Chelsea"),
+    ]
+    entities, _ = resolve(records)
+    # Tiada entiti (semua berita) -> tiada gabungan salah.
+    assert entities == []

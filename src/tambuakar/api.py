@@ -8,6 +8,7 @@ Future: Postgres; agregat (benchmark penajaan); rate-limit; bind Tailscale-only.
 
 from __future__ import annotations
 
+import hmac
 import json
 import os
 from pathlib import Path
@@ -29,9 +30,12 @@ def create_app(gold_dir: Path | None = None, token: str | None = None) -> FastAP
     app = FastAPI(title="Tambuakar Serving API", version="0.1.0")
 
     def check_auth(authorization: str | None) -> None:
-        # Token opsyenal untuk dev; WAJIB set TAMBUAKAR_TOKEN dalam prod (di sebalik
-        # Tailscale). Bila diset, hanya "Bearer <token>" yang betul dibenarkan.
-        if resolved_token and authorization != f"Bearer {resolved_token}":
+        # Fail-closed: tanpa TAMBUAKAR_TOKEN, endpoint data enggan berkhidmat (503)
+        # supaya deploy tersilap tidak membocorkan Gold. Bila diset, hanya
+        # "Bearer <token>" yang betul (banding constant-time) dibenarkan.
+        if not resolved_token:
+            raise HTTPException(status_code=503, detail="TAMBUAKAR_TOKEN not configured")
+        if not hmac.compare_digest(authorization or "", f"Bearer {resolved_token}"):
             raise HTTPException(status_code=401, detail="unauthorized")
 
     @app.get("/health")

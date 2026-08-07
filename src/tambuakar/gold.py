@@ -22,6 +22,7 @@ def _entity_dict(entity: Entity) -> dict[str, object]:
         "members": [{"source": s, "source_id": i} for s, i in entity.members],
         "sources": sorted(entity.sources),
         "attrs": entity.attrs,
+        "mentions": entity.mentions,
     }
 
 

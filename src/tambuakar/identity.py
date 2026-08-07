@@ -1,12 +1,14 @@
-"""Identity Resolution Engine (IRE) v1 — peringkat entiti.
+"""Identity Resolution Engine (IRE) v1 — peringkat entiti + link mention.
 
-Purpose: satukan `Record` yang merujuk entiti sama merentas sumber -> entiti
-    kanonik + `identity_map` (source:source_id -> entity_id).
-Method: **deterministik** (nama ternormal sama) + **fuzzy** (difflib ratio),
-    di-block ikut `kind` supaya kelab tak dipadan dengan atlet/brand.
+Purpose: satukan **entiti** (kelab/atlet/brand) merentas sumber jadi profil
+    kanonik, dan **link mention** (berita/trend) ke entiti — bukan jadikan
+    berita/trend sebagai entiti.
+Method: entiti — deterministik (nama ternormal sama) + fuzzy (difflib), block
+    ikut `kind`. Mention — trend padan nama; berita link bila nama entiti muncul
+    dalam tajuk.
 Dependencies: pustaka standard (`difflib`, `re`). Tiada kunci API, tiada kos.
-Future: swap difflib -> `rapidfuzz` (laju + alias/abbreviation "Man Utd"),
-    padanan ID silang-sumber (Wikidata QID), embeddings untuk padanan semantik.
+Future: swap difflib -> `rapidfuzz`; alias/abbreviation ("Man Utd"); NER untuk
+    ekstrak entiti dari teks berita; padanan ID silang-sumber (Wikidata QID).
 """
 
 from __future__ import annotations
@@ -17,8 +19,12 @@ from difflib import SequenceMatcher
 
 from .ports import Record
 
-# Akhiran nama kelab yang dibuang semasa normalisasi (supaya "Arsenal F.C." dan
-# "Arsenal" dikenali sama).
+# Kind yang mewakili ENTITI (boleh diresolusi jadi profil bersatu).
+ENTITY_KINDS = frozenset({"football_club", "athlete", "brand", "league", "team", "venue"})
+# Kind yang mewakili MENTION (rujukan kepada entiti, bukan entiti sendiri).
+MENTION_KINDS = frozenset({"news", "trend"})
+
+# Akhiran nama kelab yang dibuang semasa normalisasi ("Arsenal F.C." == "Arsenal").
 _SUFFIXES = (" fc", " f c", " afc", " sc", " football club", " fk")
 
 
@@ -35,7 +41,7 @@ def normalize(name: str) -> str:
 
 @dataclass
 class Entity:
-    """Satu entiti kanonik hasil penyatuan beberapa Record."""
+    """Satu entiti kanonik: gabungan record entiti + mention terlink."""
 
     entity_id: str
     kind: str
@@ -43,16 +49,21 @@ class Entity:
     members: list[tuple[str, str]] = field(default_factory=list)
     sources: set[str] = field(default_factory=set)
     attrs: dict[str, str] = field(default_factory=dict)
+    mentions: list[dict[str, str]] = field(default_factory=list)
 
 
 def _similar(a: str, b: str) -> float:
     return SequenceMatcher(None, a, b).ratio()
 
 
-def resolve(
-    records: list[Record], threshold: float = 0.88
+def _phrase_in(phrase: str, text: str) -> bool:
+    """Betul jika `phrase` muncul sebagai perkataan penuh dalam `text`."""
+    return bool(phrase) and f" {phrase} " in f" {text} "
+
+
+def _resolve_entities(
+    records: list[Record], threshold: float
 ) -> tuple[list[Entity], dict[str, dict[str, str]]]:
-    """Kelompokkan record jadi entiti kanonik. Pulang (entities, identity_map)."""
     clusters: list[Entity] = []
     identity_map: dict[str, dict[str, str]] = {}
 
@@ -93,3 +104,52 @@ def resolve(
             identity_map[f"{source}:{source_id}"]["entity_id"] = ent.entity_id
 
     return clusters, identity_map
+
+
+def _link_mentions(
+    entities: list[Entity], mentions: list[Record], identity_map: dict[str, dict[str, str]]
+) -> None:
+    for rec in mentions:
+        norm = normalize(rec.name)
+        best: Entity | None = None
+        score = 0.0
+        for ent in entities:
+            ent_norm = normalize(ent.canonical_name)
+            if not ent_norm:
+                continue
+            if rec.kind == "trend":
+                ratio = 1.0 if ent_norm == norm else _similar(ent_norm, norm)
+                if ratio >= 0.9 and ratio > score:
+                    best, score = ent, ratio
+            elif _phrase_in(ent_norm, norm) and len(ent_norm) > score:
+                # Nama entiti terpanjang yang muncul dalam tajuk = padanan paling spesifik.
+                best, score = ent, float(len(ent_norm))
+
+        key = f"{rec.source}:{rec.source_id}"
+        if best is None:
+            identity_map[key] = {"method": "unlinked", "confidence": "0.00", "entity_id": ""}
+            continue
+        best.mentions.append(
+            {"kind": rec.kind, "source": rec.source, "source_id": rec.source_id, "ref": rec.name}
+        )
+        best.sources.add(rec.source)
+        identity_map[key] = {
+            "method": "mention",
+            "confidence": "1.00",
+            "entity_id": best.entity_id,
+        }
+
+
+def resolve(
+    records: list[Record], threshold: float = 0.88
+) -> tuple[list[Entity], dict[str, dict[str, str]]]:
+    """Resolusi entiti + link mention. Pulang (entities, identity_map).
+
+    Record `kind` dalam MENTION_KINDS (news/trend) dilink ke entiti; selainnya
+    diresolusi sebagai entiti.
+    """
+    entity_recs = [r for r in records if r.kind not in MENTION_KINDS]
+    mention_recs = [r for r in records if r.kind in MENTION_KINDS]
+    entities, identity_map = _resolve_entities(entity_recs, threshold)
+    _link_mentions(entities, mention_recs, identity_map)
+    return entities, identity_map
