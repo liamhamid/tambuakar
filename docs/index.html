@@ -76,6 +76,19 @@
     border-radius:8px;font-family:var(--mono);padding:6px 12px;font-size:.7rem;font-weight:700;letter-spacing:.08em;white-space:nowrap;}
   .demo-badge.live{background:var(--accent-soft);color:var(--good);border-color:var(--good);}
   .upd{font-family:var(--mono);font-size:.66rem;color:var(--muted);letter-spacing:.04em;white-space:nowrap;}
+  .search{position:relative;margin:0 0 13px;}
+  .search input{width:100%;font-family:var(--mono);font-size:.86rem;color:var(--ink);background:var(--card2);
+    border:1px solid var(--line);border-radius:9px;padding:9px 12px;letter-spacing:.01em;}
+  .search input::placeholder{color:var(--faint);}
+  .search input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft);}
+  .results{position:absolute;left:0;right:0;top:calc(100% + 4px);z-index:5;background:var(--card);
+    border:1px solid var(--line);border-radius:10px;box-shadow:var(--shadow);max-height:230px;overflow:auto;padding:5px;}
+  .results button{display:flex;width:100%;justify-content:space-between;gap:10px;align-items:baseline;
+    background:none;border:0;border-radius:7px;padding:8px 10px;cursor:pointer;text-align:left;color:var(--ink);
+    font-family:var(--sans);font-size:.88rem;}
+  .results button:hover,.results button:focus{background:var(--accent-soft);outline:none;}
+  .results button .meta{font-family:var(--mono);font-size:.72rem;color:var(--muted);flex:none;}
+  .results .empty{padding:10px;color:var(--muted);font-size:.82rem;}
   .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:16px;}
   @media (max-width:680px){.kpis{grid-template-columns:repeat(2,1fr);}}
   .kpi{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:15px 16px;box-shadow:var(--shadow);
@@ -171,6 +184,10 @@
   <div class="grid2">
     <div class="panel">
       <div class="eyebrow" data-i18n="ent_eb">Unified entity profile</div>
+      <div class="search">
+        <input id="entSearch" type="search" autocomplete="off" spellcheck="false" data-i18n-ph="search_ph" placeholder="Search a club or entity…" aria-label="Search">
+        <div id="entResults" class="results" hidden></div>
+      </div>
       <div class="ent-head">
         <span class="ent-name" id="entName">Johor Darul Ta'zim</span>
         <span class="chip" id="entKind">football_club</span>
@@ -272,19 +289,19 @@
       k2:"Sponsorship deals detected", k2s:"↑ 14 this month",
       k3:"Active sources", k3s:"all legal & free",
       k4:"Teams tracked for interest", k4s:"real-time",
-      ent_eb:"Unified entity profile",
+      ent_eb:"Unified entity profile", search_ph:"Search a club or entity…",
       r1k:"Facts", r1v:"Super League · Johor · founded 1972",
       r2k:"Latest deal", r2v:"New sleeve sponsor announced (news, 3 days ago)",
       r3k:"Unique fans", r3v:"~1.9 million across platforms",
       spark_l:"Audience interest · 6 months",
-      bench_eb:'Media value benchmark <span style="color:var(--muted);font-weight:600;">(estimated)</span>',
+      bench_eb:'Media value benchmark <span style="color:var(--muted);font-weight:600;">(estimated · sample)</span>',
       bench_h:"Media value seen · top clubs",
       bench_cap:"Methodological estimate from reach + demographics. Not an absolute figure.",
       bv1:"RM 3.2M", bv2:"RM 2.1M", bv3:"RM 1.4M", bv4:"RM 1.1M", bv5:"RM 0.8M",
-      trend_eb:"Audience interest trend", trend_h:"Interest index · Mar–Aug 2026",
+      trend_eb:"Audience interest trend · sample", trend_h:"Interest index · Mar–Aug 2026",
       trend_cap:"Peak interest = the best time to activate sponsor campaigns.",
       m1:"Mar", m2:"Apr", m3:"May", m4:"Jun", m5:"Jul", m6:"Aug",
-      kad_eb:"Audience Profile Card — for sponsors 💰", kad_h:"Johor Darul Ta'zim fans",
+      kad_eb:"Audience Profile Card — for sponsors 💰 · sample", kad_h:"Johor Darul Ta'zim fans",
       kad_cap:"Sample output sold to sponsors (segments, not individuals — PDPA-compliant).",
       age:"Age", loc:"Top locations", loc1:"Johor Bahru", loc2:"Kuala Lumpur", loc3:"Singapore",
       intr:"Interests", in1:"Jersey", in2:"Tickets", in3:"Futsal",
@@ -298,19 +315,19 @@
       k2:"Deal penajaan dikesan", k2s:"↑ 14 bulan ini",
       k3:"Sumber aktif", k3s:"semua sah & percuma",
       k4:"Pasukan dipantau minat", k4s:"masa nyata",
-      ent_eb:"Profil entiti bersatu",
+      ent_eb:"Profil entiti bersatu", search_ph:"Cari kelab atau entiti…",
       r1k:"Fakta", r1v:"Liga Super · Johor · ditubuh 1972",
       r2k:"Deal terkini", r2v:"Pengumuman penaja lengan baharu (berita, 3 hari lalu)",
       r3k:"Peminat unik", r3v:"~1.9 juta merentas platform",
       spark_l:"Minat audiens · 6 bulan",
-      bench_eb:'Benchmark nilai media <span style="color:var(--muted);font-weight:600;">(anggaran)</span>',
+      bench_eb:'Benchmark nilai media <span style="color:var(--muted);font-weight:600;">(anggaran · contoh)</span>',
       bench_h:"Nilai media dilihat · top kelab",
       bench_cap:"Anggaran bermetodologi dari jangkauan + demografi. Bukan nombor mutlak.",
       bv1:"RM 3.2j", bv2:"RM 2.1j", bv3:"RM 1.4j", bv4:"RM 1.1j", bv5:"RM 0.8j",
-      trend_eb:"Trend minat audiens", trend_h:"Indeks minat · Mac–Ogos 2026",
+      trend_eb:"Trend minat audiens · contoh", trend_h:"Indeks minat · Mac–Ogos 2026",
       trend_cap:"Bila minat memuncak = masa terbaik untuk aktifkan campaign penaja.",
       m1:"Mac", m2:"Apr", m3:"Mei", m4:"Jun", m5:"Jul", m6:"Ogos",
-      kad_eb:"Kad Profil Audience — untuk penaja 💰", kad_h:"Peminat Johor Darul Ta'zim",
+      kad_eb:"Kad Profil Audience — untuk penaja 💰 · contoh", kad_h:"Peminat Johor Darul Ta'zim",
       kad_cap:"Contoh output yang dijual kepada penaja (segmen, bukan individu — patuh PDPA).",
       age:"Umur", loc:"Lokasi teratas", loc1:"Johor Bahru", loc2:"Kuala Lumpur", loc3:"Singapura",
       intr:"Minat", in1:"Jersi", in2:"Tiket", in3:"Futsal",
@@ -325,6 +342,10 @@
       var v = I18N[LANG][el.getAttribute('data-i18n')];
       if(v == null) return;
       if(v.indexOf('<') >= 0){ el.innerHTML = v; } else { el.textContent = v; }
+    });
+    document.querySelectorAll('[data-i18n-ph]').forEach(function(el){
+      var v = I18N[LANG][el.getAttribute('data-i18n-ph')];
+      if(v != null){ el.setAttribute('placeholder', v); }
     });
     var b = document.getElementById('langbtn');
     if(b){ b.textContent = (LANG === 'en') ? 'BM' : 'EN'; }
@@ -342,50 +363,97 @@
   function clean(s){ return String(s == null ? "" : s).replace(/[<>]/g, " ").trim(); }
   function niceKind(k){ return String(k || "").replace(/_/g, " "); }
 
+  var SITE = null;
+
+  // Render one entity into the profile panel (facts kept bilingual via I18N).
+  function showEntity(e){
+    if(!e) return;
+    setText("entName", clean(e.name));
+    setText("entKind", clean(e.kind));
+    var box = document.getElementById("entSources");
+    if(box){
+      box.innerHTML = "";
+      (e.sources || []).forEach(function(s){
+        var sp = document.createElement("span"); sp.className = "chip"; sp.textContent = srcLabel(s); box.appendChild(sp);
+      });
+    }
+    function factsFor(lang){
+      var bits = [niceKind(e.kind)];
+      if(e.country){ bits.push(clean(e.country)); }
+      if(e.founded){ bits.push((lang === "ms" ? "ditubuh " : "founded ") + clean(e.founded)); }
+      return bits.join(" · ");
+    }
+    var deal = (e.news && e.news[0] && e.news[0].title) ? clean(e.news[0].title) : "—";
+    var srcs = (e.sources || []).map(srcLabel).join(" · ");
+    overrideI18N("r1k", "Facts", "Fakta");                   overrideI18N("r1v", factsFor("en"), factsFor("ms"));
+    overrideI18N("r2k", "Latest signal", "Isyarat terkini"); overrideI18N("r2v", deal, deal);
+    overrideI18N("r3k", "Sources", "Sumber");                overrideI18N("r3v", srcs, srcs);
+    applyLang();
+  }
+
+  // Search box over the collected entities (any club, not only the featured one).
+  function initSearch(){
+    var input = document.getElementById("entSearch");
+    var results = document.getElementById("entResults");
+    if(!input || !results || !SITE) return;
+    var items = SITE.entities || [];
+    function hide(){ results.hidden = true; results.innerHTML = ""; }
+    function render(q){
+      q = q.trim().toLowerCase();
+      results.innerHTML = "";
+      if(!q){ hide(); return; }
+      var hits = items.filter(function(e){ return String(e.name).toLowerCase().indexOf(q) >= 0; }).slice(0, 8);
+      if(!hits.length){
+        var em = document.createElement("div"); em.className = "empty";
+        em.textContent = (LANG === "ms") ? "Tiada padanan" : "No match";
+        results.appendChild(em); results.hidden = false; return;
+      }
+      hits.forEach(function(e){
+        var b = document.createElement("button"); b.type = "button";
+        var nm = document.createElement("span"); nm.textContent = e.name;
+        var mt = document.createElement("span"); mt.className = "meta";
+        mt.textContent = [e.country, e.founded].filter(Boolean).join(" · ");
+        b.appendChild(nm); b.appendChild(mt);
+        b.addEventListener("click", function(){ showEntity(e); input.value = e.name; hide(); });
+        results.appendChild(b);
+      });
+      results.hidden = false;
+    }
+    input.addEventListener("input", function(){ render(input.value); });
+    input.addEventListener("focus", function(){ if(input.value){ render(input.value); } });
+    document.addEventListener("click", function(ev){
+      if(ev.target !== input && !results.contains(ev.target)){ hide(); }
+    });
+  }
+
   function hydrate(){
     fetch("./data.json?_=" + Date.now(), {cache:"no-store"})
       .then(function(r){ return r.ok ? r.json() : null; })
       .then(function(d){
         if(!d || !d.kpis || !(Number(d.kpis.entities) > 0)) return;  // no live data -> keep sample
+        SITE = d;
         var k = d.kpis;
         setText("kpiEntities", Number(k.entities).toLocaleString());
         setText("kpiDeals", Number(k.deals).toLocaleString());
         setText("kpiSources", String(k.sources));
         setText("kpiTeams", Number(k.teams).toLocaleString());
 
-        var e = (d.entities && d.entities[0]) || null;
-        if(e){
-          setText("entName", clean(e.name));
-          setText("entKind", clean(e.kind));
-          var box = document.getElementById("entSources");
-          if(box){
-            box.innerHTML = "";
-            (e.sources || []).forEach(function(s){
-              var sp = document.createElement("span"); sp.className = "chip"; sp.textContent = srcLabel(s); box.appendChild(sp);
-            });
-          }
-          function factsFor(lang){
-            var bits = [niceKind(e.kind)];
-            if(e.country){ bits.push(clean(e.country)); }
-            if(e.founded){ bits.push((lang === "ms" ? "ditubuh " : "founded ") + clean(e.founded)); }
-            return bits.join(" · ");
-          }
-          var deal = (e.news && e.news[0] && e.news[0].title) ? clean(e.news[0].title) : "—";
-          var srcs = (e.sources || []).map(srcLabel).join(" · ");
-          overrideI18N("r1k", "Facts", "Fakta");            overrideI18N("r1v", factsFor("en"), factsFor("ms"));
-          overrideI18N("r2k", "Latest signal", "Isyarat terkini"); overrideI18N("r2v", deal, deal);
-          overrideI18N("r3k", "Sources", "Sumber");         overrideI18N("r3v", srcs, srcs);
-        }
-
         overrideI18N("k2s", "news & deal signals", "isyarat berita & deal");
+        overrideI18N("ent_eb", "Unified entity profile · LIVE", "Profil entiti bersatu · LANGSUNG");
         var badge = document.getElementById("demobadge");
         if(badge){ badge.classList.add("live"); overrideI18N("demo", "● LIVE", "● LIVE"); }
         var upd = document.getElementById("updated");
         if(upd && d.generated_at){ upd.hidden = false; upd.textContent = "updated " + clean(d.generated_at); }
 
         overrideI18N("warn",
-          '<b>Live public data (Layer A):</b> entities, deal signals &amp; the top profile are real. The audience &amp; media-value cards below are still <b>sample</b>.',
-          '<b>Data awam langsung (Layer A):</b> entiti, isyarat deal &amp; profil teratas adalah betul. Kad audiens &amp; nilai media di bawah masih <b>contoh</b>.');
+          '<b>Live public data (Layer A):</b> entities &amp; club profiles are real and auto-updated. Cards marked <b>sample</b> are illustrative until your data is connected.',
+          '<b>Data awam langsung (Layer A):</b> entiti &amp; profil kelab adalah betul, dikemas kini automatik. Kad bertanda <b>contoh</b> hanya ilustrasi sehingga data anda disambung.');
+        overrideI18N("foot1",
+          'Live Layer-A data · IMPAX by <b>Sportswork</b>',
+          'Data langsung Layer A · IMPAX oleh <b>Sportswork</b>');
+
+        showEntity((d.entities && d.entities[0]) || null);
+        initSearch();
         applyLang();
       })
       .catch(function(){ /* offline / no file -> keep sample */ });

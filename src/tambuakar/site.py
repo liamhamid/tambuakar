@@ -16,7 +16,9 @@ from .identity import ENTITY_KINDS, Entity
 
 # Kind yang dikira sebagai "pasukan" untuk KPI (kelab/liga/pasukan).
 _TEAM_KINDS = frozenset({"football_club", "team", "league"})
-_MAX_ENTITIES = 6
+# Sertakan banyak entiti supaya carian di papan pemuka boleh jumpa mana-mana kelab
+# (bukan hanya profil utama). ~60 memadai untuk set Malaysia; ringan untuk JSON.
+_MAX_ENTITIES = 60
 _MAX_NEWS = 3
 
 
