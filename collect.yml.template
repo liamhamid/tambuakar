@@ -1,0 +1,33 @@
+# Templat GitHub Actions untuk Tambuakar (Layer A).
+#
+# AKTIF bila Tambuakar jadi repo sendiri: salin ke `.github/workflows/collect.yml`.
+# Sengaja TIDAK diletak dalam `.github/workflows/` repo Ajis supaya tak kacau CI
+# imej Ajis. Cron hanya berjalan dari branch lalai repo.
+#
+# Robot ini "pekerja" — dia jalan, kutip, tulis ke storan, balik. Data TIDAK
+# disimpan dalam GitHub (lihat blueprint §6: gudang = Postgres/object storage).
+
+name: Tambuakar collect
+
+on:
+  workflow_dispatch: {}     # manual (butang) — untuk uji
+  schedule:
+    - cron: "0 2 * * *"     # setiap hari 02:00 UTC (~10 pagi Malaysia)
+
+permissions:
+  contents: read
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run collector
+        env:
+          PYTHONPATH: src
+        run: python -m tambuakar
+      # ⏭️ Nanti: langkah hantar Silver/Gold ke Postgres percuma (Supabase/Neon)
+      #    dan/atau object storage — bukan commit balik ke repo.
