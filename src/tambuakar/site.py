@@ -73,6 +73,7 @@ def build_site(
                 "kind": e.kind,
                 "sources": sorted(e.sources),
                 "country": e.attrs.get("country", ""),
+                "founded": e.attrs.get("founded", ""),
                 "news": _news_of(e),
                 "deals": sum(1 for m in e.mentions if m.get("kind") == "news"),
             }

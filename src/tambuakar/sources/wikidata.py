@@ -23,10 +23,10 @@ _ENDPOINT = "https://query.wikidata.org/sparql"
 # pasaran Sportswork, bukan kelab kecil rawak.
 _MALAYSIA = "Q833"
 _QUERY = """
-SELECT ?club ?clubLabel ?countryLabel ?links WHERE {
-  ?club wdt:P31 wd:Q476028 ; wdt:P17 wd:%(country)s .
+SELECT ?club ?clubLabel ?countryLabel ?inception ?links WHERE {
+  ?club wdt:P31 wd:Q476028 ; wdt:P17 wd:%(country)s ; wikibase:sitelinks ?links .
   BIND(wd:%(country)s AS ?country)
-  ?club wikibase:sitelinks ?links .
+  OPTIONAL { ?club wdt:P571 ?inception. }
   SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
 }
 ORDER BY DESC(?links)
@@ -73,6 +73,10 @@ class WikidataSource:
             country = row.get("countryLabel", {}).get("value")
             if country:
                 attrs["country"] = country
+            # Tahun ditubuh (P571) — cap masa ISO "1972-01-01T00:00:00Z" -> "1972".
+            inception = row.get("inception", {}).get("value", "")
+            if len(inception) >= 4 and inception[:4].isdigit():
+                attrs["founded"] = inception[:4]
             out.append(
                 Record(
                     source="wikidata",

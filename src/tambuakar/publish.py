@@ -27,7 +27,11 @@ def _sources() -> list[KnowledgeSource]:
     return [
         WikidataSource(limit=60),
         GdeltSource(
-            query='"Johor Darul Ta\'zim" OR "Selangor FC" OR "Malaysia Super League" sponsor',
+            query=(
+                '("Johor Darul Ta\'zim" OR "Selangor FC" OR "Kedah Darul Aman" OR '
+                '"Terengganu FC" OR "Malaysia Super League") '
+                "(sponsor OR sponsorship OR partnership OR kit OR deal)"
+            ),
             max_records=75,
             retries=4,
             backoff=3.0,

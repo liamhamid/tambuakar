@@ -361,10 +361,15 @@
               var sp = document.createElement("span"); sp.className = "chip"; sp.textContent = srcLabel(s); box.appendChild(sp);
             });
           }
-          var facts = e.country ? (niceKind(e.kind) + " · " + clean(e.country)) : niceKind(e.kind);
+          function factsFor(lang){
+            var bits = [niceKind(e.kind)];
+            if(e.country){ bits.push(clean(e.country)); }
+            if(e.founded){ bits.push((lang === "ms" ? "ditubuh " : "founded ") + clean(e.founded)); }
+            return bits.join(" · ");
+          }
           var deal = (e.news && e.news[0] && e.news[0].title) ? clean(e.news[0].title) : "—";
           var srcs = (e.sources || []).map(srcLabel).join(" · ");
-          overrideI18N("r1k", "Facts", "Fakta");            overrideI18N("r1v", facts, facts);
+          overrideI18N("r1k", "Facts", "Fakta");            overrideI18N("r1v", factsFor("en"), factsFor("ms"));
           overrideI18N("r2k", "Latest signal", "Isyarat terkini"); overrideI18N("r2v", deal, deal);
           overrideI18N("r3k", "Sources", "Sumber");         overrideI18N("r3v", srcs, srcs);
         }
