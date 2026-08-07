@@ -77,6 +77,11 @@ class WikidataSource:
             inception = row.get("inception", {}).get("value", "")
             if len(inception) >= 4 and inception[:4].isdigit():
                 attrs["founded"] = inception[:4]
+            # Keterkenalan (bilangan sitelink Wikidata) — proksi jangkauan/reach,
+            # dipakai analisis Tier 1 sebagai asas skor momentum.
+            links = row.get("links", {}).get("value", "")
+            if links.isdigit():
+                attrs["prominence"] = links
             out.append(
                 Record(
                     source="wikidata",

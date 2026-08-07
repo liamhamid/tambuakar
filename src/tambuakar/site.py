@@ -12,6 +12,7 @@ Future: sertakan siri masa trend bila nilai Google Trends dikekalkan; benchmark
 
 from __future__ import annotations
 
+from .analysis import analyse
 from .identity import ENTITY_KINDS, Entity
 
 # Kind yang dikira sebagai "pasukan" untuk KPI (kelab/liga/pasukan).
@@ -66,6 +67,15 @@ def build_site(
     present_sources = sorted({s for e in entities for s in e.sources})
     active_sources = connectors if connectors else len(present_sources)
 
+    # Keterkenalan tertinggi (untuk penormalan skor momentum Tier 1).
+    def _prominence(e: Entity) -> int:
+        try:
+            return int(e.attrs.get("prominence", "0") or 0)
+        except ValueError:
+            return 0
+
+    max_prom = max((_prominence(e) for e in real_entities), default=0)
+
     ranked = sorted(real_entities, key=_rank, reverse=True)[:_MAX_ENTITIES]
     entity_cards: list[dict[str, object]] = []
     for e in ranked:
@@ -78,6 +88,7 @@ def build_site(
                 "founded": e.attrs.get("founded", ""),
                 "news": _news_of(e),
                 "deals": sum(1 for m in e.mentions if m.get("kind") == "news"),
+                "analysis": analyse(e, max_prominence=max_prom),
             }
         )
 

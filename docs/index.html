@@ -116,6 +116,7 @@
   .row{display:flex;gap:10px;font-size:.9rem;}
   .row .k{color:var(--muted);min-width:104px;flex:none;font-family:var(--mono);font-size:.78rem;padding-top:1px;}
   .row .v{color:var(--ink);}
+  .row .ai-v{color:var(--accent2);font-weight:700;font-family:var(--mono);font-size:.84rem;}
   .spark{margin-top:15px;padding-top:13px;border-top:1px solid var(--line);}
   .spark .h{display:flex;justify-content:space-between;font-size:.76rem;color:var(--muted);margin-bottom:6px;}
   .spark .up{color:var(--good);font-weight:700;font-family:var(--mono);}
@@ -197,6 +198,7 @@
         <div class="row"><span class="k" data-i18n="r1k">Facts</span><span class="v" data-i18n="r1v">Super League · Johor · founded 1972</span></div>
         <div class="row"><span class="k" data-i18n="r2k">Latest deal</span><span class="v" data-i18n="r2v">New sleeve sponsor announced (news, 3 days ago)</span></div>
         <div class="row"><span class="k" data-i18n="r3k">Unique fans</span><span class="v" data-i18n="r3v">~1.9 million across platforms</span></div>
+        <div class="row"><span class="k" data-i18n="r4k">AI signal</span><span class="v ai-v" data-i18n="r4v">Momentum 92 ↑ · Positive</span></div>
       </div>
       <div class="spark">
         <div class="h"><span data-i18n="spark_l">Audience interest · 6 months</span><span class="up">↑ 31%</span></div>
@@ -293,6 +295,7 @@
       r1k:"Facts", r1v:"Super League · Johor · founded 1972",
       r2k:"Latest deal", r2v:"New sleeve sponsor announced (news, 3 days ago)",
       r3k:"Unique fans", r3v:"~1.9 million across platforms",
+      r4k:"AI signal", r4v:"Momentum 92 ↑ · Positive",
       spark_l:"Audience interest · 6 months",
       bench_eb:'Media value benchmark <span style="color:var(--muted);font-weight:600;">(estimated · sample)</span>',
       bench_h:"Media value seen · top clubs",
@@ -319,6 +322,7 @@
       r1k:"Fakta", r1v:"Liga Super · Johor · ditubuh 1972",
       r2k:"Deal terkini", r2v:"Pengumuman penaja lengan baharu (berita, 3 hari lalu)",
       r3k:"Peminat unik", r3v:"~1.9 juta merentas platform",
+      r4k:"Isyarat AI", r4v:"Momentum 92 ↑ · Positif",
       spark_l:"Minat audiens · 6 bulan",
       bench_eb:'Benchmark nilai media <span style="color:var(--muted);font-weight:600;">(anggaran · contoh)</span>',
       bench_h:"Nilai media dilihat · top kelab",
@@ -385,9 +389,18 @@
     }
     var deal = (e.news && e.news[0] && e.news[0].title) ? clean(e.news[0].title) : "—";
     var srcs = (e.sources || []).map(srcLabel).join(" · ");
+    // Tier-1 AI signal: momentum + sentiment (from the analysis module).
+    var an = e.analysis || {}, mom = an.momentum || {}, sen = an.sentiment || {};
+    var sEn = ({positive:"Positive", negative:"Negative", neutral:"Neutral"})[sen.label] || "—";
+    var sMs = ({positive:"Positif", negative:"Negatif", neutral:"Neutral"})[sen.label] || "—";
+    var arrow = (mom.trend === "up") ? " ↑" : "";
+    var momTxt = (mom.score != null) ? ("Momentum " + mom.score + arrow) : "Momentum —";
+    var aiEn = momTxt + " · Sentiment: " + sEn;
+    var aiMs = momTxt + " · Sentimen: " + sMs;
     overrideI18N("r1k", "Facts", "Fakta");                   overrideI18N("r1v", factsFor("en"), factsFor("ms"));
     overrideI18N("r2k", "Latest signal", "Isyarat terkini"); overrideI18N("r2v", deal, deal);
     overrideI18N("r3k", "Sources", "Sumber");                overrideI18N("r3v", srcs, srcs);
+    overrideI18N("r4k", "AI signal", "Isyarat AI");          overrideI18N("r4v", aiEn, aiMs);
     applyLang();
   }
 
