@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-07 14:45 UTC",
+  "generated_at": "2026-08-07 14:59 UTC",
   "kpis": {
     "entities": 59,
     "deals": 0,
@@ -66,6 +66,17 @@
       "deals": 0
     },
     {
+      "name": "Terengganu F.C.",
+      "kind": "football_club",
+      "sources": [
+        "wikidata"
+      ],
+      "country": "Malaysia",
+      "founded": "1972",
+      "news": [],
+      "deals": 0
+    },
+    {
       "name": "Kedah Darul Aman F.C.",
       "kind": "football_club",
       "sources": [
@@ -73,6 +84,578 @@
       ],
       "country": "Malaysia",
       "founded": "1924",
+      "news": [],
+      "deals": 0
+    },
+    {
+      "name": "Perak F.C.",
+      "kind": "football_club",
+      "sources": [
+        "wikidata"
+      ],
+      "country": "Malaysia",
+      "founded": "1951",
+      "news": [],
+      "deals": 0
+    },
+    {
+      "name": "Kuala Lumpur City F.C.",
+      "kind": "football_club",
+      "sources": [
+        "wikidata"
+      ],
+      "country": "Malaysia",
+      "founded": "1974",
+      "news": [],
+      "deals": 0
+    },
+    {
+      "name": "Negeri Sembilan FA",
+      "kind": "football_club",
+      "sources": [
+        "wikidata"
+      ],
+      "country": "Malaysia",
+      "founded": "1923",
+      "news": [],
+      "deals": 0
+    },
+    {
+      "name": "Melaka United",
+      "kind": "football_club",
+      "sources": [
+        "wikidata"
+      ],
+      "country": "Malaysia",
+      "founded": "1924",
+      "news": [],
+      "deals": 0
+    },
+    {
+      "name": "Sri Pahang F.C.",
+      "kind": "football_club",
+      "sources": [
+        "wikidata"
+      ],
+      "country": "Malaysia",
+      "founded": "1958",
+      "news": [],
+      "deals": 0
+    },
+    {
+      "name": "FELDA United F.C.",
+      "kind": "football_club",
+      "sources": [
+        "wikidata"
+      ],
+      "country": "Malaysia",
+      "founded": "2007",
+      "news": [],
+      "deals": 0
+    },
+    {
+      "name": "Sarawak Football Association",
+      "kind": "football_club",
+      "sources": [
+        "wikidata"
+      ],
+      "country": "Malaysia",
+      "founded": "1974",
+      "news": [],
+      "deals": 0
+    },
+    {
+      "name": "Selangor F.C. U-23",
+      "kind": "football_club",
+      "sources": [
+        "wikidata"
+      ],
+      "country": "Malaysia",
+      "founded": "1967",
+      "news": [],
+      "deals": 0
+    },
+    {
+      "name": "Polis Di-Raja Malaysia FA",
+      "kind": "football_club",
+      "sources": [
+        "wikidata"
+      ],
+      "country": "Malaysia",
+      "founded": "",
+      "news": [],
+      "deals": 0
+    },
+    {
+      "name": "Perlis FA",
+      "kind": "football_club",
+      "sources": [
+        "wikidata"
+      ],
+      "country": "Malaysia",
+      "founded": "1963",
+      "news": [],
+      "deals": 0
+    },
+    {
+      "name": "Kuching City F.C.",
+      "kind": "football_club",
+      "sources": [
+        "wikidata"
+      ],
+      "country": "Malaysia",
+      "founded": "2015",
+      "news": [],
+      "deals": 0
+    },
+    {
+      "name": "Johor Darul Takzim II F.C.",
+      "kind": "football_club",
+      "sources": [
+        "wikidata"
+      ],
+      "country": "Malaysia",
+      "founded": "2014",
+      "news": [],
+      "deals": 0
+    },
+    {
+      "name": "Terengganu F.C. II",
+      "kind": "football_club",
+      "sources": [
+        "wikidata"
+      ],
+      "country": "Malaysia",
+      "founded": "2006",
+      "news": [],
+      "deals": 0
+    },
+    {
+      "name": "Petaling Jaya City F.C.",
+      "kind": "football_club",
+      "sources": [
+        "wikidata"
+      ],
+      "country": "Malaysia",
+      "founded": "2014",
+      "news": [],
+      "deals": 0
+    },
+    {
+      "name": "Kelantan United F.C.",
+      "kind": "football_club",
+      "sources": [
+        "wikidata"
+      ],
+      "country": "Malaysia",
+      "founded": "2016",
+      "news": [],
+      "deals": 0
+    },
+    {
+      "name": "Melaka TMFC",
+      "kind": "football_club",
+      "sources": [
+        "wikidata"
+      ],
+      "country": "Malaysia",
+      "founded": "1994",
+      "news": [],
+      "deals": 0
+    },
+    {
+      "name": "Armed Forces FC",
+      "kind": "football_club",
+      "sources": [
+        "wikidata"
+      ],
+      "country": "Malaysia",
+      "founded": "1920",
+      "news": [],
+      "deals": 0
+    },
+    {
+      "name": "UiTM United",
+      "kind": "football_club",
+      "sources": [
+        "wikidata"
+      ],
+      "country": "Malaysia",
+      "founded": "2008",
+      "news": [],
+      "deals": 0
+    },
+    {
+      "name": "Sarawak United F.C.",
+      "kind": "football_club",
+      "sources": [
+        "wikidata"
+      ],
+      "country": "Malaysia",
+      "founded": "",
+      "news": [],
+      "deals": 0
+    },
+    {
+      "name": "Public Bank FC",
+      "kind": "football_club",
+      "sources": [
+        "wikidata"
+      ],
+      "country": "Malaysia",
+      "founded": "2003",
+      "news": [],
+      "deals": 0
+    },
+    {
+      "name": "Harimau Muda A",
+      "kind": "football_club",
+      "sources": [
+        "wikidata"
+      ],
+      "country": "Malaysia",
+      "founded": "2009",
+      "news": [],
+      "deals": 0
+    },
+    {
+      "name": "Sime Darby F.C.",
+      "kind": "football_club",
+      "sources": [
+        "wikidata"
+      ],
+      "country": "Malaysia",
+      "founded": "2010",
+      "news": [],
+      "deals": 0
+    },
+    {
+      "name": "PLUS FC",
+      "kind": "football_club",
+      "sources": [
+        "wikidata"
+      ],
+      "country": "Malaysia",
+      "founded": "2000",
+      "news": [],
+      "deals": 0
+    },
+    {
+      "name": "MPPJ Selangor FC",
+      "kind": "football_club",
+      "sources": [
+        "wikidata"
+      ],
+      "country": "Malaysia",
+      "founded": "1992",
+      "news": [],
+      "deals": 0
+    },
+    {
+      "name": "Kuala Muda Naza FC",
+      "kind": "football_club",
+      "sources": [
+        "wikidata"
+      ],
+      "country": "Malaysia",
+      "founded": "2004",
+      "news": [],
+      "deals": 0
+    },
+    {
+      "name": "UPB-MyTeam FC",
+      "kind": "football_club",
+      "sources": [
+        "wikidata"
+      ],
+      "country": "Malaysia",
+      "founded": "2006",
+      "news": [],
+      "deals": 0
+    },
+    {
+      "name": "Suruhanjaya Perkhidmatan Awam FC",
+      "kind": "football_club",
+      "sources": [
+        "wikidata"
+      ],
+      "country": "Malaysia",
+      "founded": "2005",
+      "news": [],
+      "deals": 0
+    },
+    {
+      "name": "University of Malaya F.C.",
+      "kind": "football_club",
+      "sources": [
+        "wikidata"
+      ],
+      "country": "Malaysia",
+      "founded": "2013",
+      "news": [],
+      "deals": 0
+    },
+    {
+      "name": "PKNP F.C.",
+      "kind": "football_club",
+      "sources": [
+        "wikidata"
+      ],
+      "country": "Malaysia",
+      "founded": "2015",
+      "news": [],
+      "deals": 0
+    },
+    {
+      "name": "Ultimate F.C.",
+      "kind": "football_club",
+      "sources": [
+        "wikidata"
+      ],
+      "country": "Malaysia",
+      "founded": "",
+      "news": [],
+      "deals": 0
+    },
+    {
+      "name": "Harini F.C.",
+      "kind": "football_club",
+      "sources": [
+        "wikidata"
+      ],
+      "country": "Malaysia",
+      "founded": "",
+      "news": [],
+      "deals": 0
+    },
+    {
+      "name": "Perak F.C. II",
+      "kind": "football_club",
+      "sources": [
+        "wikidata"
+      ],
+      "country": "Malaysia",
+      "founded": "",
+      "news": [],
+      "deals": 0
+    },
+    {
+      "name": "Melaka F.C.",
+      "kind": "football_club",
+      "sources": [
+        "wikidata"
+      ],
+      "country": "Malaysia",
+      "founded": "",
+      "news": [],
+      "deals": 0
+    },
+    {
+      "name": "Singapore Lions",
+      "kind": "football_club",
+      "sources": [
+        "wikidata"
+      ],
+      "country": "Malaysia",
+      "founded": "1921",
+      "news": [],
+      "deals": 0
+    },
+    {
+      "name": "Pos Malaysia FC",
+      "kind": "football_club",
+      "sources": [
+        "wikidata"
+      ],
+      "country": "Malaysia",
+      "founded": "2008",
+      "news": [],
+      "deals": 0
+    },
+    {
+      "name": "Shahzan Muda FC",
+      "kind": "football_club",
+      "sources": [
+        "wikidata"
+      ],
+      "country": "Malaysia",
+      "founded": "",
+      "news": [],
+      "deals": 0
+    },
+    {
+      "name": "Universiti Sains Malaysia Staff F.C.",
+      "kind": "football_club",
+      "sources": [
+        "wikidata"
+      ],
+      "country": "Malaysia",
+      "founded": "2008",
+      "news": [],
+      "deals": 0
+    },
+    {
+      "name": "KSK Tambun Tulang FC",
+      "kind": "football_club",
+      "sources": [
+        "wikidata"
+      ],
+      "country": "Malaysia",
+      "founded": "2003",
+      "news": [],
+      "deals": 0
+    },
+    {
+      "name": "Kuantan FA",
+      "kind": "football_club",
+      "sources": [
+        "wikidata"
+      ],
+      "country": "Malaysia",
+      "founded": "",
+      "news": [],
+      "deals": 0
+    },
+    {
+      "name": "Felcra F.C.",
+      "kind": "football_club",
+      "sources": [
+        "wikidata"
+      ],
+      "country": "Malaysia",
+      "founded": "",
+      "news": [],
+      "deals": 0
+    },
+    {
+      "name": "Northern Lions F.C.",
+      "kind": "football_club",
+      "sources": [
+        "wikidata"
+      ],
+      "country": "Malaysia",
+      "founded": "",
+      "news": [],
+      "deals": 0
+    },
+    {
+      "name": "Semarak F.C.",
+      "kind": "football_club",
+      "sources": [
+        "wikidata"
+      ],
+      "country": "Malaysia",
+      "founded": "",
+      "news": [],
+      "deals": 0
+    },
+    {
+      "name": "Kinabalu Jaguar F.C.",
+      "kind": "football_club",
+      "sources": [
+        "wikidata"
+      ],
+      "country": "Malaysia",
+      "founded": "",
+      "news": [],
+      "deals": 0
+    },
+    {
+      "name": "Puchong Fuerza F.C.",
+      "kind": "football_club",
+      "sources": [
+        "wikidata"
+      ],
+      "country": "Malaysia",
+      "founded": "",
+      "news": [],
+      "deals": 0
+    },
+    {
+      "name": "KSR SAINS F.C.",
+      "kind": "football_club",
+      "sources": [
+        "wikidata"
+      ],
+      "country": "Malaysia",
+      "founded": "",
+      "news": [],
+      "deals": 0
+    },
+    {
+      "name": "Kuala Lumpur Rovers F.C.",
+      "kind": "football_club",
+      "sources": [
+        "wikidata"
+      ],
+      "country": "Malaysia",
+      "founded": "",
+      "news": [],
+      "deals": 0
+    },
+    {
+      "name": "Kelantan Red Warrior F.C.",
+      "kind": "football_club",
+      "sources": [
+        "wikidata"
+      ],
+      "country": "Malaysia",
+      "founded": "",
+      "news": [],
+      "deals": 0
+    },
+    {
+      "name": "Perlis FA State Football Team",
+      "kind": "football_club",
+      "sources": [
+        "wikidata"
+      ],
+      "country": "Malaysia",
+      "founded": "",
+      "news": [],
+      "deals": 0
+    },
+    {
+      "name": "Betaria FC",
+      "kind": "football_club",
+      "sources": [
+        "wikidata"
+      ],
+      "country": "Malaysia",
+      "founded": "2003",
+      "news": [],
+      "deals": 0
+    },
+    {
+      "name": "Brunei FA",
+      "kind": "football_club",
+      "sources": [
+        "wikidata"
+      ],
+      "country": "Malaysia",
+      "founded": "1956",
+      "news": [],
+      "deals": 0
+    },
+    {
+      "name": "Proton FC",
+      "kind": "football_club",
+      "sources": [
+        "wikidata"
+      ],
+      "country": "Malaysia",
+      "founded": "1986",
+      "news": [],
+      "deals": 0
+    },
+    {
+      "name": "SDMS Kepala Batas FC",
+      "kind": "football_club",
+      "sources": [
+        "wikidata"
+      ],
+      "country": "Malaysia",
+      "founded": "2007",
       "news": [],
       "deals": 0
     }
