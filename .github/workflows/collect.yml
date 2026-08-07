@@ -1,0 +1,32 @@
+# Tambuakar collect (repo sendiri) — kutip data sukan dunia berjadual.
+# Berjalan atas GitHub runner (internet penuh) ATAU kekal sebagai sandaran; kutipan
+# utama berlaku di server Oracle (cron). Muat naik Gold sebagai artifact.
+
+name: collect
+
+on:
+  workflow_dispatch: {}
+  schedule:
+    - cron: "0 2 * * *"   # ~10 pagi Malaysia
+
+permissions:
+  contents: read
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt
+      - name: Kutip (Wikidata + GDELT + Google Trends -> Gold)
+        env:
+          PYTHONPATH: src
+        run: python -m tambuakar
+      - uses: actions/upload-artifact@v4
+        with:
+          name: tambuakar-data
+          path: data/
+          if-no-files-found: warn

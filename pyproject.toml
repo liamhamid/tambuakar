@@ -1,0 +1,14 @@
+# Tambuakar — enjin kepintaran data sukan dunia (repo sendiri).
+# Kod collector sahaja; tiada rahsia. Data & token duduk di server (Oracle), bukan sini.
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM"]

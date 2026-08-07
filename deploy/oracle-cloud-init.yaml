@@ -1,0 +1,43 @@
+#cloud-config
+# Tambuakar — auto-provision Oracle Always Free VM (Ubuntu). TANPA SSH.
+#
+# Paste keseluruhan fail ini dalam medan "cloud-init script / user data" semasa
+# buat VM di Oracle. GANTI DUA nilai <<...>> dahulu:
+#   <<TAILSCALE_AUTHKEY>>  — jana di login.tailscale.com/admin/settings/keys (Auth keys)
+#   <<API_TOKEN>>          — mana-mana rahsia panjang (Ajis guna untuk baca API dgn selamat)
+#
+# Bila VM hidup, ia akan: pasang Tailscale (masuk rangkaian kau), clone Tambuakar,
+# jalankan API (port 8790, private lewat Tailscale) + cron kutipan harian.
+
+package_update: true
+packages: [python3, python3-venv, python3-pip, git]
+
+runcmd:
+  # 1) Tailscale — masuk rangkaian peribadi kau
+  - curl -fsSL https://tailscale.com/install.sh | sh
+  - tailscale up --authkey=<<TAILSCALE_AUTHKEY>> --hostname=tambuakar --ssh
+  # 2) Kod Tambuakar (repo awam — tiada rahsia)
+  - git clone https://github.com/liamhamid/tambuakar.git /opt/tambuakar
+  - python3 -m venv /opt/tambuakar/.venv
+  - /opt/tambuakar/.venv/bin/pip install -r /opt/tambuakar/requirements.txt
+  # 3) Konfigurasi (token API + laluan Gold)
+  - printf 'TAMBUAKAR_TOKEN=<<API_TOKEN>>\nPYTHONPATH=/opt/tambuakar/src\nTAMBUAKAR_GOLD=/opt/tambuakar/data/gold\n' > /etc/tambuakar.env
+  # 4) API sebagai servis (auto-restart, hidup 24 jam)
+  - |
+    cat >/etc/systemd/system/tambuakar-api.service <<'UNIT'
+    [Unit]
+    Description=Tambuakar Serving API
+    After=network-online.target
+    [Service]
+    EnvironmentFile=/etc/tambuakar.env
+    WorkingDirectory=/opt/tambuakar
+    ExecStart=/opt/tambuakar/.venv/bin/python -m uvicorn tambuakar.api:app --host 0.0.0.0 --port 8790
+    Restart=always
+    [Install]
+    WantedBy=multi-user.target
+    UNIT
+  - systemctl daemon-reload && systemctl enable --now tambuakar-api
+  # 5) Cron — kutip data setiap hari 02:00 UTC (~10 pagi MY)
+  - (crontab -l 2>/dev/null; echo '0 2 * * * cd /opt/tambuakar && PYTHONPATH=src /opt/tambuakar/.venv/bin/python -m tambuakar') | crontab -
+  # 6) Kutipan pertama sekarang
+  - cd /opt/tambuakar && PYTHONPATH=src /opt/tambuakar/.venv/bin/python -m tambuakar
