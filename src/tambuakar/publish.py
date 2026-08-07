@@ -23,10 +23,19 @@ from .sources.wikidata import WikidataSource
 
 
 def _sources() -> list[KnowledgeSource]:
+    # Fokus pasaran Sportswork: kelab Malaysia + minat audiens kelab utama.
     return [
         WikidataSource(limit=60),
-        GdeltSource(query="sports sponsorship", max_records=60),
-        GoogleTrendsSource(terms=["Johor Darul Ta'zim", "Selangor FC"], geo="MY"),
+        GdeltSource(query="football sponsorship", max_records=75, retries=4, backoff=3.0),
+        GoogleTrendsSource(
+            terms=[
+                "Johor Darul Ta'zim",
+                "Selangor FC",
+                "Kedah Darul Aman FC",
+                "Terengganu FC",
+            ],
+            geo="MY",
+        ),
     ]
 
 

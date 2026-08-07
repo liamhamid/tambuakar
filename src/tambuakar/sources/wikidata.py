@@ -17,14 +17,20 @@ from ..ports import Record
 
 _ENDPOINT = "https://query.wikidata.org/sparql"
 
-# Kelab bola sepak (instance-of `association football club`, wd:Q476028) + negara.
+# Malaysia = wd:Q833. Kelab bola sepak (instance-of association football club,
+# wd:Q476028) di negara pilihan, disusun ikut keterkenalan (bilangan sitelink)
+# supaya kelab besar (cth Johor Darul Ta'zim) muncul dahulu — relevan untuk
+# pasaran Sportswork, bukan kelab kecil rawak.
+_MALAYSIA = "Q833"
 _QUERY = """
-SELECT ?club ?clubLabel ?countryLabel WHERE {
-  ?club wdt:P31 wd:Q476028 .
-  OPTIONAL { ?club wdt:P17 ?country . }
+SELECT ?club ?clubLabel ?countryLabel ?links WHERE {
+  ?club wdt:P31 wd:Q476028 ; wdt:P17 wd:%(country)s .
+  BIND(wd:%(country)s AS ?country)
+  ?club wikibase:sitelinks ?links .
   SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
 }
-LIMIT %d
+ORDER BY DESC(?links)
+LIMIT %(limit)d
 """
 
 _HEADERS = {
@@ -38,12 +44,13 @@ class WikidataSource:
 
     name = "wikidata"
 
-    def __init__(self, limit: int = 50, timeout: float = 30.0) -> None:
+    def __init__(self, limit: int = 50, country: str = _MALAYSIA, timeout: float = 30.0) -> None:
         self._limit = limit
+        self._country = country
         self._timeout = timeout
 
     def fetch(self) -> list[Record]:
-        raw = self._query(_QUERY % self._limit)
+        raw = self._query(_QUERY % {"country": self._country, "limit": self._limit})
         return self._to_records(raw)
 
     def _query(self, sparql: str) -> dict:

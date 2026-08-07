@@ -37,10 +37,11 @@ def _news_of(entity: Entity) -> list[dict[str, str]]:
     return out
 
 
-def _rank(entity: Entity) -> tuple[int, int, str]:
+def _rank(entity: Entity) -> tuple[int, int, int, str]:
     news = sum(1 for m in entity.mentions if m.get("kind") == "news")
-    # Utamakan entiti paling aktif: banyak sumber + banyak berita.
-    return (len(entity.sources), news, entity.canonical_name.lower())
+    # Utamakan entiti paling aktif: banyak sumber, banyak mention (minat+berita),
+    # banyak berita. Nama sebagai pemecah seri terakhir (stabil).
+    return (len(entity.sources), len(entity.mentions), news, entity.canonical_name.lower())
 
 
 def build_site(
