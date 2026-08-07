@@ -5,6 +5,7 @@ from __future__ import annotations
 import urllib.error
 
 import pytest
+
 from tambuakar.sources import gdelt
 from tambuakar.sources.gdelt import GdeltSource
 from tambuakar.sources.google_trends import GoogleTrendsSource
