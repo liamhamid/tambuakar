@@ -810,18 +810,52 @@
   // from SITE.entities. A "fit score" ranks clubs for a typed brand/audience.
   // Tier-3 upgrade (later): AI-written reasons via the API (cached), same model.
   var MATCH_PROFILES = [
-    {key:"johordarul", name:"Johor Darul Ta'zim", region:"national", reach:"national", fans:1.9, mo:92,
+    // Football clubs (region from state; blended with live momentum by key match).
+    {key:"johordarul", type:"club", name:"Johor Darul Ta'zim", region:"national", reach:"national", fans:1.9, mo:92,
      aud:["young","mass"], cats:["beverage","energy","telco","tech","lifestyle","premium","fmcg","automotive","finance"]},
-    {key:"selangor", name:"Selangor FC", region:"central", reach:"urban", fans:1.1, mo:80,
+    {key:"selangor", type:"club", name:"Selangor FC", region:"central", reach:"urban", fans:1.1, mo:80,
      aud:["urban","mass"], cats:["fmcg","food","beverage","telco","finance"]},
-    {key:"kualalumpur", name:"Kuala Lumpur City", region:"capital", reach:"capital", fans:0.7, mo:70,
+    {key:"kualalumpur", type:"club", name:"Kuala Lumpur City", region:"capital", reach:"capital", fans:0.7, mo:70,
      aud:["urban","premium"], cats:["lifestyle","tech","finance","automotive","premium","beverage"]},
-    {key:"terengganu", name:"Terengganu FC", region:"eastcoast", reach:"regional", fans:0.6, mo:72,
+    {key:"terengganu", type:"club", name:"Terengganu FC", region:"eastcoast", reach:"regional", fans:0.6, mo:72,
      aud:["family","mass"], cats:["fmcg","food","beverage","telco"]},
-    {key:"kedah", name:"Kedah Darul Aman", region:"north", reach:"regional", fans:0.5, mo:66,
+    {key:"kedah", type:"club", name:"Kedah Darul Aman", region:"north", reach:"regional", fans:0.5, mo:66,
      aud:["family","mass"], cats:["fmcg","food","telco"]},
-    {key:"sabah", name:"Sabah FC", region:"eastmy", reach:"regional", fans:0.5, mo:64,
-     aud:["family","mass"], cats:["fmcg","telco","food","beverage"]}
+    {key:"sabah", type:"club", name:"Sabah FC", region:"eastmy", reach:"regional", fans:0.5, mo:64,
+     aud:["family","mass"], cats:["fmcg","telco","food","beverage"]},
+    {key:"kelantan", type:"club", name:"Kelantan FC", region:"eastcoast", reach:"regional", fans:0.7, mo:60,
+     aud:["family","mass"], cats:["fmcg","food","telco"]},
+    {key:"penang", type:"club", name:"Penang FC", region:"north", reach:"urban", fans:0.4, mo:56,
+     aud:["urban","mass"], cats:["fmcg","food","beverage","telco","lifestyle"]},
+    {key:"perak", type:"club", name:"Perak FC", region:"north", reach:"regional", fans:0.4, mo:54,
+     aud:["family","mass"], cats:["fmcg","food","telco"]},
+    {key:"negerisembilan", type:"club", name:"Negeri Sembilan FC", region:"central", reach:"regional", fans:0.3, mo:50,
+     aud:["family","mass"], cats:["fmcg","food","telco"]},
+    {key:"sarawak", type:"club", name:"Sarawak United", region:"eastmy", reach:"regional", fans:0.4, mo:52,
+     aud:["family","mass"], cats:["fmcg","telco","food"]},
+    {key:"pahang", type:"club", name:"Sri Pahang FC", region:"eastcoast", reach:"regional", fans:0.4, mo:50,
+     aud:["family","mass"], cats:["fmcg","food","telco"]},
+    {key:"melaka", type:"club", name:"Melaka FC", region:"south", reach:"regional", fans:0.2, mo:45,
+     aud:["family","mass"], cats:["fmcg","food","telco"]},
+    // Sport properties (whole-sport audiences — beyond football).
+    {key:"badminton", type:"sport", name:"Badminton", name_ms:"Badminton", region:"national", reach:"national", fans:3.0, mo:85,
+     aud:["mass","family","female"], cats:["fmcg","telco","finance","food","lifestyle","beverage"]},
+    {key:"esports", type:"sport", name:"E-sports", name_ms:"E-sukan", region:"national", reach:"national", fans:1.5, mo:82,
+     aud:["young"], cats:["tech","telco","energy","beverage","lifestyle"]},
+    {key:"motorsport", type:"sport", name:"Motorsport (MotoGP)", name_ms:"Motorsport (MotoGP)", region:"national", reach:"national", fans:1.0, mo:72,
+     aud:["young","mass"], cats:["automotive","energy","tech","telco","beverage"]},
+    {key:"running", type:"sport", name:"Running / marathon", name_ms:"Larian / maraton", region:"central", reach:"urban", fans:1.2, mo:75,
+     aud:["urban","female","premium"], cats:["lifestyle","tech","finance","beverage","automotive","fmcg"]},
+    {key:"cycling", type:"sport", name:"Cycling", name_ms:"Berbasikal", region:"central", reach:"urban", fans:0.6, mo:68,
+     aud:["premium","urban"], cats:["premium","automotive","finance","lifestyle","tech"]},
+    {key:"futsal", type:"sport", name:"Futsal", name_ms:"Futsal", region:"central", reach:"urban", fans:1.0, mo:70,
+     aud:["young","mass"], cats:["beverage","energy","fmcg","telco"]},
+    {key:"takraw", type:"sport", name:"Sepak takraw", name_ms:"Sepak takraw", region:"eastcoast", reach:"regional", fans:0.8, mo:55,
+     aud:["family","mass"], cats:["fmcg","food","telco"]},
+    {key:"basketball", type:"sport", name:"Basketball", name_ms:"Bola keranjang", region:"capital", reach:"urban", fans:0.4, mo:55,
+     aud:["young","urban","female"], cats:["lifestyle","tech","beverage"]},
+    {key:"hockey", type:"sport", name:"Hockey", name_ms:"Hoki", region:"north", reach:"regional", fans:0.3, mo:48,
+     aud:["family","mass"], cats:["fmcg","finance","telco"]}
   ];
   var SM_LEX = {
     cats:{
@@ -841,7 +875,8 @@
       family:["family","keluarga","parent","ibu bapa","kids","anak"],
       urban:["urban","bandar","city","kota"],
       mass:["mass","massa","umum","general","majoriti","ramai"],
-      premium:["high income","berpendapatan tinggi","affluent","kaya","elite","premium"]
+      premium:["high income","berpendapatan tinggi","affluent","kaya","elite","premium"],
+      female:["women","woman","female","wanita","perempuan","muslimah","ladies","ibu"]
     },
     reg:{
       national:["national","nasional","seluruh malaysia","seluruh negara","whole country"],
@@ -849,17 +884,20 @@
       capital:["capital","ibu negara","kuala lumpur","kl","putrajaya"],
       north:["north","utara","kedah","perlis","penang","pulau pinang","perak"],
       eastcoast:["east coast","pantai timur","terengganu","kelantan","pahang"],
-      eastmy:["east malaysia","malaysia timur","sabah","sarawak","borneo","labuan"]
+      eastmy:["east malaysia","malaysia timur","sabah","sarawak","borneo","labuan"],
+      south:["south","selatan","johor","melaka","muar"]
     }
   };
   var SM_CATN={beverage:{en:"beverages",ms:"minuman"},energy:{en:"energy drinks",ms:"minuman tenaga"},food:{en:"food",ms:"makanan"},telco:{en:"telco",ms:"telco"},finance:{en:"finance",ms:"kewangan"},lifestyle:{en:"lifestyle",ms:"gaya hidup"},tech:{en:"tech",ms:"teknologi"},automotive:{en:"automotive",ms:"automotif"},fmcg:{en:"FMCG/retail",ms:"FMCG/runcit"},premium:{en:"premium",ms:"premium"}};
-  var SM_AUDN={young:{en:"young fans",ms:"peminat muda"},family:{en:"families",ms:"keluarga"},urban:{en:"urban",ms:"bandar"},mass:{en:"mass market",ms:"pasaran massa"},premium:{en:"high-income",ms:"berpendapatan tinggi"}};
-  var SM_REGN={national:{en:"national",ms:"nasional"},central:{en:"Klang Valley",ms:"Lembah Klang"},capital:{en:"KL / capital",ms:"KL / ibu negara"},north:{en:"northern",ms:"utara"},eastcoast:{en:"east-coast",ms:"pantai timur"},eastmy:{en:"East Malaysia",ms:"Malaysia Timur"}};
+  var SM_AUDN={young:{en:"young fans",ms:"peminat muda"},family:{en:"families",ms:"keluarga"},urban:{en:"urban",ms:"bandar"},mass:{en:"mass market",ms:"pasaran massa"},premium:{en:"high-income",ms:"berpendapatan tinggi"},female:{en:"women",ms:"wanita"}};
+  var SM_REGN={national:{en:"national",ms:"nasional"},central:{en:"Klang Valley",ms:"Lembah Klang"},capital:{en:"KL / capital",ms:"KL / ibu negara"},north:{en:"northern",ms:"utara"},eastcoast:{en:"east-coast",ms:"pantai timur"},eastmy:{en:"East Malaysia",ms:"Malaysia Timur"},south:{en:"southern",ms:"selatan"}};
+  var SM_TYPE={club:{en:"Club",ms:"Kelab"},sport:{en:"Sport",ms:"Sukan"}};
   var SM_REACHN={national:{en:"National",ms:"Nasional"},urban:{en:"Urban (Central)",ms:"Bandar (Tengah)"},capital:{en:"Capital",ms:"Ibu negara"},regional:{en:"Regional",ms:"Serantau"}};
   var SM_EX=[
     {en:"Energy drink · young fans", ms:"Minuman tenaga · anak muda"},
     {en:"Bank · families", ms:"Bank · keluarga"},
     {en:"Telco · nationwide", ms:"Telco · seluruh negara"},
+    {en:"Cosmetics · young women", ms:"Kosmetik · wanita muda"},
     {en:"Lifestyle brand · urban KL", ms:"Jenama gaya hidup · bandar KL"},
     {en:"Automotive · east coast", ms:"Automotif · pantai timur"}
   ];
@@ -891,8 +929,8 @@
     var cm = q.cats.filter(function(c){ return p.cats.indexOf(c) >= 0; });
     if(cm.length){ s += Math.min(cm.length,3)*14; reasons.push(["cat", cm]); }
     var am = q.aud.filter(function(a){ return p.aud.indexOf(a) >= 0; });
-    if(am.length){ s += 26; reasons.push(["aud", am]); }
-    else if(q.aud.indexOf("premium") >= 0 && p.cats.indexOf("premium") >= 0){ s += 16; reasons.push(["aud", ["premium"]]); }
+    if(am.length){ s += Math.min(am.length,2)*16; reasons.push(["aud", am]); }
+    else if(q.aud.indexOf("premium") >= 0 && p.cats.indexOf("premium") >= 0){ s += 14; reasons.push(["aud", ["premium"]]); }
     if(q.reg.length){
       if(q.reg.indexOf(p.region) >= 0){ s += 22; reasons.push(["reg", [p.region]]); }
       else if(p.region === "national"){ s += 12; reasons.push(["reg", ["national"]]); }
@@ -938,18 +976,22 @@
     var q = smParse(SM_LAST), hasQ = !!(SM_LAST && (q.cats.length || q.aud.length || q.reg.length));
     var scored = MATCH_PROFILES.map(function(p){ var mo = smMomentum(p); var r = smScore(p,q,mo); return {p:p, mo:mo, fit:r.fit, reasons:r.reasons}; });
     scored.sort(hasQ ? function(a,b){ return b.fit-a.fit || b.mo-a.mo; } : function(a,b){ return b.mo-a.mo; });
-    var top = scored.slice(0,3);
+    var top = scored.slice(0,4);
     listEl.innerHTML = "";
     top.forEach(function(x, idx){
       var card = document.createElement("div"); card.className = "smCard" + (idx===0 ? " top" : "");
       var rk = document.createElement("div"); rk.className = "rank"; rk.textContent = "#" + (idx+1);
       var mid = document.createElement("div"); mid.className = "mid";
-      var nm = document.createElement("div"); nm.className = "nm"; nm.textContent = x.p.name;
+      var nm = document.createElement("div"); nm.className = "nm";
+      nm.textContent = (LANG==="ms" && x.p.name_ms) ? x.p.name_ms : x.p.name;
       var why = document.createElement("div"); why.className = "why";
       why.textContent = hasQ
         ? x.reasons.slice(0,3).map(smReasonText).filter(Boolean).join(" · ")
         : (LANG==="ms" ? "Peneraju momentum langsung · " : "Live momentum leader · ") + smReasonText(["reg", [x.p.region]]);
       var meta = document.createElement("div"); meta.className = "meta";
+      var m0 = document.createElement("span"); m0.className = "mtag";
+      m0.textContent = (SM_TYPE[x.p.type]||{})[LANG] || x.p.type;
+      meta.appendChild(m0);
       var m1 = document.createElement("span"); m1.className = "mtag";
       m1.innerHTML = (I18N[LANG].sm_reach||"Reach") + ": <b>" + smReach(x.p, x.mo) + "</b>";
       var m2 = document.createElement("span"); m2.className = "mtag";
