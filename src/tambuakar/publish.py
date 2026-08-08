@@ -14,6 +14,7 @@ import json
 from datetime import UTC, datetime
 from pathlib import Path
 
+from .events import upcoming
 from .pipeline import collect
 from .ports import KnowledgeSource
 from .site import build_site
@@ -56,6 +57,7 @@ def main(out: Path | None = None, data_dir: Path | None = None) -> dict[str, obj
     entities, results = collect(sources, data_dir)
     generated = datetime.now(UTC).strftime("%Y-%m-%d %H:%M UTC")
     payload = build_site(entities, generated_at=generated, connectors=len(sources))
+    payload["events"] = upcoming(datetime.now(UTC).date(), horizon_months=24)
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
     for name, stats in results.items():

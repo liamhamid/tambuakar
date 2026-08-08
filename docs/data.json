@@ -1460,5 +1460,217 @@
         }
       }
     }
+  ],
+  "events": [
+    {
+      "name": "SUKMA",
+      "sport": "multi-sukan",
+      "category": "games",
+      "level": "national",
+      "scope": "Kebangsaan (negeri lawan negeri)",
+      "year": 2026,
+      "month": 8,
+      "when": "Ogos 2026"
+    },
+    {
+      "name": "Para SUKMA",
+      "sport": "multi-sukan (para)",
+      "category": "games",
+      "level": "national",
+      "scope": "Kebangsaan",
+      "year": 2026,
+      "month": 9,
+      "when": "Sep 2026"
+    },
+    {
+      "name": "Standard Chartered KL Marathon",
+      "sport": "larian",
+      "category": "running",
+      "level": "international",
+      "scope": "Kuala Lumpur",
+      "year": 2026,
+      "month": 10,
+      "when": "Okt 2026"
+    },
+    {
+      "name": "Ironman Malaysia (Triatlon)",
+      "sport": "triatlon",
+      "category": "running",
+      "level": "international",
+      "scope": "Langkawi",
+      "year": 2026,
+      "month": 11,
+      "when": "Nov 2026"
+    },
+    {
+      "name": "Malaysian Grand Prix (MotoGP, Sepang)",
+      "sport": "motosikal",
+      "category": "motorsport",
+      "level": "international",
+      "scope": "Sepang",
+      "year": 2026,
+      "month": 11,
+      "when": "Nov 2026"
+    },
+    {
+      "name": "Monsoon Cup (Pelayaran)",
+      "sport": "pelayaran",
+      "category": "other",
+      "level": "international",
+      "scope": "Terengganu",
+      "year": 2026,
+      "month": 11,
+      "when": "Nov 2026"
+    },
+    {
+      "name": "Penang Bridge International Marathon",
+      "sport": "larian",
+      "category": "running",
+      "level": "international",
+      "scope": "Pulau Pinang",
+      "year": 2026,
+      "month": 11,
+      "when": "Nov 2026"
+    },
+    {
+      "name": "Putrajaya Night Marathon",
+      "sport": "larian",
+      "category": "running",
+      "level": "national",
+      "scope": "Putrajaya",
+      "year": 2026,
+      "month": 11,
+      "when": "Nov 2026"
+    },
+    {
+      "name": "Piala Malaysia (Final)",
+      "sport": "bola sepak",
+      "category": "football",
+      "level": "national",
+      "scope": "Kebangsaan",
+      "year": 2026,
+      "month": 12,
+      "when": "Dis 2026"
+    },
+    {
+      "name": "Malaysia Open (Badminton, BWF S1000)",
+      "sport": "badminton",
+      "category": "racket",
+      "level": "international",
+      "scope": "Axiata Arena, KL",
+      "year": 2027,
+      "month": 1,
+      "when": "Jan 2027"
+    },
+    {
+      "name": "Le Tour de Langkawi",
+      "sport": "berbasikal",
+      "category": "cycling",
+      "level": "international",
+      "scope": "Jelajah kebangsaan",
+      "year": 2027,
+      "month": 3,
+      "when": "Mac 2027"
+    },
+    {
+      "name": "Powerman Malaysia (Duatlon)",
+      "sport": "duatlon",
+      "category": "running",
+      "level": "international",
+      "scope": "Malaysia",
+      "year": 2027,
+      "month": 3,
+      "when": "Mac 2027"
+    },
+    {
+      "name": "Sepak Takraw League (STL)",
+      "sport": "sepak takraw",
+      "category": "takraw",
+      "level": "national",
+      "scope": "Kebangsaan",
+      "year": 2027,
+      "month": 3,
+      "when": "Mac 2027"
+    },
+    {
+      "name": "Sukan Universiti (MASUM)",
+      "sport": "multi-sukan",
+      "category": "multisport",
+      "level": "national",
+      "scope": "Universiti awam",
+      "year": 2027,
+      "month": 4,
+      "when": "Apr 2027"
+    },
+    {
+      "name": "Borneo International Marathon",
+      "sport": "larian",
+      "category": "running",
+      "level": "national",
+      "scope": "Kota Kinabalu, Sabah",
+      "year": 2027,
+      "month": 5,
+      "when": "Mei 2027"
+    },
+    {
+      "name": "Liga Super Malaysia (mula musim)",
+      "sport": "bola sepak",
+      "category": "football",
+      "level": "national",
+      "scope": "Kebangsaan",
+      "year": 2027,
+      "month": 5,
+      "when": "Mei 2027"
+    },
+    {
+      "name": "Malaysia Masters (Badminton, BWF S500)",
+      "sport": "badminton",
+      "category": "racket",
+      "level": "international",
+      "scope": "Malaysia",
+      "year": 2027,
+      "month": 5,
+      "when": "Mei 2027"
+    },
+    {
+      "name": "MSSM (Sukan Sekolah)",
+      "sport": "multi-sukan",
+      "category": "multisport",
+      "level": "national",
+      "scope": "Sekolah kebangsaan",
+      "year": 2027,
+      "month": 6,
+      "when": "Jun 2027"
+    },
+    {
+      "name": "ISTAF SuperSeries (Takraw)",
+      "sport": "sepak takraw",
+      "category": "takraw",
+      "level": "international",
+      "scope": "Malaysia",
+      "year": 2027,
+      "month": 7,
+      "when": "Jul 2027"
+    },
+    {
+      "name": "KL Century Ride (Basikal)",
+      "sport": "berbasikal",
+      "category": "cycling",
+      "level": "national",
+      "scope": "Kuala Lumpur",
+      "year": 2027,
+      "month": 7,
+      "when": "Jul 2027"
+    },
+    {
+      "name": "Sukan SEA (SEA Games)",
+      "sport": "multi-sukan",
+      "category": "games",
+      "level": "international",
+      "scope": "Kuala Lumpur (tuan rumah)",
+      "year": 2027,
+      "month": 8,
+      "when": "Ogos 2027"
+    }
   ]
 }
