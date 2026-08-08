@@ -69,6 +69,10 @@ def test_games_maps_editions_and_skips_incomplete() -> None:
                     "date": {"value": "2017-08-19T00:00:00Z"},
                     "hostLabel": {"value": "Malaysia"},
                 },
+                {  # acara sub-sukan -> dilangkau
+                    "ed": {"value": "http://www.wikidata.org/entity/Q555"},
+                    "edLabel": {"value": "Badminton at the Southeast Asian Games"},
+                },
                 {"ed": {"value": "http://www.wikidata.org/entity/Q999"}},  # tiada label -> skip
             ]
         }

@@ -26,12 +26,12 @@ _SEA_GAMES = "Q877484"  # SEA Games
 _SEA_GAMES_ALT = "Q170385"  # varian "Southeast Asian Games"
 _SUKMA = "Q137161"  # Sukma Games (Sukan Malaysia)
 
-# Edisi = item yang tergolong dalam siri (P179), sebahagian daripadanya (P361),
-# atau instance-of siri (P31). UNION supaya edisi tertangkap walau model berbeza.
+# Edisi = item yang tergolong dalam siri (P179) atau instance-of siri (P31).
+# (Elak P361: ia tarik acara sub-sukan "Badminton at the SEA Games", bukan edisi.)
 _QUERY = """
 SELECT DISTINCT ?ed ?edLabel ?date ?hostLabel WHERE {
   VALUES ?series { %(series)s }
-  { ?ed wdt:P179 ?series } UNION { ?ed wdt:P361 ?series } UNION { ?ed wdt:P31 ?series }
+  { ?ed wdt:P179 ?series } UNION { ?ed wdt:P31 ?series }
   OPTIONAL { ?ed wdt:P585 ?date. }
   OPTIONAL { ?ed wdt:P17 ?host. }
   SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
@@ -39,6 +39,9 @@ SELECT DISTINCT ?ed ?edLabel ?date ?hostLabel WHERE {
 ORDER BY DESC(?date)
 LIMIT %(limit)d
 """
+
+# Frasa yang menandakan acara SUB-SUKAN (bukan edisi penuh) — dibuang.
+_SUBEVENT_HINTS = (" at the ", " at sukan", " at sea games")
 
 _HEADERS = {
     "User-Agent": "Tambuakar/0.1 (sports-marketing data; +https://tambuakar.com)",
@@ -79,6 +82,9 @@ class WikidataGamesSource:
             name = row.get("edLabel", {}).get("value", "")
             if not source_id or not name or source_id == name:
                 continue
+            low = name.lower()
+            if any(hint in low for hint in _SUBEVENT_HINTS):
+                continue  # langkau acara sub-sukan, simpan edisi penuh sahaja
             attrs: dict[str, str] = {}
             date = row.get("date", {}).get("value", "")
             if len(date) >= 4 and date[:4].isdigit():
