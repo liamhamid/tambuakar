@@ -401,7 +401,7 @@
     for(var i=0;i<INSIGHTS_DEMO.length;i++){ if(n.indexOf(INSIGHTS_DEMO[i].match) >= 0) return INSIGHTS_DEMO[i]; }
     return null;
   }
-  var CURRENT_INSIGHT = null;
+  var CURRENT_INSIGHT = INSIGHTS_DEMO[0];  // default = featured club (JDT) so it shows on first paint
   function renderInsight(){
     var box = document.getElementById("aiInsight"), txt = document.getElementById("aiInsightText");
     if(!box || !txt) return;
