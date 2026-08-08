@@ -20,10 +20,9 @@ from ..ports import Record
 
 _ENDPOINT = "https://query.wikidata.org/sparql"
 
-# Siri Games (QID Wikidata). SEA Games = Q170385 (stabil). SUKMA = Q2588287
-# (best-effort; jika tersilap, pulang kosong — pipeline tetap teruskan).
-_SEA_GAMES = "Q170385"
-_SUKMA = "Q2588287"
+# Siri Games (QID Wikidata, disahkan). Edisi berkait via P179 (part of the series).
+_SEA_GAMES = "Q877484"  # SEA Games
+_SUKMA = "Q137161"  # Sukma Games (Sukan Malaysia)
 
 # Edisi = item yang tergolong dalam siri (P179) ATAU instance-of siri (P31).
 _QUERY = """

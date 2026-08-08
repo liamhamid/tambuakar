@@ -34,7 +34,7 @@ class Event:
 
 # Daftar acara — kecil hingga besar, merentas sukan. Bulan = anggaran lazim.
 EVENTS: list[Event] = [
-    Event("Sukan SEA (SEA Games)", "multi-sukan", "games", "international", "Kuala Lumpur (tuan rumah)", 8, "oneoff", 2027),
+    Event("Sukan SEA (SEA Games)", "multi-sukan", "games", "international", "Kuala Lumpur (tuan rumah)", 9, "oneoff", 2027),
     Event("SUKMA", "multi-sukan", "games", "national", "Kebangsaan (negeri lawan negeri)", 8, "biennial", 2024),
     Event("Para SUKMA", "multi-sukan (para)", "games", "national", "Kebangsaan", 9, "biennial", 2024),
     Event("Sukan Universiti (MASUM)", "multi-sukan", "multisport", "national", "Universiti awam", 4, "annual", 0),
