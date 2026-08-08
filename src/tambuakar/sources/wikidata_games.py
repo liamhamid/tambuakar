@@ -21,14 +21,17 @@ from ..ports import Record
 _ENDPOINT = "https://query.wikidata.org/sparql"
 
 # Siri Games (QID Wikidata, disahkan). Edisi berkait via P179 (part of the series).
+# Tambah QID calon supaya edisi lama (dimodel tak konsisten) turut tertangkap.
 _SEA_GAMES = "Q877484"  # SEA Games
+_SEA_GAMES_ALT = "Q170385"  # varian "Southeast Asian Games"
 _SUKMA = "Q137161"  # Sukma Games (Sukan Malaysia)
 
-# Edisi = item yang tergolong dalam siri (P179) ATAU instance-of siri (P31).
+# Edisi = item yang tergolong dalam siri (P179), sebahagian daripadanya (P361),
+# atau instance-of siri (P31). UNION supaya edisi tertangkap walau model berbeza.
 _QUERY = """
 SELECT DISTINCT ?ed ?edLabel ?date ?hostLabel WHERE {
   VALUES ?series { %(series)s }
-  { ?ed wdt:P179 ?series } UNION { ?ed wdt:P31 ?series }
+  { ?ed wdt:P179 ?series } UNION { ?ed wdt:P361 ?series } UNION { ?ed wdt:P31 ?series }
   OPTIONAL { ?ed wdt:P585 ?date. }
   OPTIONAL { ?ed wdt:P17 ?host. }
   SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
@@ -51,7 +54,7 @@ class WikidataGamesSource:
     def __init__(
         self, series: list[str] | None = None, limit: int = 80, timeout: float = 30.0
     ) -> None:
-        self._series = series if series is not None else [_SEA_GAMES, _SUKMA]
+        self._series = series if series is not None else [_SEA_GAMES, _SEA_GAMES_ALT, _SUKMA]
         self._limit = limit
         self._timeout = timeout
 

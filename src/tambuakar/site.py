@@ -59,10 +59,13 @@ def build_site(
     Susunan `entities` dianggap mengikut keterkenalan (sumber utama tertibkan).
     """
     real_entities = [e for e in entities if e.kind in ENTITY_KINDS]
+    # Edisi temasya (sejarah) — senarai tersendiri, tidak bersaing dgn kad kelab.
+    games = [e for e in real_entities if e.kind == "games_edition"]
+    club_entities = [e for e in real_entities if e.kind != "games_edition"]
     deals = sum(
         1 for e in entities for m in e.mentions if m.get("kind") == "news"
     )
-    teams = sum(1 for e in real_entities if e.kind in _TEAM_KINDS)
+    teams = sum(1 for e in club_entities if e.kind in _TEAM_KINDS)
     # Sumber yang benar-benar menyumbang data kitaran ini (untuk rujukan).
     present_sources = sorted({s for e in entities for s in e.sources})
     active_sources = connectors if connectors else len(present_sources)
@@ -74,9 +77,20 @@ def build_site(
         except ValueError:
             return 0
 
-    max_prom = max((_prominence(e) for e in real_entities), default=0)
+    max_prom = max((_prominence(e) for e in club_entities), default=0)
 
-    ranked = sorted(real_entities, key=_rank, reverse=True)[:_MAX_ENTITIES]
+    def _year(e: Entity) -> int:
+        try:
+            return int(e.attrs.get("year", "0") or 0)
+        except ValueError:
+            return 0
+
+    games_list = [
+        {"name": e.canonical_name, "year": e.attrs.get("year", ""), "host": e.attrs.get("host", "")}
+        for e in sorted(games, key=_year, reverse=True)
+    ]
+
+    ranked = sorted(club_entities, key=_rank, reverse=True)[:_MAX_ENTITIES]
     entity_cards: list[dict[str, object]] = []
     for e in ranked:
         entity_cards.append(
@@ -102,4 +116,5 @@ def build_site(
         },
         "sources": present_sources,
         "entities": entity_cards,
+        "games": games_list,
     }
