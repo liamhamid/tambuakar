@@ -508,7 +508,9 @@
     if(typeof renderMedals === 'function'){ renderMedals(); }
   }
   function toggleLang(){ LANG = (LANG === 'en') ? 'ms' : 'en'; localStorage.setItem('impax_lang', LANG); applyLang(); }
-  applyLang();
+  // NOTE: initial applyLang() is called at the very end of this script (after all
+  // render-data like ACTIVATIONS/INSIGHTS_DEMO is initialized) — calling it here
+  // would run render fns before their `var` data exists and abort the script.
 
   // ---- Live data (Layer A) hydration ----------------------------------------
   // Reads ./data.json (produced by the collector). If real entities are present,
@@ -898,7 +900,8 @@
       })
       .catch(function(){ /* offline / no file -> keep sample */ });
   }
-  hydrate();
+  applyLang();  // first paint (demo) — safe here: all render-data is now initialized
+  hydrate();    // then fetch live Layer-A data and re-render
 </script>
 </body>
 </html>
