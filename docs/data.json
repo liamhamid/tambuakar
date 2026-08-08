@@ -1,15 +1,17 @@
 {
-  "generated_at": "2026-08-08 06:55 UTC",
+  "generated_at": "2026-08-08 07:13 UTC",
   "kpis": {
-    "entities": 61,
+    "entities": 124,
     "deals": 0,
-    "sources": 4,
+    "sources": 6,
     "teams": 59
   },
   "sources": [
+    "curated_games",
     "google_trends",
     "wikidata",
-    "wikidata_games"
+    "wikidata_games",
+    "wikipedia_games"
   ],
   "entities": [
     {
@@ -65,14 +67,14 @@
       }
     },
     {
-      "name": "Terengganu F.C.",
+      "name": "Kedah Darul Aman F.C.",
       "kind": "football_club",
       "sources": [
         "google_trends",
         "wikidata"
       ],
       "country": "Malaysia",
-      "founded": "1972",
+      "founded": "1924",
       "news": [],
       "deals": 0,
       "analysis": {
@@ -91,14 +93,14 @@
       }
     },
     {
-      "name": "Kedah Darul Aman F.C.",
+      "name": "Terengganu F.C.",
       "kind": "football_club",
       "sources": [
         "google_trends",
         "wikidata"
       ],
       "country": "Malaysia",
-      "founded": "1924",
+      "founded": "1972",
       "news": [],
       "deals": 0,
       "analysis": {
@@ -567,13 +569,13 @@
       }
     },
     {
-      "name": "Melaka TMFC",
+      "name": "Armed Forces FC",
       "kind": "football_club",
       "sources": [
         "wikidata"
       ],
       "country": "Malaysia",
-      "founded": "1994",
+      "founded": "1920",
       "news": [],
       "deals": 0,
       "analysis": {
@@ -592,13 +594,13 @@
       }
     },
     {
-      "name": "Armed Forces FC",
+      "name": "Melaka TMFC",
       "kind": "football_club",
       "sources": [
         "wikidata"
       ],
       "country": "Malaysia",
-      "founded": "1920",
+      "founded": "1994",
       "news": [],
       "deals": 0,
       "analysis": {
@@ -767,13 +769,13 @@
       }
     },
     {
-      "name": "MPPJ Selangor FC",
+      "name": "Kuala Muda Naza FC",
       "kind": "football_club",
       "sources": [
         "wikidata"
       ],
       "country": "Malaysia",
-      "founded": "1992",
+      "founded": "2004",
       "news": [],
       "deals": 0,
       "analysis": {
@@ -792,13 +794,13 @@
       }
     },
     {
-      "name": "Kuala Muda Naza FC",
+      "name": "MPPJ Selangor FC",
       "kind": "football_club",
       "sources": [
         "wikidata"
       ],
       "country": "Malaysia",
-      "founded": "2004",
+      "founded": "1992",
       "news": [],
       "deals": 0,
       "analysis": {
@@ -917,31 +919,6 @@
       }
     },
     {
-      "name": "Perak F.C. II",
-      "kind": "football_club",
-      "sources": [
-        "wikidata"
-      ],
-      "country": "Malaysia",
-      "founded": "",
-      "news": [],
-      "deals": 0,
-      "analysis": {
-        "sentiment": {
-          "label": "none",
-          "score": 0.0,
-          "pos": 0,
-          "neg": 0
-        },
-        "momentum": {
-          "score": 27,
-          "trend": "flat",
-          "buzz": 0,
-          "news": 0
-        }
-      }
-    },
-    {
       "name": "Ultimate F.C.",
       "kind": "football_club",
       "sources": [
@@ -968,6 +945,31 @@
     },
     {
       "name": "Harini F.C.",
+      "kind": "football_club",
+      "sources": [
+        "wikidata"
+      ],
+      "country": "Malaysia",
+      "founded": "",
+      "news": [],
+      "deals": 0,
+      "analysis": {
+        "sentiment": {
+          "label": "none",
+          "score": 0.0,
+          "pos": 0,
+          "neg": 0
+        },
+        "momentum": {
+          "score": 27,
+          "trend": "flat",
+          "buzz": 0,
+          "news": 0
+        }
+      }
+    },
+    {
+      "name": "Perak F.C. II",
       "kind": "football_club",
       "sources": [
         "wikidata"
@@ -1117,13 +1119,13 @@
       }
     },
     {
-      "name": "Universiti Sains Malaysia Staff F.C.",
+      "name": "Shahzan Muda FC",
       "kind": "football_club",
       "sources": [
         "wikidata"
       ],
       "country": "Malaysia",
-      "founded": "2008",
+      "founded": "",
       "news": [],
       "deals": 0,
       "analysis": {
@@ -1142,13 +1144,13 @@
       }
     },
     {
-      "name": "Shahzan Muda FC",
+      "name": "Universiti Sains Malaysia Staff F.C.",
       "kind": "football_club",
       "sources": [
         "wikidata"
       ],
       "country": "Malaysia",
-      "founded": "",
+      "founded": "2008",
       "news": [],
       "deals": 0,
       "analysis": {
@@ -1242,56 +1244,6 @@
       }
     },
     {
-      "name": "Northern Lions F.C.",
-      "kind": "football_club",
-      "sources": [
-        "wikidata"
-      ],
-      "country": "Malaysia",
-      "founded": "",
-      "news": [],
-      "deals": 0,
-      "analysis": {
-        "sentiment": {
-          "label": "none",
-          "score": 0.0,
-          "pos": 0,
-          "neg": 0
-        },
-        "momentum": {
-          "score": 24,
-          "trend": "flat",
-          "buzz": 0,
-          "news": 0
-        }
-      }
-    },
-    {
-      "name": "Semarak F.C.",
-      "kind": "football_club",
-      "sources": [
-        "wikidata"
-      ],
-      "country": "Malaysia",
-      "founded": "",
-      "news": [],
-      "deals": 0,
-      "analysis": {
-        "sentiment": {
-          "label": "none",
-          "score": 0.0,
-          "pos": 0,
-          "neg": 0
-        },
-        "momentum": {
-          "score": 24,
-          "trend": "flat",
-          "buzz": 0,
-          "news": 0
-        }
-      }
-    },
-    {
       "name": "Kuala Lumpur Rovers F.C.",
       "kind": "football_club",
       "sources": [
@@ -1318,6 +1270,56 @@
     },
     {
       "name": "Kinabalu Jaguar F.C.",
+      "kind": "football_club",
+      "sources": [
+        "wikidata"
+      ],
+      "country": "Malaysia",
+      "founded": "",
+      "news": [],
+      "deals": 0,
+      "analysis": {
+        "sentiment": {
+          "label": "none",
+          "score": 0.0,
+          "pos": 0,
+          "neg": 0
+        },
+        "momentum": {
+          "score": 24,
+          "trend": "flat",
+          "buzz": 0,
+          "news": 0
+        }
+      }
+    },
+    {
+      "name": "Northern Lions F.C.",
+      "kind": "football_club",
+      "sources": [
+        "wikidata"
+      ],
+      "country": "Malaysia",
+      "founded": "",
+      "news": [],
+      "deals": 0,
+      "analysis": {
+        "sentiment": {
+          "label": "none",
+          "score": 0.0,
+          "pos": 0,
+          "neg": 0
+        },
+        "momentum": {
+          "score": 24,
+          "trend": "flat",
+          "buzz": 0,
+          "news": 0
+        }
+      }
+    },
+    {
+      "name": "Semarak F.C.",
       "kind": "football_club",
       "sources": [
         "wikidata"
@@ -1494,14 +1496,329 @@
   ],
   "games": [
     {
+      "name": "2034 Sukma Games",
+      "year": "2034",
+      "host": "MSN"
+    },
+    {
+      "name": "2033 Southeast Asian Games",
+      "year": "2033",
+      "host": "TBA, Philippines"
+    },
+    {
+      "name": "2032 Sukma Games",
+      "year": "2032",
+      "host": "Sabah"
+    },
+    {
+      "name": "2031 Southeast Asian Games",
+      "year": "2031",
+      "host": "TBA, Laos"
+    },
+    {
+      "name": "2030 Sukma Games",
+      "year": "2030",
+      "host": "MSN"
+    },
+    {
+      "name": "2029 Southeast Asian Games",
+      "year": "2029",
+      "host": "Singapore"
+    },
+    {
+      "name": "2028 Sukma Games",
+      "year": "2028",
+      "host": "Kelantan"
+    },
+    {
       "name": "2027 Southeast Asian Games",
       "year": "2027",
       "host": "Malaysia"
     },
     {
       "name": "2026 Sukma Games",
+      "year": "2026",
+      "host": "Selangor"
+    },
+    {
+      "name": "2025 Southeast Asian Games",
+      "year": "2025",
+      "host": "Thailand"
+    },
+    {
+      "name": "2024 Sukma Games",
       "year": "2024",
+      "host": "Sarawak"
+    },
+    {
+      "name": "2023 Southeast Asian Games",
+      "year": "2023",
+      "host": "Cambodia"
+    },
+    {
+      "name": "2022 Sukma Games",
+      "year": "2022",
+      "host": "Kuala Lumpur"
+    },
+    {
+      "name": "2021 Southeast Asian Games",
+      "year": "2021",
+      "host": "Vietnam"
+    },
+    {
+      "name": "2019 Southeast Asian Games",
+      "year": "2019",
+      "host": "Philippines"
+    },
+    {
+      "name": "2018 Sukma Games",
+      "year": "2018",
+      "host": "Perak"
+    },
+    {
+      "name": "2017 Southeast Asian Games",
+      "year": "2017",
       "host": "Malaysia"
+    },
+    {
+      "name": "2016 Sukma Games",
+      "year": "2016",
+      "host": "Sarawak"
+    },
+    {
+      "name": "2015 Southeast Asian Games",
+      "year": "2015",
+      "host": "Singapore"
+    },
+    {
+      "name": "2014 Sukma Games",
+      "year": "2014",
+      "host": "Perlis"
+    },
+    {
+      "name": "2013 Southeast Asian Games",
+      "year": "2013",
+      "host": "Myanmar"
+    },
+    {
+      "name": "2013 Sukma Games",
+      "year": "2013",
+      "host": "Kuala Lumpur"
+    },
+    {
+      "name": "2012 Sukma Games",
+      "year": "2012",
+      "host": "Pahang"
+    },
+    {
+      "name": "2011 Southeast Asian Games",
+      "year": "2011",
+      "host": "Indonesia"
+    },
+    {
+      "name": "2011 Sukma Games",
+      "year": "2011",
+      "host": "Kuala Lumpur"
+    },
+    {
+      "name": "2010 Sukma Games",
+      "year": "2010",
+      "host": "Malacca"
+    },
+    {
+      "name": "2009 Southeast Asian Games",
+      "year": "2009",
+      "host": "Laos"
+    },
+    {
+      "name": "2008 Sukma Games",
+      "year": "2008",
+      "host": "Terengganu"
+    },
+    {
+      "name": "2007 Southeast Asian Games",
+      "year": "2007",
+      "host": "Thailand"
+    },
+    {
+      "name": "2006 Sukma Games",
+      "year": "2006",
+      "host": "Kedah"
+    },
+    {
+      "name": "2005 Southeast Asian Games",
+      "year": "2005",
+      "host": "Philippines"
+    },
+    {
+      "name": "2004 Sukma Games",
+      "year": "2004",
+      "host": "Negeri Sembilan"
+    },
+    {
+      "name": "2003 Southeast Asian Games",
+      "year": "2003",
+      "host": "Vietnam"
+    },
+    {
+      "name": "2002 Sukma Games",
+      "year": "2002",
+      "host": "Sabah"
+    },
+    {
+      "name": "2001 Southeast Asian Games",
+      "year": "2001",
+      "host": "Malaysia"
+    },
+    {
+      "name": "2000 Sukma Games",
+      "year": "2000",
+      "host": "Penang"
+    },
+    {
+      "name": "1999 Southeast Asian Games",
+      "year": "1999",
+      "host": "Brunei"
+    },
+    {
+      "name": "1998 Sukma Games",
+      "year": "1998",
+      "host": "Selangor"
+    },
+    {
+      "name": "1997 Southeast Asian Games",
+      "year": "1997",
+      "host": "Indonesia"
+    },
+    {
+      "name": "1996 Sukma Games",
+      "year": "1996",
+      "host": "Pahang"
+    },
+    {
+      "name": "1995 Southeast Asian Games",
+      "year": "1995",
+      "host": "Thailand"
+    },
+    {
+      "name": "1994 Sukma Games",
+      "year": "1994",
+      "host": "Perak"
+    },
+    {
+      "name": "1993 Southeast Asian Games",
+      "year": "1993",
+      "host": "Singapore"
+    },
+    {
+      "name": "1992 Sukma Games",
+      "year": "1992",
+      "host": "Johor"
+    },
+    {
+      "name": "1991 Southeast Asian Games",
+      "year": "1991",
+      "host": "Philippines"
+    },
+    {
+      "name": "1990 Sukma Games",
+      "year": "1990",
+      "host": "Sarawak"
+    },
+    {
+      "name": "1989 Southeast Asian Games",
+      "year": "1989",
+      "host": "Malaysia"
+    },
+    {
+      "name": "1988 Sukma Games",
+      "year": "1988",
+      "host": "Kuala Lumpur"
+    },
+    {
+      "name": "1987 Southeast Asian Games",
+      "year": "1987",
+      "host": "Indonesia"
+    },
+    {
+      "name": "1986 Sukma Games",
+      "year": "1986",
+      "host": "Kuala Lumpur"
+    },
+    {
+      "name": "1985 Southeast Asian Games",
+      "year": "1985",
+      "host": "Thailand"
+    },
+    {
+      "name": "1984 Sukma Games",
+      "year": "1984",
+      "host": "Selangor"
+    },
+    {
+      "name": "1983 Southeast Asian Games",
+      "year": "1983",
+      "host": "Singapore"
+    },
+    {
+      "name": "1982 Sukma Games",
+      "year": "1982",
+      "host": "Kuala Lumpur"
+    },
+    {
+      "name": "1981 Southeast Asian Games",
+      "year": "1981",
+      "host": "Philippines"
+    },
+    {
+      "name": "1979 Southeast Asian Games",
+      "year": "1979",
+      "host": "Indonesia"
+    },
+    {
+      "name": "1977 Southeast Asian Games",
+      "year": "1977",
+      "host": "Malaysia"
+    },
+    {
+      "name": "1975 Southeast Asian Games",
+      "year": "1975",
+      "host": "Thailand"
+    },
+    {
+      "name": "1973 Southeast Asian Games",
+      "year": "1973",
+      "host": "Singapore"
+    },
+    {
+      "name": "1971 Southeast Asian Games",
+      "year": "1971",
+      "host": "Malaysia"
+    },
+    {
+      "name": "1969 Southeast Asian Games",
+      "year": "1969",
+      "host": "Myanmar"
+    },
+    {
+      "name": "1967 Southeast Asian Games",
+      "year": "1967",
+      "host": "Thailand"
+    },
+    {
+      "name": "1965 Southeast Asian Games",
+      "year": "1965",
+      "host": "Malaysia"
+    },
+    {
+      "name": "1961 Southeast Asian Games",
+      "year": "1961",
+      "host": "Myanmar"
+    },
+    {
+      "name": "1959 Southeast Asian Games",
+      "year": "1959",
+      "host": "Thailand"
     }
   ],
   "events": [

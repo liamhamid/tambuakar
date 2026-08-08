@@ -157,6 +157,14 @@
   .calrow .cat{font-family:var(--mono);font-size:.62rem;font-weight:700;letter-spacing:.04em;padding:2px 8px;
     border-radius:999px;background:var(--accent2-soft);color:var(--accent2);white-space:nowrap;}
   .calempty{padding:12px;color:var(--muted);font-size:.84rem;}
+  .ghList{display:grid;gap:6px;max-height:280px;overflow:auto;padding-right:4px;}
+  .ghRow{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:baseline;
+    padding:8px 12px;border:1px solid var(--line);border-radius:9px;background:var(--card2);}
+  .ghRow .yr{font-family:var(--mono);font-weight:700;color:var(--accent2);font-variant-numeric:tabular-nums;}
+  .ghRow .nm{font-size:.88rem;min-width:0;}
+  .ghRow .ho{font-size:.78rem;color:var(--muted);white-space:nowrap;}
+  .ghRow.host-my{border-color:var(--good);}
+  .ghRow.host-my .ho{color:var(--good);font-weight:700;}
   .saChips{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:13px;}
   .saChips button{font-family:var(--mono);font-size:.7rem;font-weight:700;cursor:pointer;
     background:var(--card2);color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:5px 12px;}
@@ -350,6 +358,14 @@
     <div class="saCard" id="saCard"></div>
   </div>
 
+  <div class="panel" id="ghPanel" style="margin-top:14px;" hidden>
+    <div class="eyebrow" data-i18n="gh_eb">Games history · Malaysia 🏆</div>
+    <h2 style="font-size:.98rem;" data-i18n="gh_h">Every SEA Games &amp; SUKMA edition</h2>
+    <p class="cap" data-i18n="gh_cap">Full history — Malaysia-hosted editions highlighted.</p>
+    <div class="calfilter" id="ghFilter"></div>
+    <div class="ghList" id="ghList"></div>
+  </div>
+
   <div class="panel" style="margin-top:14px;">
     <div class="eyebrow" data-i18n="cal_eb">Upcoming sports events · Malaysia 🗓️</div>
     <h2 style="font-size:.98rem;" data-i18n="cal_h">What's coming up</h2>
@@ -386,6 +402,8 @@
       sa_eb:"Sport audience · who follows what 👥", sa_h:"Who likes each sport",
       sa_cap:"Baseline audience per sport — age, gender, communities &amp; regions. Refined with survey data.",
       sa_age:"Age", sa_gender:"Gender", sa_comm:"Communities", sa_reg:"Top regions", sa_also:"Also follow",
+      gh_eb:"Games history · Malaysia 🏆", gh_h:"Every SEA Games &amp; SUKMA edition",
+      gh_cap:"Full history — Malaysia-hosted editions highlighted.",
       spark_l:"Audience interest · 6 months",
       bench_eb:'Media value benchmark <span style="color:var(--muted);font-weight:600;">(estimated · sample)</span>',
       bench_h:"Media value seen · top clubs",
@@ -421,6 +439,8 @@
       sa_eb:"Audiens sukan · siapa ikut apa 👥", sa_h:"Siapa suka setiap sukan",
       sa_cap:"Audiens asas per sukan — umur, jantina, komuniti &amp; wilayah. Diperhalusi dengan data survey.",
       sa_age:"Umur", sa_gender:"Jantina", sa_comm:"Komuniti", sa_reg:"Wilayah utama", sa_also:"Turut ikut",
+      gh_eb:"Sejarah Games · Malaysia 🏆", gh_h:"Setiap edisi SEA Games &amp; SUKMA",
+      gh_cap:"Sejarah penuh — edisi anjuran Malaysia ditonjolkan.",
       spark_l:"Minat audiens · 6 bulan",
       bench_eb:'Benchmark nilai media <span style="color:var(--muted);font-weight:600;">(anggaran · contoh)</span>',
       bench_h:"Nilai media dilihat · top kelab",
@@ -455,6 +475,7 @@
     if(typeof renderActivations === 'function'){ renderActivations(); }
     if(typeof renderCalendar === 'function'){ renderCalendar(); }
     if(typeof renderSportAudience === 'function'){ renderSportAudience(); }
+    if(typeof renderGamesHistory === 'function'){ renderGamesHistory(); }
   }
   function toggleLang(){ LANG = (LANG === 'en') ? 'ms' : 'en'; localStorage.setItem('impax_lang', LANG); applyLang(); }
   applyLang();
@@ -627,6 +648,35 @@
       cell.appendChild(k); cell.appendChild(v); grid.appendChild(cell);
     });
     cardEl.appendChild(top); cardEl.appendChild(grid);
+  }
+
+  // Games history (SEA Games / SUKMA editions) from the engine (SITE.games).
+  var GH_FILTER = "all";
+  function renderGamesHistory(){
+    var panel = document.getElementById("ghPanel"), listEl = document.getElementById("ghList"), filEl = document.getElementById("ghFilter");
+    if(!panel || !listEl || !filEl) return;
+    var g = (SITE && SITE.games) || [];
+    if(!g.length){ panel.hidden = true; return; }
+    panel.hidden = false;
+    function series(x){ return String(x.name).indexOf("Sukma") >= 0 ? "sukma" : "sea"; }
+    var labels = {all:(I18N[LANG].cal_all||"All"), sea:"SEA Games", sukma:"SUKMA"};
+    filEl.innerHTML = "";
+    ["all","sea","sukma"].forEach(function(k){
+      var b = document.createElement("button"); b.type = "button"; b.textContent = labels[k];
+      if(GH_FILTER === k) b.className = "on";
+      b.addEventListener("click", function(){ GH_FILTER = k; renderGamesHistory(); });
+      filEl.appendChild(b);
+    });
+    listEl.innerHTML = "";
+    g.filter(function(x){ return GH_FILTER === "all" || series(x) === GH_FILTER; }).forEach(function(x){
+      var row = document.createElement("div"); row.className = "ghRow";
+      if(String(x.host) === "Malaysia") row.className += " host-my";
+      var yr = document.createElement("div"); yr.className = "yr"; yr.textContent = x.year || "—";
+      var nm = document.createElement("div"); nm.className = "nm"; nm.textContent = x.name;
+      var ho = document.createElement("div"); ho.className = "ho"; ho.textContent = x.host || "";
+      row.appendChild(yr); row.appendChild(nm); row.appendChild(ho);
+      listEl.appendChild(row);
+    });
   }
 
   var CURRENT_INSIGHT = INSIGHTS_DEMO[0];  // default = featured club (JDT) so it shows on first paint
