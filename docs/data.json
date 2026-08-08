@@ -1488,6 +1488,36 @@
   ],
   "events": [
     {
+      "name": "Kuching Marathon",
+      "sport": "larian",
+      "category": "running",
+      "level": "national",
+      "scope": "Kuching, Sarawak",
+      "year": 2026,
+      "month": 8,
+      "when": "Ogos 2026"
+    },
+    {
+      "name": "Larian Merdeka",
+      "sport": "larian",
+      "category": "running",
+      "level": "grassroots",
+      "scope": "Kebangsaan",
+      "year": 2026,
+      "month": 8,
+      "when": "Ogos 2026"
+    },
+    {
+      "name": "MIMMA (Seni Bela Diri Campuran)",
+      "sport": "MMA",
+      "category": "combat",
+      "level": "national",
+      "scope": "Kebangsaan",
+      "year": 2026,
+      "month": 8,
+      "when": "Ogos 2026"
+    },
+    {
       "name": "SUKMA",
       "sport": "multi-sukan",
       "category": "games",
@@ -1498,11 +1528,41 @@
       "when": "Ogos 2026"
     },
     {
+      "name": "Ironman 70.3 Desaru Coast",
+      "sport": "triatlon",
+      "category": "running",
+      "level": "international",
+      "scope": "Desaru, Johor",
+      "year": 2026,
+      "month": 9,
+      "when": "Sep 2026"
+    },
+    {
+      "name": "Kejohanan Boling Kebangsaan",
+      "sport": "boling",
+      "category": "bowling",
+      "level": "national",
+      "scope": "Kebangsaan",
+      "year": 2026,
+      "month": 9,
+      "when": "Sep 2026"
+    },
+    {
       "name": "Para SUKMA",
       "sport": "multi-sukan (para)",
       "category": "games",
       "level": "national",
       "scope": "Kebangsaan",
+      "year": 2026,
+      "month": 9,
+      "when": "Sep 2026"
+    },
+    {
+      "name": "The Most Beautiful Thing (TMBT) Ultra",
+      "sport": "larian trail",
+      "category": "running",
+      "level": "national",
+      "scope": "Sabah",
       "year": 2026,
       "month": 9,
       "when": "Sep 2026"
@@ -1516,6 +1576,16 @@
       "year": 2026,
       "month": 10,
       "when": "Okt 2026"
+    },
+    {
+      "name": "Great Eastern Women's Run",
+      "sport": "larian",
+      "category": "running",
+      "level": "national",
+      "scope": "Kuala Lumpur",
+      "year": 2026,
+      "month": 11,
+      "when": "Nov 2026"
     },
     {
       "name": "Ironman Malaysia (Triatlon)",
@@ -1540,7 +1610,7 @@
     {
       "name": "Monsoon Cup (Pelayaran)",
       "sport": "pelayaran",
-      "category": "other",
+      "category": "watersport",
       "level": "international",
       "scope": "Terengganu",
       "year": 2026,
@@ -1578,6 +1648,26 @@
       "when": "Dis 2026"
     },
     {
+      "name": "Sepang 1000KM (Ketahanan)",
+      "sport": "kereta lumba",
+      "category": "motorsport",
+      "level": "national",
+      "scope": "Sepang",
+      "year": 2026,
+      "month": 12,
+      "when": "Dis 2026"
+    },
+    {
+      "name": "Liga Hoki Malaysia (MHL)",
+      "sport": "hoki",
+      "category": "hockey",
+      "level": "national",
+      "scope": "Kebangsaan",
+      "year": 2027,
+      "month": 1,
+      "when": "Jan 2027"
+    },
+    {
       "name": "Malaysia Open (Badminton, BWF S1000)",
       "sport": "badminton",
       "category": "racket",
@@ -1586,6 +1676,16 @@
       "year": 2027,
       "month": 1,
       "when": "Jan 2027"
+    },
+    {
+      "name": "Piala Sumbangsih (Bola Sepak)",
+      "sport": "bola sepak",
+      "category": "football",
+      "level": "national",
+      "scope": "Kebangsaan",
+      "year": 2027,
+      "month": 2,
+      "when": "Feb 2027"
     },
     {
       "name": "Le Tour de Langkawi",
@@ -1616,6 +1716,26 @@
       "year": 2027,
       "month": 3,
       "when": "Mac 2027"
+    },
+    {
+      "name": "Kejohanan Renang Kebangsaan",
+      "sport": "renang",
+      "category": "watersport",
+      "level": "national",
+      "scope": "Kebangsaan",
+      "year": 2027,
+      "month": 4,
+      "when": "Apr 2027"
+    },
+    {
+      "name": "Maybank Championship (Golf)",
+      "sport": "golf",
+      "category": "golf",
+      "level": "international",
+      "scope": "Kuala Lumpur",
+      "year": 2027,
+      "month": 4,
+      "when": "Apr 2027"
     },
     {
       "name": "Sukan Universiti (MASUM)",
@@ -1658,11 +1778,51 @@
       "when": "Mei 2027"
     },
     {
+      "name": "Piala Sultan Azlan Shah (Hoki)",
+      "sport": "hoki",
+      "category": "hockey",
+      "level": "international",
+      "scope": "Ipoh, Perak",
+      "year": 2027,
+      "month": 5,
+      "when": "Mei 2027"
+    },
+    {
+      "name": "Kejohanan Olahraga Terbuka Malaysia",
+      "sport": "olahraga",
+      "category": "athletics",
+      "level": "national",
+      "scope": "Kebangsaan",
+      "year": 2027,
+      "month": 6,
+      "when": "Jun 2027"
+    },
+    {
+      "name": "Kejohanan Squash Kebangsaan",
+      "sport": "skuasy",
+      "category": "squash",
+      "level": "national",
+      "scope": "Kebangsaan",
+      "year": 2027,
+      "month": 6,
+      "when": "Jun 2027"
+    },
+    {
       "name": "MSSM (Sukan Sekolah)",
       "sport": "multi-sukan",
       "category": "multisport",
       "level": "national",
       "scope": "Sekolah kebangsaan",
+      "year": 2027,
+      "month": 6,
+      "when": "Jun 2027"
+    },
+    {
+      "name": "OCBC Cycle Malaysia",
+      "sport": "berbasikal",
+      "category": "cycling",
+      "level": "national",
+      "scope": "Kuala Lumpur",
       "year": 2027,
       "month": 6,
       "when": "Jun 2027"
@@ -1683,6 +1843,16 @@
       "category": "cycling",
       "level": "national",
       "scope": "Kuala Lumpur",
+      "year": 2027,
+      "month": 7,
+      "when": "Jul 2027"
+    },
+    {
+      "name": "Piala FA Malaysia (Final)",
+      "sport": "bola sepak",
+      "category": "football",
+      "level": "national",
+      "scope": "Kebangsaan",
       "year": 2027,
       "month": 7,
       "when": "Jul 2027"

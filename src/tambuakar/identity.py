@@ -20,7 +20,9 @@ from difflib import SequenceMatcher
 from .ports import Record
 
 # Kind yang mewakili ENTITI (boleh diresolusi jadi profil bersatu).
-ENTITY_KINDS = frozenset({"football_club", "athlete", "brand", "league", "team", "venue"})
+ENTITY_KINDS = frozenset(
+    {"football_club", "athlete", "brand", "league", "team", "venue", "games_edition"}
+)
 # Kind yang mewakili MENTION (rujukan kepada entiti, bukan entiti sendiri).
 MENTION_KINDS = frozenset({"news", "trend"})
 

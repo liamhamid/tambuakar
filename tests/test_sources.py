@@ -9,6 +9,7 @@ import pytest
 from tambuakar.sources import gdelt
 from tambuakar.sources.gdelt import GdeltSource
 from tambuakar.sources.google_trends import GoogleTrendsSource
+from tambuakar.sources.wikidata_games import WikidataGamesSource
 
 
 def test_gdelt_maps_articles_and_skips_incomplete() -> None:
@@ -56,6 +57,29 @@ def test_gdelt_retries_on_429_then_succeeds(monkeypatch: pytest.MonkeyPatch) -> 
     result = GdeltSource(retries=3, backoff=0.01).fetch()
     assert calls["n"] == 3  # 2 kali 429 + 1 berjaya
     assert result == []
+
+
+def test_games_maps_editions_and_skips_incomplete() -> None:
+    raw = {
+        "results": {
+            "bindings": [
+                {
+                    "ed": {"value": "http://www.wikidata.org/entity/Q123"},
+                    "edLabel": {"value": "2017 Southeast Asian Games"},
+                    "date": {"value": "2017-08-19T00:00:00Z"},
+                    "hostLabel": {"value": "Malaysia"},
+                },
+                {"ed": {"value": "http://www.wikidata.org/entity/Q999"}},  # tiada label -> skip
+            ]
+        }
+    }
+    records = WikidataGamesSource._to_records(raw)
+    assert len(records) == 1
+    rec = records[0]
+    assert rec.kind == "games_edition"
+    assert rec.source_id == "Q123"
+    assert rec.attrs["year"] == "2017"
+    assert rec.attrs["host"] == "Malaysia"
 
 
 def test_trends_maps_rows() -> None:

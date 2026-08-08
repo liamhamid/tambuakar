@@ -21,6 +21,7 @@ from .site import build_site
 from .sources.gdelt import GdeltSource
 from .sources.google_trends import GoogleTrendsSource
 from .sources.wikidata import WikidataSource
+from .sources.wikidata_games import WikidataGamesSource
 from .sport_audience import profiles
 
 
@@ -28,6 +29,7 @@ def _sources() -> list[KnowledgeSource]:
     # Fokus pasaran Sportswork: kelab Malaysia + minat audiens kelab utama.
     return [
         WikidataSource(limit=60),
+        WikidataGamesSource(limit=80),
         GdeltSource(
             query=(
                 '("Johor Darul Ta\'zim" OR "Selangor FC" OR "Kedah Darul Aman" OR '
