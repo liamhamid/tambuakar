@@ -14,5 +14,6 @@ src = ["src", "tests"]
 select = ["E", "F", "I", "UP", "B", "SIM"]
 
 [tool.ruff.lint.per-file-ignores]
-# events.py is a curated data table (one event per row); long rows are clearer than wrapped.
+# These are curated data tables (one row per record); long rows are clearer than wrapped.
 "src/tambuakar/events.py" = ["E501"]
+"src/tambuakar/sport_audience.py" = ["E501"]

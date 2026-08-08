@@ -21,6 +21,7 @@ from .site import build_site
 from .sources.gdelt import GdeltSource
 from .sources.google_trends import GoogleTrendsSource
 from .sources.wikidata import WikidataSource
+from .sport_audience import profiles
 
 
 def _sources() -> list[KnowledgeSource]:
@@ -58,6 +59,7 @@ def main(out: Path | None = None, data_dir: Path | None = None) -> dict[str, obj
     generated = datetime.now(UTC).strftime("%Y-%m-%d %H:%M UTC")
     payload = build_site(entities, generated_at=generated, connectors=len(sources))
     payload["events"] = upcoming(datetime.now(UTC).date(), horizon_months=24)
+    payload["sport_audience"] = profiles()
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
     for name, stats in results.items():
