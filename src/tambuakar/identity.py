@@ -58,6 +58,19 @@ def _similar(a: str, b: str) -> float:
     return SequenceMatcher(None, a, b).ratio()
 
 
+_YEAR_RE = re.compile(r"\b(?:19|20)\d{2}\b")
+
+
+def _years(text: str) -> frozenset[str]:
+    return frozenset(_YEAR_RE.findall(text))
+
+
+def _year_conflict(a: str, b: str) -> bool:
+    """Betul jika kedua-dua ada tahun eksplisit yang berbeza (cth edisi Games)."""
+    ya, yb = _years(a), _years(b)
+    return bool(ya) and bool(yb) and ya.isdisjoint(yb)
+
+
 def _phrase_in(phrase: str, text: str) -> bool:
     """Betul jika `phrase` muncul sebagai perkataan penuh dalam `text`."""
     return bool(phrase) and f" {phrase} " in f" {text} "
@@ -81,6 +94,9 @@ def _resolve_entities(
             if ent_norm == norm:
                 best, method, conf = ent, "deterministic", 1.0
                 break
+            # Tahun eksplisit berbeza => entiti berbeza (cth edisi Games) — jangan fuzzy.
+            if _year_conflict(ent_norm, norm):
+                continue
             ratio = _similar(ent_norm, norm)
             if ratio >= threshold and (best is None or ratio > conf):
                 best, method, conf = ent, "fuzzy", ratio

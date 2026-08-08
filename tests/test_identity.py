@@ -38,6 +38,17 @@ def test_ire_fuzzy_merges_near_names() -> None:
     assert imap["b:2"]["method"] in ("fuzzy", "deterministic")
 
 
+def test_ire_does_not_merge_editions_with_different_years() -> None:
+    # Nama hampir sama, beza tahun sahaja -> mesti kekal entiti berasingan.
+    records = [
+        Record(source="a", source_id="1", kind="games_edition", name="2017 Southeast Asian Games"),
+        Record(source="b", source_id="2", kind="games_edition", name="2019 Southeast Asian Games"),
+        Record(source="c", source_id="3", kind="games_edition", name="2027 Southeast Asian Games"),
+    ]
+    entities, _ = resolve(records)
+    assert len(entities) == 3
+
+
 def test_ire_blocks_by_kind() -> None:
     records = [
         Record(source="a", source_id="1", kind="football_club", name="Nike"),
