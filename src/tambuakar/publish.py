@@ -22,6 +22,7 @@ from .sources.gdelt import GdeltSource
 from .sources.google_trends import GoogleTrendsSource
 from .sources.wikidata import WikidataSource
 from .sources.wikidata_games import WikidataGamesSource
+from .sources.wikipedia_games import WikipediaGamesSource
 from .sport_audience import profiles
 
 
@@ -30,6 +31,7 @@ def _sources() -> list[KnowledgeSource]:
     return [
         WikidataSource(limit=60),
         WikidataGamesSource(limit=80),
+        WikipediaGamesSource(),
         GdeltSource(
             query=(
                 '("Johor Darul Ta\'zim" OR "Selangor FC" OR "Kedah Darul Aman" OR '
