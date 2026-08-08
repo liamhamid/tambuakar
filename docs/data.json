@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-08-07 15:43 UTC",
+  "generated_at": "2026-08-08 06:21 UTC",
   "kpis": {
-    "entities": 58,
+    "entities": 59,
     "deals": 0,
     "sources": 3,
-    "teams": 58
+    "teams": 59
   },
   "sources": [
     "wikidata"
@@ -661,13 +661,13 @@
       }
     },
     {
-      "name": "Harimau Muda A",
+      "name": "Public Bank FC",
       "kind": "football_club",
       "sources": [
         "wikidata"
       ],
       "country": "Malaysia",
-      "founded": "2013",
+      "founded": "2003",
       "news": [],
       "deals": 0,
       "analysis": {
@@ -678,7 +678,7 @@
           "neg": 0
         },
         "momentum": {
-          "score": 19,
+          "score": 31,
           "trend": "flat",
           "buzz": 0,
           "news": 0
@@ -686,13 +686,13 @@
       }
     },
     {
-      "name": "Public Bank FC",
+      "name": "Harimau Muda A",
       "kind": "football_club",
       "sources": [
         "wikidata"
       ],
       "country": "Malaysia",
-      "founded": "2003",
+      "founded": "2009",
       "news": [],
       "deals": 0,
       "analysis": {
@@ -961,7 +961,7 @@
       }
     },
     {
-      "name": "Perak F.C. II",
+      "name": "Melaka F.C.",
       "kind": "football_club",
       "sources": [
         "wikidata"
@@ -986,7 +986,7 @@
       }
     },
     {
-      "name": "Melaka F.C.",
+      "name": "Perak F.C. II",
       "kind": "football_club",
       "sources": [
         "wikidata"
@@ -1036,32 +1036,7 @@
       }
     },
     {
-      "name": "Shahzan Muda FC",
-      "kind": "football_club",
-      "sources": [
-        "wikidata"
-      ],
-      "country": "Malaysia",
-      "founded": "",
-      "news": [],
-      "deals": 0,
-      "analysis": {
-        "sentiment": {
-          "label": "none",
-          "score": 0.0,
-          "pos": 0,
-          "neg": 0
-        },
-        "momentum": {
-          "score": 24,
-          "trend": "flat",
-          "buzz": 0,
-          "news": 0
-        }
-      }
-    },
-    {
-      "name": "Universiti Sains Malaysia Staff F.C.",
+      "name": "Pos Malaysia FC",
       "kind": "football_club",
       "sources": [
         "wikidata"
@@ -1136,7 +1111,32 @@
       }
     },
     {
-      "name": "Pos Malaysia FC",
+      "name": "Shahzan Muda FC",
+      "kind": "football_club",
+      "sources": [
+        "wikidata"
+      ],
+      "country": "Malaysia",
+      "founded": "",
+      "news": [],
+      "deals": 0,
+      "analysis": {
+        "sentiment": {
+          "label": "none",
+          "score": 0.0,
+          "pos": 0,
+          "neg": 0
+        },
+        "momentum": {
+          "score": 24,
+          "trend": "flat",
+          "buzz": 0,
+          "news": 0
+        }
+      }
+    },
+    {
+      "name": "Universiti Sains Malaysia Staff F.C.",
       "kind": "football_club",
       "sources": [
         "wikidata"
@@ -1187,6 +1187,31 @@
     },
     {
       "name": "Puchong Fuerza F.C.",
+      "kind": "football_club",
+      "sources": [
+        "wikidata"
+      ],
+      "country": "Malaysia",
+      "founded": "",
+      "news": [],
+      "deals": 0,
+      "analysis": {
+        "sentiment": {
+          "label": "none",
+          "score": 0.0,
+          "pos": 0,
+          "neg": 0
+        },
+        "momentum": {
+          "score": 24,
+          "trend": "flat",
+          "buzz": 0,
+          "news": 0
+        }
+      }
+    },
+    {
+      "name": "Kinabalu Jaguar F.C.",
       "kind": "football_club",
       "sources": [
         "wikidata"
@@ -1262,31 +1287,6 @@
     },
     {
       "name": "Semarak F.C.",
-      "kind": "football_club",
-      "sources": [
-        "wikidata"
-      ],
-      "country": "Malaysia",
-      "founded": "",
-      "news": [],
-      "deals": 0,
-      "analysis": {
-        "sentiment": {
-          "label": "none",
-          "score": 0.0,
-          "pos": 0,
-          "neg": 0
-        },
-        "momentum": {
-          "score": 24,
-          "trend": "flat",
-          "buzz": 0,
-          "news": 0
-        }
-      }
-    },
-    {
-      "name": "Kinabalu Jaguar F.C.",
       "kind": "football_club",
       "sources": [
         "wikidata"
@@ -1436,13 +1436,38 @@
       }
     },
     {
-      "name": "Tumpat FA",
+      "name": "Proton FC",
       "kind": "football_club",
       "sources": [
         "wikidata"
       ],
       "country": "Malaysia",
-      "founded": "2012",
+      "founded": "1986",
+      "news": [],
+      "deals": 0,
+      "analysis": {
+        "sentiment": {
+          "label": "none",
+          "score": 0.0,
+          "pos": 0,
+          "neg": 0
+        },
+        "momentum": {
+          "score": 19,
+          "trend": "flat",
+          "buzz": 0,
+          "news": 0
+        }
+      }
+    },
+    {
+      "name": "SDMS Kepala Batas FC",
+      "kind": "football_club",
+      "sources": [
+        "wikidata"
+      ],
+      "country": "Malaysia",
+      "founded": "2007",
       "news": [],
       "deals": 0,
       "analysis": {
