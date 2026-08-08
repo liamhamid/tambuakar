@@ -1,19 +1,22 @@
 {
-  "generated_at": "2026-08-08 06:21 UTC",
+  "generated_at": "2026-08-08 06:55 UTC",
   "kpis": {
-    "entities": 59,
+    "entities": 61,
     "deals": 0,
-    "sources": 3,
+    "sources": 4,
     "teams": 59
   },
   "sources": [
-    "wikidata"
+    "google_trends",
+    "wikidata",
+    "wikidata_games"
   ],
   "entities": [
     {
       "name": "Johor Darul Ta'zim F.C.",
       "kind": "football_club",
       "sources": [
+        "google_trends",
         "wikidata"
       ],
       "country": "Malaysia",
@@ -28,9 +31,9 @@
           "neg": 0
         },
         "momentum": {
-          "score": 60,
-          "trend": "flat",
-          "buzz": 0,
+          "score": 100,
+          "trend": "up",
+          "buzz": 40,
           "news": 0
         }
       }
@@ -39,6 +42,7 @@
       "name": "Selangor F.C.",
       "kind": "football_club",
       "sources": [
+        "google_trends",
         "wikidata"
       ],
       "country": "Malaysia",
@@ -53,9 +57,61 @@
           "neg": 0
         },
         "momentum": {
-          "score": 53,
-          "trend": "flat",
-          "buzz": 0,
+          "score": 93,
+          "trend": "up",
+          "buzz": 40,
+          "news": 0
+        }
+      }
+    },
+    {
+      "name": "Terengganu F.C.",
+      "kind": "football_club",
+      "sources": [
+        "google_trends",
+        "wikidata"
+      ],
+      "country": "Malaysia",
+      "founded": "1972",
+      "news": [],
+      "deals": 0,
+      "analysis": {
+        "sentiment": {
+          "label": "none",
+          "score": 0.0,
+          "pos": 0,
+          "neg": 0
+        },
+        "momentum": {
+          "score": 87,
+          "trend": "up",
+          "buzz": 40,
+          "news": 0
+        }
+      }
+    },
+    {
+      "name": "Kedah Darul Aman F.C.",
+      "kind": "football_club",
+      "sources": [
+        "google_trends",
+        "wikidata"
+      ],
+      "country": "Malaysia",
+      "founded": "1924",
+      "news": [],
+      "deals": 0,
+      "analysis": {
+        "sentiment": {
+          "label": "none",
+          "score": 0.0,
+          "pos": 0,
+          "neg": 0
+        },
+        "momentum": {
+          "score": 87,
+          "trend": "up",
+          "buzz": 40,
           "news": 0
         }
       }
@@ -103,7 +159,7 @@
           "neg": 0
         },
         "momentum": {
-          "score": 50,
+          "score": 49,
           "trend": "flat",
           "buzz": 0,
           "news": 0
@@ -118,56 +174,6 @@
       ],
       "country": "Malaysia",
       "founded": "1921",
-      "news": [],
-      "deals": 0,
-      "analysis": {
-        "sentiment": {
-          "label": "none",
-          "score": 0.0,
-          "pos": 0,
-          "neg": 0
-        },
-        "momentum": {
-          "score": 49,
-          "trend": "flat",
-          "buzz": 0,
-          "news": 0
-        }
-      }
-    },
-    {
-      "name": "Terengganu F.C.",
-      "kind": "football_club",
-      "sources": [
-        "wikidata"
-      ],
-      "country": "Malaysia",
-      "founded": "1972",
-      "news": [],
-      "deals": 0,
-      "analysis": {
-        "sentiment": {
-          "label": "none",
-          "score": 0.0,
-          "pos": 0,
-          "neg": 0
-        },
-        "momentum": {
-          "score": 48,
-          "trend": "flat",
-          "buzz": 0,
-          "news": 0
-        }
-      }
-    },
-    {
-      "name": "Kedah Darul Aman F.C.",
-      "kind": "football_club",
-      "sources": [
-        "wikidata"
-      ],
-      "country": "Malaysia",
-      "founded": "1924",
       "news": [],
       "deals": 0,
       "analysis": {
@@ -203,7 +209,7 @@
           "neg": 0
         },
         "momentum": {
-          "score": 48,
+          "score": 47,
           "trend": "flat",
           "buzz": 0,
           "news": 0
@@ -228,7 +234,7 @@
           "neg": 0
         },
         "momentum": {
-          "score": 48,
+          "score": 47,
           "trend": "flat",
           "buzz": 0,
           "news": 0
@@ -378,7 +384,7 @@
           "neg": 0
         },
         "momentum": {
-          "score": 43,
+          "score": 42,
           "trend": "flat",
           "buzz": 0,
           "news": 0
@@ -403,7 +409,7 @@
           "neg": 0
         },
         "momentum": {
-          "score": 40,
+          "score": 39,
           "trend": "flat",
           "buzz": 0,
           "news": 0
@@ -428,7 +434,7 @@
           "neg": 0
         },
         "momentum": {
-          "score": 40,
+          "score": 39,
           "trend": "flat",
           "buzz": 0,
           "news": 0
@@ -453,7 +459,7 @@
           "neg": 0
         },
         "momentum": {
-          "score": 40,
+          "score": 39,
           "trend": "flat",
           "buzz": 0,
           "news": 0
@@ -478,7 +484,7 @@
           "neg": 0
         },
         "momentum": {
-          "score": 38,
+          "score": 37,
           "trend": "flat",
           "buzz": 0,
           "news": 0
@@ -503,7 +509,7 @@
           "neg": 0
         },
         "momentum": {
-          "score": 36,
+          "score": 35,
           "trend": "flat",
           "buzz": 0,
           "news": 0
@@ -528,7 +534,7 @@
           "neg": 0
         },
         "momentum": {
-          "score": 36,
+          "score": 35,
           "trend": "flat",
           "buzz": 0,
           "news": 0
@@ -553,7 +559,7 @@
           "neg": 0
         },
         "momentum": {
-          "score": 36,
+          "score": 35,
           "trend": "flat",
           "buzz": 0,
           "news": 0
@@ -661,31 +667,6 @@
       }
     },
     {
-      "name": "Public Bank FC",
-      "kind": "football_club",
-      "sources": [
-        "wikidata"
-      ],
-      "country": "Malaysia",
-      "founded": "2003",
-      "news": [],
-      "deals": 0,
-      "analysis": {
-        "sentiment": {
-          "label": "none",
-          "score": 0.0,
-          "pos": 0,
-          "neg": 0
-        },
-        "momentum": {
-          "score": 31,
-          "trend": "flat",
-          "buzz": 0,
-          "news": 0
-        }
-      }
-    },
-    {
       "name": "Harimau Muda A",
       "kind": "football_club",
       "sources": [
@@ -703,7 +684,32 @@
           "neg": 0
         },
         "momentum": {
-          "score": 31,
+          "score": 30,
+          "trend": "flat",
+          "buzz": 0,
+          "news": 0
+        }
+      }
+    },
+    {
+      "name": "Public Bank FC",
+      "kind": "football_club",
+      "sources": [
+        "wikidata"
+      ],
+      "country": "Malaysia",
+      "founded": "2003",
+      "news": [],
+      "deals": 0,
+      "analysis": {
+        "sentiment": {
+          "label": "none",
+          "score": 0.0,
+          "pos": 0,
+          "neg": 0
+        },
+        "momentum": {
+          "score": 30,
           "trend": "flat",
           "buzz": 0,
           "news": 0
@@ -728,7 +734,7 @@
           "neg": 0
         },
         "momentum": {
-          "score": 31,
+          "score": 30,
           "trend": "flat",
           "buzz": 0,
           "news": 0
@@ -753,7 +759,7 @@
           "neg": 0
         },
         "momentum": {
-          "score": 28,
+          "score": 27,
           "trend": "flat",
           "buzz": 0,
           "news": 0
@@ -778,7 +784,7 @@
           "neg": 0
         },
         "momentum": {
-          "score": 28,
+          "score": 27,
           "trend": "flat",
           "buzz": 0,
           "news": 0
@@ -803,7 +809,7 @@
           "neg": 0
         },
         "momentum": {
-          "score": 28,
+          "score": 27,
           "trend": "flat",
           "buzz": 0,
           "news": 0
@@ -828,7 +834,7 @@
           "neg": 0
         },
         "momentum": {
-          "score": 28,
+          "score": 27,
           "trend": "flat",
           "buzz": 0,
           "news": 0
@@ -853,7 +859,7 @@
           "neg": 0
         },
         "momentum": {
-          "score": 28,
+          "score": 27,
           "trend": "flat",
           "buzz": 0,
           "news": 0
@@ -878,7 +884,7 @@
           "neg": 0
         },
         "momentum": {
-          "score": 28,
+          "score": 27,
           "trend": "flat",
           "buzz": 0,
           "news": 0
@@ -903,82 +909,7 @@
           "neg": 0
         },
         "momentum": {
-          "score": 28,
-          "trend": "flat",
-          "buzz": 0,
-          "news": 0
-        }
-      }
-    },
-    {
-      "name": "Ultimate F.C.",
-      "kind": "football_club",
-      "sources": [
-        "wikidata"
-      ],
-      "country": "Malaysia",
-      "founded": "",
-      "news": [],
-      "deals": 0,
-      "analysis": {
-        "sentiment": {
-          "label": "none",
-          "score": 0.0,
-          "pos": 0,
-          "neg": 0
-        },
-        "momentum": {
-          "score": 28,
-          "trend": "flat",
-          "buzz": 0,
-          "news": 0
-        }
-      }
-    },
-    {
-      "name": "Harini F.C.",
-      "kind": "football_club",
-      "sources": [
-        "wikidata"
-      ],
-      "country": "Malaysia",
-      "founded": "",
-      "news": [],
-      "deals": 0,
-      "analysis": {
-        "sentiment": {
-          "label": "none",
-          "score": 0.0,
-          "pos": 0,
-          "neg": 0
-        },
-        "momentum": {
-          "score": 28,
-          "trend": "flat",
-          "buzz": 0,
-          "news": 0
-        }
-      }
-    },
-    {
-      "name": "Melaka F.C.",
-      "kind": "football_club",
-      "sources": [
-        "wikidata"
-      ],
-      "country": "Malaysia",
-      "founded": "",
-      "news": [],
-      "deals": 0,
-      "analysis": {
-        "sentiment": {
-          "label": "none",
-          "score": 0.0,
-          "pos": 0,
-          "neg": 0
-        },
-        "momentum": {
-          "score": 28,
+          "score": 27,
           "trend": "flat",
           "buzz": 0,
           "news": 0
@@ -1003,7 +934,82 @@
           "neg": 0
         },
         "momentum": {
-          "score": 28,
+          "score": 27,
+          "trend": "flat",
+          "buzz": 0,
+          "news": 0
+        }
+      }
+    },
+    {
+      "name": "Ultimate F.C.",
+      "kind": "football_club",
+      "sources": [
+        "wikidata"
+      ],
+      "country": "Malaysia",
+      "founded": "",
+      "news": [],
+      "deals": 0,
+      "analysis": {
+        "sentiment": {
+          "label": "none",
+          "score": 0.0,
+          "pos": 0,
+          "neg": 0
+        },
+        "momentum": {
+          "score": 27,
+          "trend": "flat",
+          "buzz": 0,
+          "news": 0
+        }
+      }
+    },
+    {
+      "name": "Harini F.C.",
+      "kind": "football_club",
+      "sources": [
+        "wikidata"
+      ],
+      "country": "Malaysia",
+      "founded": "",
+      "news": [],
+      "deals": 0,
+      "analysis": {
+        "sentiment": {
+          "label": "none",
+          "score": 0.0,
+          "pos": 0,
+          "neg": 0
+        },
+        "momentum": {
+          "score": 27,
+          "trend": "flat",
+          "buzz": 0,
+          "news": 0
+        }
+      }
+    },
+    {
+      "name": "Melaka F.C.",
+      "kind": "football_club",
+      "sources": [
+        "wikidata"
+      ],
+      "country": "Malaysia",
+      "founded": "",
+      "news": [],
+      "deals": 0,
+      "analysis": {
+        "sentiment": {
+          "label": "none",
+          "score": 0.0,
+          "pos": 0,
+          "neg": 0
+        },
+        "momentum": {
+          "score": 27,
           "trend": "flat",
           "buzz": 0,
           "news": 0
@@ -1018,31 +1024,6 @@
       ],
       "country": "Malaysia",
       "founded": "1921",
-      "news": [],
-      "deals": 0,
-      "analysis": {
-        "sentiment": {
-          "label": "none",
-          "score": 0.0,
-          "pos": 0,
-          "neg": 0
-        },
-        "momentum": {
-          "score": 24,
-          "trend": "flat",
-          "buzz": 0,
-          "news": 0
-        }
-      }
-    },
-    {
-      "name": "Pos Malaysia FC",
-      "kind": "football_club",
-      "sources": [
-        "wikidata"
-      ],
-      "country": "Malaysia",
-      "founded": "2008",
       "news": [],
       "deals": 0,
       "analysis": {
@@ -1111,13 +1092,13 @@
       }
     },
     {
-      "name": "Shahzan Muda FC",
+      "name": "Pos Malaysia FC",
       "kind": "football_club",
       "sources": [
         "wikidata"
       ],
       "country": "Malaysia",
-      "founded": "",
+      "founded": "2008",
       "news": [],
       "deals": 0,
       "analysis": {
@@ -1143,6 +1124,31 @@
       ],
       "country": "Malaysia",
       "founded": "2008",
+      "news": [],
+      "deals": 0,
+      "analysis": {
+        "sentiment": {
+          "label": "none",
+          "score": 0.0,
+          "pos": 0,
+          "neg": 0
+        },
+        "momentum": {
+          "score": 24,
+          "trend": "flat",
+          "buzz": 0,
+          "news": 0
+        }
+      }
+    },
+    {
+      "name": "Shahzan Muda FC",
+      "kind": "football_club",
+      "sources": [
+        "wikidata"
+      ],
+      "country": "Malaysia",
+      "founded": "",
       "news": [],
       "deals": 0,
       "analysis": {
@@ -1187,31 +1193,6 @@
     },
     {
       "name": "Puchong Fuerza F.C.",
-      "kind": "football_club",
-      "sources": [
-        "wikidata"
-      ],
-      "country": "Malaysia",
-      "founded": "",
-      "news": [],
-      "deals": 0,
-      "analysis": {
-        "sentiment": {
-          "label": "none",
-          "score": 0.0,
-          "pos": 0,
-          "neg": 0
-        },
-        "momentum": {
-          "score": 24,
-          "trend": "flat",
-          "buzz": 0,
-          "news": 0
-        }
-      }
-    },
-    {
-      "name": "Kinabalu Jaguar F.C.",
       "kind": "football_club",
       "sources": [
         "wikidata"
@@ -1336,6 +1317,31 @@
       }
     },
     {
+      "name": "Kinabalu Jaguar F.C.",
+      "kind": "football_club",
+      "sources": [
+        "wikidata"
+      ],
+      "country": "Malaysia",
+      "founded": "",
+      "news": [],
+      "deals": 0,
+      "analysis": {
+        "sentiment": {
+          "label": "none",
+          "score": 0.0,
+          "pos": 0,
+          "neg": 0
+        },
+        "momentum": {
+          "score": 24,
+          "trend": "flat",
+          "buzz": 0,
+          "news": 0
+        }
+      }
+    },
+    {
       "name": "Kelantan Red Warrior F.C.",
       "kind": "football_club",
       "sources": [
@@ -1436,32 +1442,7 @@
       }
     },
     {
-      "name": "Proton FC",
-      "kind": "football_club",
-      "sources": [
-        "wikidata"
-      ],
-      "country": "Malaysia",
-      "founded": "1986",
-      "news": [],
-      "deals": 0,
-      "analysis": {
-        "sentiment": {
-          "label": "none",
-          "score": 0.0,
-          "pos": 0,
-          "neg": 0
-        },
-        "momentum": {
-          "score": 19,
-          "trend": "flat",
-          "buzz": 0,
-          "news": 0
-        }
-      }
-    },
-    {
-      "name": "SDMS Kepala Batas FC",
+      "name": "Johor MBJB FC",
       "kind": "football_club",
       "sources": [
         "wikidata"
@@ -1484,6 +1465,43 @@
           "news": 0
         }
       }
+    },
+    {
+      "name": "MK Land FC",
+      "kind": "football_club",
+      "sources": [
+        "wikidata"
+      ],
+      "country": "Malaysia",
+      "founded": "2000",
+      "news": [],
+      "deals": 0,
+      "analysis": {
+        "sentiment": {
+          "label": "none",
+          "score": 0.0,
+          "pos": 0,
+          "neg": 0
+        },
+        "momentum": {
+          "score": 19,
+          "trend": "flat",
+          "buzz": 0,
+          "news": 0
+        }
+      }
+    }
+  ],
+  "games": [
+    {
+      "name": "2027 Southeast Asian Games",
+      "year": "2027",
+      "host": "Malaysia"
+    },
+    {
+      "name": "2026 Sukma Games",
+      "year": "2024",
+      "host": "Malaysia"
     }
   ],
   "events": [
