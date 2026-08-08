@@ -165,6 +165,21 @@
   .ghRow .ho{font-size:.78rem;color:var(--muted);white-space:nowrap;}
   .ghRow.host-my{border-color:var(--good);}
   .ghRow.host-my .ho{color:var(--good);font-weight:700;}
+  .mdHead{font-family:var(--mono);font-size:.82rem;color:var(--muted);margin:2px 0 12px;}
+  .mdHead b{color:var(--good);font-size:.98rem;}
+  .mdList{display:grid;gap:5px;max-height:300px;overflow:auto;padding-right:4px;}
+  .mdRow{display:grid;grid-template-columns:26px 1fr repeat(4,44px);gap:8px;align-items:baseline;
+    padding:7px 12px;border:1px solid var(--line);border-radius:9px;background:var(--card2);
+    font-variant-numeric:tabular-nums;}
+  .mdRow.head{background:transparent;border-color:transparent;padding-top:0;padding-bottom:2px;
+    color:var(--muted);font-family:var(--mono);font-size:.66rem;text-transform:uppercase;letter-spacing:.06em;}
+  .mdRow .rk{font-family:var(--mono);font-weight:700;color:var(--accent2);}
+  .mdRow .na{font-size:.88rem;font-weight:600;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+  .mdRow .g,.mdRow .s,.mdRow .b,.mdRow .t{font-size:.82rem;text-align:right;color:var(--muted);}
+  .mdRow .g{color:var(--ink);font-weight:700;}
+  .mdRow .t{color:var(--ink);}
+  .mdRow.md-my{border-color:var(--good);background:color-mix(in srgb,var(--good) 8%,var(--card2));}
+  .mdRow.md-my .na,.mdRow.md-my .t{color:var(--good);font-weight:800;}
   .saChips{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:13px;}
   .saChips button{font-family:var(--mono);font-size:.7rem;font-weight:700;cursor:pointer;
     background:var(--card2);color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:5px 12px;}
@@ -366,6 +381,14 @@
     <div class="ghList" id="ghList"></div>
   </div>
 
+  <div class="panel" id="mdPanel" style="margin-top:14px;" hidden>
+    <div class="eyebrow" data-i18n="md_eb">Medal legacy · SEA Games 🥇</div>
+    <h2 style="font-size:.98rem;" data-i18n="md_h">All-time medal table</h2>
+    <p class="cap" data-i18n="md_cap">Every SEA Games since 1959 combined — Malaysia highlighted.</p>
+    <div class="mdHead" id="mdHead"></div>
+    <div class="mdList" id="mdList"></div>
+  </div>
+
   <div class="panel" style="margin-top:14px;">
     <div class="eyebrow" data-i18n="cal_eb">Upcoming sports events · Malaysia 🗓️</div>
     <h2 style="font-size:.98rem;" data-i18n="cal_h">What's coming up</h2>
@@ -404,6 +427,9 @@
       sa_age:"Age", sa_gender:"Gender", sa_comm:"Communities", sa_reg:"Top regions", sa_also:"Also follow",
       gh_eb:"Games history · Malaysia 🏆", gh_h:"Every SEA Games &amp; SUKMA edition",
       gh_cap:"Full history — Malaysia-hosted editions highlighted.",
+      md_eb:"Medal legacy · SEA Games 🥇", md_h:"All-time medal table",
+      md_cap:"Every SEA Games since 1959 combined — Malaysia highlighted.",
+      md_rank:"#", md_nation:"Nation", md_g:"G", md_s:"S", md_b:"B", md_t:"Total",
       spark_l:"Audience interest · 6 months",
       bench_eb:'Media value benchmark <span style="color:var(--muted);font-weight:600;">(estimated · sample)</span>',
       bench_h:"Media value seen · top clubs",
@@ -441,6 +467,9 @@
       sa_age:"Umur", sa_gender:"Jantina", sa_comm:"Komuniti", sa_reg:"Wilayah utama", sa_also:"Turut ikut",
       gh_eb:"Sejarah Games · Malaysia 🏆", gh_h:"Setiap edisi SEA Games &amp; SUKMA",
       gh_cap:"Sejarah penuh — edisi anjuran Malaysia ditonjolkan.",
+      md_eb:"Legasi pingat · SEA Games 🥇", md_h:"Jadual pingat semua-masa",
+      md_cap:"Setiap SEA Games sejak 1959 digabung — Malaysia ditonjolkan.",
+      md_rank:"#", md_nation:"Negara", md_g:"E", md_s:"P", md_b:"G", md_t:"Jumlah",
       spark_l:"Minat audiens · 6 bulan",
       bench_eb:'Benchmark nilai media <span style="color:var(--muted);font-weight:600;">(anggaran · contoh)</span>',
       bench_h:"Nilai media dilihat · top kelab",
@@ -476,6 +505,7 @@
     if(typeof renderCalendar === 'function'){ renderCalendar(); }
     if(typeof renderSportAudience === 'function'){ renderSportAudience(); }
     if(typeof renderGamesHistory === 'function'){ renderGamesHistory(); }
+    if(typeof renderMedals === 'function'){ renderMedals(); }
   }
   function toggleLang(){ LANG = (LANG === 'en') ? 'ms' : 'en'; localStorage.setItem('impax_lang', LANG); applyLang(); }
   applyLang();
@@ -675,6 +705,46 @@
       var nm = document.createElement("div"); nm.className = "nm"; nm.textContent = x.name;
       var ho = document.createElement("div"); ho.className = "ho"; ho.textContent = x.host || "";
       row.appendChild(yr); row.appendChild(nm); row.appendChild(ho);
+      listEl.appendChild(row);
+    });
+  }
+
+  // All-time SEA Games medal table from the engine (SITE.medals). Malaysia highlighted.
+  function renderMedals(){
+    var panel = document.getElementById("mdPanel"), listEl = document.getElementById("mdList"),
+        headEl = document.getElementById("mdHead"), t = I18N[LANG];
+    if(!panel || !listEl || !headEl) return;
+    var m = (SITE && SITE.medals) || [];
+    if(!m.length){ panel.hidden = true; return; }
+    panel.hidden = false;
+    function isMy(n){ n = String(n).toLowerCase(); return n.indexOf("malaysia") >= 0; }
+    var my = null;
+    for(var i=0;i<m.length;i++){ if(isMy(m[i].nation)){ my = m[i]; break; } }
+    if(my){
+      headEl.innerHTML = (LANG === "ms" ? "Malaysia: " : "Malaysia: ") +
+        "<b>" + (my.gold||0).toLocaleString() + (LANG === "ms" ? " emas" : " gold") + "</b> · " +
+        (my.silver||0).toLocaleString() + (LANG === "ms" ? " perak · " : " silver · ") +
+        (my.bronze||0).toLocaleString() + (LANG === "ms" ? " gangsa · #" : " bronze · #") + (my.rank||"—");
+    } else { headEl.textContent = ""; }
+    listEl.innerHTML = "";
+    var hd = document.createElement("div"); hd.className = "mdRow head";
+    [t.md_rank||"#", t.md_nation||"Nation", t.md_g||"G", t.md_s||"S", t.md_b||"B", t.md_t||"Total"]
+      .forEach(function(lbl, idx){
+        var c = document.createElement("div");
+        c.className = ["rk","na","g","s","b","t"][idx]; c.textContent = lbl;
+        hd.appendChild(c);
+      });
+    listEl.appendChild(hd);
+    m.forEach(function(x){
+      var row = document.createElement("div"); row.className = "mdRow";
+      if(isMy(x.nation)) row.className += " md-my";
+      function cell(cls, val){ var c = document.createElement("div"); c.className = cls; c.textContent = val; row.appendChild(c); }
+      cell("rk", x.rank || "—");
+      cell("na", x.nation || "");
+      cell("g", (x.gold||0).toLocaleString());
+      cell("s", (x.silver||0).toLocaleString());
+      cell("b", (x.bronze||0).toLocaleString());
+      cell("t", (x.total||0).toLocaleString());
       listEl.appendChild(row);
     });
   }

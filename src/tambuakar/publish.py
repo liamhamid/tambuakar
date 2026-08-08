@@ -15,6 +15,7 @@ from datetime import UTC, datetime
 from pathlib import Path
 
 from .events import upcoming
+from .medals import fetch_sea_alltime
 from .pipeline import collect
 from .ports import KnowledgeSource
 from .site import build_site
@@ -66,6 +67,7 @@ def main(out: Path | None = None, data_dir: Path | None = None) -> dict[str, obj
     payload = build_site(entities, generated_at=generated, connectors=len(sources))
     payload["events"] = upcoming(datetime.now(UTC).date(), horizon_months=24)
     payload["sport_audience"] = profiles()
+    payload["medals"] = fetch_sea_alltime()
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
     for name, stats in results.items():
