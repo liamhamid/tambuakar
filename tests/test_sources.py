@@ -7,6 +7,7 @@ import urllib.error
 import pytest
 
 from tambuakar.sources import gdelt
+from tambuakar.sources.curated_games import CuratedGamesSource
 from tambuakar.sources.gdelt import GdeltSource
 from tambuakar.sources.google_trends import GoogleTrendsSource
 from tambuakar.sources.wikidata_games import WikidataGamesSource
@@ -84,6 +85,16 @@ def test_games_maps_editions_and_skips_incomplete() -> None:
     assert rec.source_id == "Q123"
     assert rec.attrs["year"] == "2017"
     assert rec.attrs["host"] == "Malaysia"
+
+
+def test_curated_games_covers_full_sea_games_history() -> None:
+    recs = CuratedGamesSource().fetch()
+    years = {r.attrs["year"] for r in recs}
+    assert len(recs) == 34  # 34 edisi
+    assert "1959" in years and "2027" in years
+    # Semua kind games_edition; Malaysia antara tuan rumah.
+    assert all(r.kind == "games_edition" for r in recs)
+    assert any(r.attrs["host"] == "Malaysia" for r in recs)
 
 
 def test_trends_maps_rows() -> None:

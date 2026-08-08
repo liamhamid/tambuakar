@@ -18,6 +18,7 @@ from .events import upcoming
 from .pipeline import collect
 from .ports import KnowledgeSource
 from .site import build_site
+from .sources.curated_games import CuratedGamesSource
 from .sources.gdelt import GdeltSource
 from .sources.google_trends import GoogleTrendsSource
 from .sources.wikidata import WikidataSource
@@ -32,6 +33,7 @@ def _sources() -> list[KnowledgeSource]:
         WikidataSource(limit=60),
         WikidataGamesSource(limit=80),
         WikipediaGamesSource(),
+        CuratedGamesSource(),
         GdeltSource(
             query=(
                 '("Johor Darul Ta\'zim" OR "Selangor FC" OR "Kedah Darul Aman" OR '
