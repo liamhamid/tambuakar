@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-11 03:42 UTC",
+  "generated_at": "2026-08-12 04:06 UTC",
   "kpis": {
     "entities": 124,
     "deals": 0,
@@ -414,13 +414,13 @@
       }
     },
     {
-      "name": "Polis Di-Raja Malaysia FA",
+      "name": "Perlis FA",
       "kind": "football_club",
       "sources": [
         "wikidata"
       ],
       "country": "Malaysia",
-      "founded": "",
+      "founded": "1963",
       "news": [],
       "deals": 0,
       "analysis": {
@@ -439,13 +439,13 @@
       }
     },
     {
-      "name": "Perlis FA",
+      "name": "Polis Di-Raja Malaysia FA",
       "kind": "football_club",
       "sources": [
         "wikidata"
       ],
       "country": "Malaysia",
-      "founded": "1963",
+      "founded": "",
       "news": [],
       "deals": 0,
       "analysis": {
@@ -739,13 +739,13 @@
       }
     },
     {
-      "name": "MPPJ Selangor FC",
+      "name": "PLUS FC",
       "kind": "football_club",
       "sources": [
         "wikidata"
       ],
       "country": "Malaysia",
-      "founded": "1992",
+      "founded": "2000",
       "news": [],
       "deals": 0,
       "analysis": {
@@ -764,13 +764,13 @@
       }
     },
     {
-      "name": "PLUS FC",
+      "name": "MPPJ Selangor FC",
       "kind": "football_club",
       "sources": [
         "wikidata"
       ],
       "country": "Malaysia",
-      "founded": "2000",
+      "founded": "1992",
       "news": [],
       "deals": 0,
       "analysis": {
@@ -964,7 +964,7 @@
       }
     },
     {
-      "name": "Melaka F.C.",
+      "name": "Perak F.C. II",
       "kind": "football_club",
       "sources": [
         "wikidata"
@@ -989,7 +989,7 @@
       }
     },
     {
-      "name": "Perak F.C. II",
+      "name": "Melaka F.C.",
       "kind": "football_club",
       "sources": [
         "wikidata"
@@ -1021,31 +1021,6 @@
       ],
       "country": "Malaysia",
       "founded": "1921",
-      "news": [],
-      "deals": 0,
-      "analysis": {
-        "sentiment": {
-          "label": "none",
-          "score": 0.0,
-          "pos": 0,
-          "neg": 0
-        },
-        "momentum": {
-          "score": 24,
-          "trend": "flat",
-          "buzz": 0,
-          "news": 0
-        }
-      }
-    },
-    {
-      "name": "Pos Malaysia FC",
-      "kind": "football_club",
-      "sources": [
-        "wikidata"
-      ],
-      "country": "Malaysia",
-      "founded": "2008",
       "news": [],
       "deals": 0,
       "analysis": {
@@ -1096,6 +1071,31 @@
       ],
       "country": "Malaysia",
       "founded": "",
+      "news": [],
+      "deals": 0,
+      "analysis": {
+        "sentiment": {
+          "label": "none",
+          "score": 0.0,
+          "pos": 0,
+          "neg": 0
+        },
+        "momentum": {
+          "score": 24,
+          "trend": "flat",
+          "buzz": 0,
+          "news": 0
+        }
+      }
+    },
+    {
+      "name": "Pos Malaysia FC",
+      "kind": "football_club",
+      "sources": [
+        "wikidata"
+      ],
+      "country": "Malaysia",
+      "founded": "2008",
       "news": [],
       "deals": 0,
       "analysis": {
@@ -1289,7 +1289,7 @@
       }
     },
     {
-      "name": "Kuala Lumpur Rovers F.C.",
+      "name": "Kinabalu Jaguar F.C.",
       "kind": "football_club",
       "sources": [
         "wikidata"
@@ -1314,7 +1314,7 @@
       }
     },
     {
-      "name": "Kinabalu Jaguar F.C.",
+      "name": "Kuala Lumpur Rovers F.C.",
       "kind": "football_club",
       "sources": [
         "wikidata"
@@ -1389,6 +1389,31 @@
       }
     },
     {
+      "name": "Johor MBJB FC",
+      "kind": "football_club",
+      "sources": [
+        "wikidata"
+      ],
+      "country": "Malaysia",
+      "founded": "2007",
+      "news": [],
+      "deals": 0,
+      "analysis": {
+        "sentiment": {
+          "label": "none",
+          "score": 0.0,
+          "pos": 0,
+          "neg": 0
+        },
+        "momentum": {
+          "score": 19,
+          "trend": "flat",
+          "buzz": 0,
+          "news": 0
+        }
+      }
+    },
+    {
       "name": "Betaria FC",
       "kind": "football_club",
       "sources": [
@@ -1439,38 +1464,13 @@
       }
     },
     {
-      "name": "PB Melayu Kedah",
+      "name": "MK Land FC",
       "kind": "football_club",
       "sources": [
         "wikidata"
       ],
       "country": "Malaysia",
-      "founded": "2012",
-      "news": [],
-      "deals": 0,
-      "analysis": {
-        "sentiment": {
-          "label": "none",
-          "score": 0.0,
-          "pos": 0,
-          "neg": 0
-        },
-        "momentum": {
-          "score": 19,
-          "trend": "flat",
-          "buzz": 0,
-          "news": 0
-        }
-      }
-    },
-    {
-      "name": "Proton FC",
-      "kind": "football_club",
-      "sources": [
-        "wikidata"
-      ],
-      "country": "Malaysia",
-      "founded": "1986",
+      "founded": "2000",
       "news": [],
       "deals": 0,
       "analysis": {
