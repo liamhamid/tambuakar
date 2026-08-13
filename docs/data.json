@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-12 04:06 UTC",
+  "generated_at": "2026-08-13 04:10 UTC",
   "kpis": {
     "entities": 124,
     "deals": 0,
@@ -81,7 +81,7 @@
           "neg": 0
         },
         "momentum": {
-          "score": 51,
+          "score": 52,
           "trend": "flat",
           "buzz": 0,
           "news": 0
@@ -131,7 +131,7 @@
           "neg": 0
         },
         "momentum": {
-          "score": 48,
+          "score": 49,
           "trend": "flat",
           "buzz": 0,
           "news": 0
@@ -156,7 +156,32 @@
           "neg": 0
         },
         "momentum": {
-          "score": 47,
+          "score": 48,
+          "trend": "flat",
+          "buzz": 0,
+          "news": 0
+        }
+      }
+    },
+    {
+      "name": "Kuala Lumpur City F.C.",
+      "kind": "football_club",
+      "sources": [
+        "wikidata"
+      ],
+      "country": "Malaysia",
+      "founded": "1974",
+      "news": [],
+      "deals": 0,
+      "analysis": {
+        "sentiment": {
+          "label": "none",
+          "score": 0.0,
+          "pos": 0,
+          "neg": 0
+        },
+        "momentum": {
+          "score": 48,
           "trend": "flat",
           "buzz": 0,
           "news": 0
@@ -214,31 +239,6 @@
       }
     },
     {
-      "name": "Kuala Lumpur City F.C.",
-      "kind": "football_club",
-      "sources": [
-        "wikidata"
-      ],
-      "country": "Malaysia",
-      "founded": "1974",
-      "news": [],
-      "deals": 0,
-      "analysis": {
-        "sentiment": {
-          "label": "none",
-          "score": 0.0,
-          "pos": 0,
-          "neg": 0
-        },
-        "momentum": {
-          "score": 47,
-          "trend": "flat",
-          "buzz": 0,
-          "news": 0
-        }
-      }
-    },
-    {
       "name": "Negeri Sembilan FA",
       "kind": "football_club",
       "sources": [
@@ -256,7 +256,7 @@
           "neg": 0
         },
         "momentum": {
-          "score": 45,
+          "score": 46,
           "trend": "flat",
           "buzz": 0,
           "news": 0
@@ -406,7 +406,7 @@
           "neg": 0
         },
         "momentum": {
-          "score": 41,
+          "score": 42,
           "trend": "flat",
           "buzz": 0,
           "news": 0
@@ -664,13 +664,13 @@
       }
     },
     {
-      "name": "Harimau Muda A",
+      "name": "Public Bank FC",
       "kind": "football_club",
       "sources": [
         "wikidata"
       ],
       "country": "Malaysia",
-      "founded": "2009",
+      "founded": "2003",
       "news": [],
       "deals": 0,
       "analysis": {
@@ -689,13 +689,13 @@
       }
     },
     {
-      "name": "Public Bank FC",
+      "name": "Harimau Muda A",
       "kind": "football_club",
       "sources": [
         "wikidata"
       ],
       "country": "Malaysia",
-      "founded": "2003",
+      "founded": "2009",
       "news": [],
       "deals": 0,
       "analysis": {
@@ -739,6 +739,56 @@
       }
     },
     {
+      "name": "Melaka F.C.",
+      "kind": "football_club",
+      "sources": [
+        "wikidata"
+      ],
+      "country": "Malaysia",
+      "founded": "",
+      "news": [],
+      "deals": 0,
+      "analysis": {
+        "sentiment": {
+          "label": "none",
+          "score": 0.0,
+          "pos": 0,
+          "neg": 0
+        },
+        "momentum": {
+          "score": 30,
+          "trend": "flat",
+          "buzz": 0,
+          "news": 0
+        }
+      }
+    },
+    {
+      "name": "Kuala Muda Naza FC",
+      "kind": "football_club",
+      "sources": [
+        "wikidata"
+      ],
+      "country": "Malaysia",
+      "founded": "2004",
+      "news": [],
+      "deals": 0,
+      "analysis": {
+        "sentiment": {
+          "label": "none",
+          "score": 0.0,
+          "pos": 0,
+          "neg": 0
+        },
+        "momentum": {
+          "score": 27,
+          "trend": "flat",
+          "buzz": 0,
+          "news": 0
+        }
+      }
+    },
+    {
       "name": "PLUS FC",
       "kind": "football_club",
       "sources": [
@@ -771,31 +821,6 @@
       ],
       "country": "Malaysia",
       "founded": "1992",
-      "news": [],
-      "deals": 0,
-      "analysis": {
-        "sentiment": {
-          "label": "none",
-          "score": 0.0,
-          "pos": 0,
-          "neg": 0
-        },
-        "momentum": {
-          "score": 27,
-          "trend": "flat",
-          "buzz": 0,
-          "news": 0
-        }
-      }
-    },
-    {
-      "name": "Kuala Muda Naza FC",
-      "kind": "football_club",
-      "sources": [
-        "wikidata"
-      ],
-      "country": "Malaysia",
-      "founded": "2004",
       "news": [],
       "deals": 0,
       "analysis": {
@@ -989,7 +1014,7 @@
       }
     },
     {
-      "name": "Melaka F.C.",
+      "name": "Kelantan Red Warrior F.C.",
       "kind": "football_club",
       "sources": [
         "wikidata"
@@ -1039,56 +1064,6 @@
       }
     },
     {
-      "name": "KSK Tambun Tulang FC",
-      "kind": "football_club",
-      "sources": [
-        "wikidata"
-      ],
-      "country": "Malaysia",
-      "founded": "2003",
-      "news": [],
-      "deals": 0,
-      "analysis": {
-        "sentiment": {
-          "label": "none",
-          "score": 0.0,
-          "pos": 0,
-          "neg": 0
-        },
-        "momentum": {
-          "score": 24,
-          "trend": "flat",
-          "buzz": 0,
-          "news": 0
-        }
-      }
-    },
-    {
-      "name": "Kuantan FA",
-      "kind": "football_club",
-      "sources": [
-        "wikidata"
-      ],
-      "country": "Malaysia",
-      "founded": "",
-      "news": [],
-      "deals": 0,
-      "analysis": {
-        "sentiment": {
-          "label": "none",
-          "score": 0.0,
-          "pos": 0,
-          "neg": 0
-        },
-        "momentum": {
-          "score": 24,
-          "trend": "flat",
-          "buzz": 0,
-          "news": 0
-        }
-      }
-    },
-    {
       "name": "Pos Malaysia FC",
       "kind": "football_club",
       "sources": [
@@ -1114,7 +1089,57 @@
       }
     },
     {
+      "name": "KSK Tambun Tulang FC",
+      "kind": "football_club",
+      "sources": [
+        "wikidata"
+      ],
+      "country": "Malaysia",
+      "founded": "2003",
+      "news": [],
+      "deals": 0,
+      "analysis": {
+        "sentiment": {
+          "label": "none",
+          "score": 0.0,
+          "pos": 0,
+          "neg": 0
+        },
+        "momentum": {
+          "score": 24,
+          "trend": "flat",
+          "buzz": 0,
+          "news": 0
+        }
+      }
+    },
+    {
       "name": "Shahzan Muda FC",
+      "kind": "football_club",
+      "sources": [
+        "wikidata"
+      ],
+      "country": "Malaysia",
+      "founded": "",
+      "news": [],
+      "deals": 0,
+      "analysis": {
+        "sentiment": {
+          "label": "none",
+          "score": 0.0,
+          "pos": 0,
+          "neg": 0
+        },
+        "momentum": {
+          "score": 24,
+          "trend": "flat",
+          "buzz": 0,
+          "news": 0
+        }
+      }
+    },
+    {
+      "name": "Kuantan FA",
       "kind": "football_club",
       "sources": [
         "wikidata"
@@ -1289,31 +1314,6 @@
       }
     },
     {
-      "name": "Kinabalu Jaguar F.C.",
-      "kind": "football_club",
-      "sources": [
-        "wikidata"
-      ],
-      "country": "Malaysia",
-      "founded": "",
-      "news": [],
-      "deals": 0,
-      "analysis": {
-        "sentiment": {
-          "label": "none",
-          "score": 0.0,
-          "pos": 0,
-          "neg": 0
-        },
-        "momentum": {
-          "score": 24,
-          "trend": "flat",
-          "buzz": 0,
-          "news": 0
-        }
-      }
-    },
-    {
       "name": "Kuala Lumpur Rovers F.C.",
       "kind": "football_club",
       "sources": [
@@ -1339,7 +1339,7 @@
       }
     },
     {
-      "name": "Kelantan Red Warrior F.C.",
+      "name": "Kinabalu Jaguar F.C.",
       "kind": "football_club",
       "sources": [
         "wikidata"
@@ -1389,13 +1389,13 @@
       }
     },
     {
-      "name": "Johor MBJB FC",
+      "name": "Bukit Tambun F.C.",
       "kind": "football_club",
       "sources": [
         "wikidata"
       ],
       "country": "Malaysia",
-      "founded": "2007",
+      "founded": "",
       "news": [],
       "deals": 0,
       "analysis": {
@@ -1414,13 +1414,13 @@
       }
     },
     {
-      "name": "Betaria FC",
+      "name": "Persada Integriti Bersatu F.C.",
       "kind": "football_club",
       "sources": [
         "wikidata"
       ],
       "country": "Malaysia",
-      "founded": "2003",
+      "founded": "",
       "news": [],
       "deals": 0,
       "analysis": {
@@ -1439,13 +1439,13 @@
       }
     },
     {
-      "name": "Brunei FA",
+      "name": "Malaysian University F.T.",
       "kind": "football_club",
       "sources": [
         "wikidata"
       ],
       "country": "Malaysia",
-      "founded": "1956",
+      "founded": "",
       "news": [],
       "deals": 0,
       "analysis": {
@@ -1464,13 +1464,13 @@
       }
     },
     {
-      "name": "MK Land FC",
+      "name": "Pahang Rangers F.C.",
       "kind": "football_club",
       "sources": [
         "wikidata"
       ],
       "country": "Malaysia",
-      "founded": "2000",
+      "founded": "",
       "news": [],
       "deals": 0,
       "analysis": {
