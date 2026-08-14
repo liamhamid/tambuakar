@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-13 04:10 UTC",
+  "generated_at": "2026-08-14 04:06 UTC",
   "kpis": {
     "entities": 124,
     "deals": 0,
@@ -8,6 +8,7 @@
   },
   "sources": [
     "curated_games",
+    "google_trends",
     "wikidata",
     "wikidata_games",
     "wikipedia_games"
@@ -17,6 +18,7 @@
       "name": "Johor Darul Ta'zim F.C.",
       "kind": "football_club",
       "sources": [
+        "google_trends",
         "wikidata"
       ],
       "country": "Malaysia",
@@ -31,9 +33,9 @@
           "neg": 0
         },
         "momentum": {
-          "score": 60,
-          "trend": "flat",
-          "buzz": 0,
+          "score": 100,
+          "trend": "up",
+          "buzz": 40,
           "news": 0
         }
       }
@@ -42,6 +44,7 @@
       "name": "Selangor F.C.",
       "kind": "football_club",
       "sources": [
+        "google_trends",
         "wikidata"
       ],
       "country": "Malaysia",
@@ -56,9 +59,61 @@
           "neg": 0
         },
         "momentum": {
-          "score": 53,
-          "trend": "flat",
-          "buzz": 0,
+          "score": 93,
+          "trend": "up",
+          "buzz": 40,
+          "news": 0
+        }
+      }
+    },
+    {
+      "name": "Terengganu F.C.",
+      "kind": "football_club",
+      "sources": [
+        "google_trends",
+        "wikidata"
+      ],
+      "country": "Malaysia",
+      "founded": "1972",
+      "news": [],
+      "deals": 0,
+      "analysis": {
+        "sentiment": {
+          "label": "none",
+          "score": 0.0,
+          "pos": 0,
+          "neg": 0
+        },
+        "momentum": {
+          "score": 88,
+          "trend": "up",
+          "buzz": 40,
+          "news": 0
+        }
+      }
+    },
+    {
+      "name": "Kedah Darul Aman F.C.",
+      "kind": "football_club",
+      "sources": [
+        "google_trends",
+        "wikidata"
+      ],
+      "country": "Malaysia",
+      "founded": "1924",
+      "news": [],
+      "deals": 0,
+      "analysis": {
+        "sentiment": {
+          "label": "none",
+          "score": 0.0,
+          "pos": 0,
+          "neg": 0
+        },
+        "momentum": {
+          "score": 87,
+          "trend": "up",
+          "buzz": 40,
           "news": 0
         }
       }
@@ -139,31 +194,6 @@
       }
     },
     {
-      "name": "Terengganu F.C.",
-      "kind": "football_club",
-      "sources": [
-        "wikidata"
-      ],
-      "country": "Malaysia",
-      "founded": "1972",
-      "news": [],
-      "deals": 0,
-      "analysis": {
-        "sentiment": {
-          "label": "none",
-          "score": 0.0,
-          "pos": 0,
-          "neg": 0
-        },
-        "momentum": {
-          "score": 48,
-          "trend": "flat",
-          "buzz": 0,
-          "news": 0
-        }
-      }
-    },
-    {
       "name": "Kuala Lumpur City F.C.",
       "kind": "football_club",
       "sources": [
@@ -182,31 +212,6 @@
         },
         "momentum": {
           "score": 48,
-          "trend": "flat",
-          "buzz": 0,
-          "news": 0
-        }
-      }
-    },
-    {
-      "name": "Kedah Darul Aman F.C.",
-      "kind": "football_club",
-      "sources": [
-        "wikidata"
-      ],
-      "country": "Malaysia",
-      "founded": "1924",
-      "news": [],
-      "deals": 0,
-      "analysis": {
-        "sentiment": {
-          "label": "none",
-          "score": 0.0,
-          "pos": 0,
-          "neg": 0
-        },
-        "momentum": {
-          "score": 47,
           "trend": "flat",
           "buzz": 0,
           "news": 0
@@ -264,13 +269,13 @@
       }
     },
     {
-      "name": "Sri Pahang F.C.",
+      "name": "Melaka United",
       "kind": "football_club",
       "sources": [
         "wikidata"
       ],
       "country": "Malaysia",
-      "founded": "1958",
+      "founded": "1924",
       "news": [],
       "deals": 0,
       "analysis": {
@@ -289,13 +294,13 @@
       }
     },
     {
-      "name": "Melaka United",
+      "name": "Sri Pahang F.C.",
       "kind": "football_club",
       "sources": [
         "wikidata"
       ],
       "country": "Malaysia",
-      "founded": "1924",
+      "founded": "1958",
       "news": [],
       "deals": 0,
       "analysis": {
@@ -414,13 +419,13 @@
       }
     },
     {
-      "name": "Perlis FA",
+      "name": "Polis Di-Raja Malaysia FA",
       "kind": "football_club",
       "sources": [
         "wikidata"
       ],
       "country": "Malaysia",
-      "founded": "1963",
+      "founded": "",
       "news": [],
       "deals": 0,
       "analysis": {
@@ -439,13 +444,13 @@
       }
     },
     {
-      "name": "Polis Di-Raja Malaysia FA",
+      "name": "Perlis FA",
       "kind": "football_club",
       "sources": [
         "wikidata"
       ],
       "country": "Malaysia",
-      "founded": "",
+      "founded": "1963",
       "news": [],
       "deals": 0,
       "analysis": {
@@ -564,13 +569,13 @@
       }
     },
     {
-      "name": "Melaka TMFC",
+      "name": "Armed Forces FC",
       "kind": "football_club",
       "sources": [
         "wikidata"
       ],
       "country": "Malaysia",
-      "founded": "1994",
+      "founded": "1920",
       "news": [],
       "deals": 0,
       "analysis": {
@@ -589,13 +594,13 @@
       }
     },
     {
-      "name": "Armed Forces FC",
+      "name": "Melaka TMFC",
       "kind": "football_club",
       "sources": [
         "wikidata"
       ],
       "country": "Malaysia",
-      "founded": "1920",
+      "founded": "1994",
       "news": [],
       "deals": 0,
       "analysis": {
@@ -1114,7 +1119,7 @@
       }
     },
     {
-      "name": "Shahzan Muda FC",
+      "name": "Kuantan FA",
       "kind": "football_club",
       "sources": [
         "wikidata"
@@ -1139,7 +1144,7 @@
       }
     },
     {
-      "name": "Kuantan FA",
+      "name": "Shahzan Muda FC",
       "kind": "football_club",
       "sources": [
         "wikidata"
@@ -1389,13 +1394,13 @@
       }
     },
     {
-      "name": "Bukit Tambun F.C.",
+      "name": "Betaria FC",
       "kind": "football_club",
       "sources": [
         "wikidata"
       ],
       "country": "Malaysia",
-      "founded": "",
+      "founded": "2003",
       "news": [],
       "deals": 0,
       "analysis": {
@@ -1414,13 +1419,13 @@
       }
     },
     {
-      "name": "Persada Integriti Bersatu F.C.",
+      "name": "Brunei FA",
       "kind": "football_club",
       "sources": [
         "wikidata"
       ],
       "country": "Malaysia",
-      "founded": "",
+      "founded": "1956",
       "news": [],
       "deals": 0,
       "analysis": {
@@ -1439,13 +1444,13 @@
       }
     },
     {
-      "name": "Malaysian University F.T.",
+      "name": "Proton FC",
       "kind": "football_club",
       "sources": [
         "wikidata"
       ],
       "country": "Malaysia",
-      "founded": "",
+      "founded": "1986",
       "news": [],
       "deals": 0,
       "analysis": {
@@ -1464,13 +1469,13 @@
       }
     },
     {
-      "name": "Pahang Rangers F.C.",
+      "name": "SDMS Kepala Batas FC",
       "kind": "football_club",
       "sources": [
         "wikidata"
       ],
       "country": "Malaysia",
-      "founded": "",
+      "founded": "2007",
       "news": [],
       "deals": 0,
       "analysis": {
