@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-16 02:56 UTC",
+  "generated_at": "2026-08-17 02:56 UTC",
   "kpis": {
     "entities": 124,
     "deals": 0,
@@ -944,31 +944,6 @@
       }
     },
     {
-      "name": "Perak F.C. II",
-      "kind": "football_club",
-      "sources": [
-        "wikidata"
-      ],
-      "country": "Malaysia",
-      "founded": "",
-      "news": [],
-      "deals": 0,
-      "analysis": {
-        "sentiment": {
-          "label": "none",
-          "score": 0.0,
-          "pos": 0,
-          "neg": 0
-        },
-        "momentum": {
-          "score": 27,
-          "trend": "flat",
-          "buzz": 0,
-          "news": 0
-        }
-      }
-    },
-    {
       "name": "Ultimate F.C.",
       "kind": "football_club",
       "sources": [
@@ -995,6 +970,31 @@
     },
     {
       "name": "Harini F.C.",
+      "kind": "football_club",
+      "sources": [
+        "wikidata"
+      ],
+      "country": "Malaysia",
+      "founded": "",
+      "news": [],
+      "deals": 0,
+      "analysis": {
+        "sentiment": {
+          "label": "none",
+          "score": 0.0,
+          "pos": 0,
+          "neg": 0
+        },
+        "momentum": {
+          "score": 27,
+          "trend": "flat",
+          "buzz": 0,
+          "news": 0
+        }
+      }
+    },
+    {
+      "name": "Perak F.C. II",
       "kind": "football_club",
       "sources": [
         "wikidata"
@@ -1069,13 +1069,13 @@
       }
     },
     {
-      "name": "KSK Tambun Tulang FC",
+      "name": "Shahzan Muda FC",
       "kind": "football_club",
       "sources": [
         "wikidata"
       ],
       "country": "Malaysia",
-      "founded": "2003",
+      "founded": "",
       "news": [],
       "deals": 0,
       "analysis": {
@@ -1094,13 +1094,13 @@
       }
     },
     {
-      "name": "Kuantan FA",
+      "name": "KSK Tambun Tulang FC",
       "kind": "football_club",
       "sources": [
         "wikidata"
       ],
       "country": "Malaysia",
-      "founded": "",
+      "founded": "2003",
       "news": [],
       "deals": 0,
       "analysis": {
@@ -1144,7 +1144,7 @@
       }
     },
     {
-      "name": "Shahzan Muda FC",
+      "name": "Kuantan FA",
       "kind": "football_club",
       "sources": [
         "wikidata"
@@ -1195,56 +1195,6 @@
     },
     {
       "name": "Felcra F.C.",
-      "kind": "football_club",
-      "sources": [
-        "wikidata"
-      ],
-      "country": "Malaysia",
-      "founded": "",
-      "news": [],
-      "deals": 0,
-      "analysis": {
-        "sentiment": {
-          "label": "none",
-          "score": 0.0,
-          "pos": 0,
-          "neg": 0
-        },
-        "momentum": {
-          "score": 24,
-          "trend": "flat",
-          "buzz": 0,
-          "news": 0
-        }
-      }
-    },
-    {
-      "name": "Kuala Lumpur Rovers F.C.",
-      "kind": "football_club",
-      "sources": [
-        "wikidata"
-      ],
-      "country": "Malaysia",
-      "founded": "",
-      "news": [],
-      "deals": 0,
-      "analysis": {
-        "sentiment": {
-          "label": "none",
-          "score": 0.0,
-          "pos": 0,
-          "neg": 0
-        },
-        "momentum": {
-          "score": 24,
-          "trend": "flat",
-          "buzz": 0,
-          "news": 0
-        }
-      }
-    },
-    {
-      "name": "Kinabalu Jaguar F.C.",
       "kind": "football_club",
       "sources": [
         "wikidata"
@@ -1369,6 +1319,56 @@
       }
     },
     {
+      "name": "Kinabalu Jaguar F.C.",
+      "kind": "football_club",
+      "sources": [
+        "wikidata"
+      ],
+      "country": "Malaysia",
+      "founded": "",
+      "news": [],
+      "deals": 0,
+      "analysis": {
+        "sentiment": {
+          "label": "none",
+          "score": 0.0,
+          "pos": 0,
+          "neg": 0
+        },
+        "momentum": {
+          "score": 24,
+          "trend": "flat",
+          "buzz": 0,
+          "news": 0
+        }
+      }
+    },
+    {
+      "name": "Kuala Lumpur Rovers F.C.",
+      "kind": "football_club",
+      "sources": [
+        "wikidata"
+      ],
+      "country": "Malaysia",
+      "founded": "",
+      "news": [],
+      "deals": 0,
+      "analysis": {
+        "sentiment": {
+          "label": "none",
+          "score": 0.0,
+          "pos": 0,
+          "neg": 0
+        },
+        "momentum": {
+          "score": 24,
+          "trend": "flat",
+          "buzz": 0,
+          "news": 0
+        }
+      }
+    },
+    {
       "name": "Perlis FA State Football Team",
       "kind": "football_club",
       "sources": [
@@ -1469,13 +1469,13 @@
       }
     },
     {
-      "name": "MK Land FC",
+      "name": "PB Melayu Kedah",
       "kind": "football_club",
       "sources": [
         "wikidata"
       ],
       "country": "Malaysia",
-      "founded": "2000",
+      "founded": "2012",
       "news": [],
       "deals": 0,
       "analysis": {
