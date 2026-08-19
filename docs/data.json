@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-18 02:54 UTC",
+  "generated_at": "2026-08-19 02:54 UTC",
   "kpis": {
     "entities": 124,
     "deals": 0,
@@ -144,13 +144,13 @@
       }
     },
     {
-      "name": "Kelantan F.C.",
+      "name": "Penang F.C.",
       "kind": "football_club",
       "sources": [
         "wikidata"
       ],
       "country": "Malaysia",
-      "founded": "1946",
+      "founded": "1921",
       "news": [],
       "deals": 0,
       "analysis": {
@@ -169,13 +169,13 @@
       }
     },
     {
-      "name": "Penang F.C.",
+      "name": "Kelantan F.C.",
       "kind": "football_club",
       "sources": [
         "wikidata"
       ],
       "country": "Malaysia",
-      "founded": "1921",
+      "founded": "1946",
       "news": [],
       "deals": 0,
       "analysis": {
@@ -419,13 +419,13 @@
       }
     },
     {
-      "name": "Perlis FA",
+      "name": "Polis Di-Raja Malaysia FA",
       "kind": "football_club",
       "sources": [
         "wikidata"
       ],
       "country": "Malaysia",
-      "founded": "1963",
+      "founded": "",
       "news": [],
       "deals": 0,
       "analysis": {
@@ -444,13 +444,13 @@
       }
     },
     {
-      "name": "Polis Di-Raja Malaysia FA",
+      "name": "Perlis FA",
       "kind": "football_club",
       "sources": [
         "wikidata"
       ],
       "country": "Malaysia",
-      "founded": "",
+      "founded": "1963",
       "news": [],
       "deals": 0,
       "analysis": {
@@ -769,13 +769,13 @@
       }
     },
     {
-      "name": "Kuala Muda Naza FC",
+      "name": "MPPJ Selangor FC",
       "kind": "football_club",
       "sources": [
         "wikidata"
       ],
       "country": "Malaysia",
-      "founded": "2004",
+      "founded": "1992",
       "news": [],
       "deals": 0,
       "analysis": {
@@ -819,13 +819,13 @@
       }
     },
     {
-      "name": "MPPJ Selangor FC",
+      "name": "Kuala Muda Naza FC",
       "kind": "football_club",
       "sources": [
         "wikidata"
       ],
       "country": "Malaysia",
-      "founded": "1992",
+      "founded": "2004",
       "news": [],
       "deals": 0,
       "analysis": {
@@ -969,7 +969,7 @@
       }
     },
     {
-      "name": "Perak F.C. II",
+      "name": "Harini F.C.",
       "kind": "football_club",
       "sources": [
         "wikidata"
@@ -994,7 +994,7 @@
       }
     },
     {
-      "name": "Harini F.C.",
+      "name": "Perak F.C. II",
       "kind": "football_club",
       "sources": [
         "wikidata"
@@ -1069,7 +1069,7 @@
       }
     },
     {
-      "name": "Kuantan FA",
+      "name": "Shahzan Muda FC",
       "kind": "football_club",
       "sources": [
         "wikidata"
@@ -1119,13 +1119,13 @@
       }
     },
     {
-      "name": "Pos Malaysia FC",
+      "name": "Kuantan FA",
       "kind": "football_club",
       "sources": [
         "wikidata"
       ],
       "country": "Malaysia",
-      "founded": "2008",
+      "founded": "",
       "news": [],
       "deals": 0,
       "analysis": {
@@ -1144,13 +1144,13 @@
       }
     },
     {
-      "name": "Shahzan Muda FC",
+      "name": "Pos Malaysia FC",
       "kind": "football_club",
       "sources": [
         "wikidata"
       ],
       "country": "Malaysia",
-      "founded": "",
+      "founded": "2008",
       "news": [],
       "deals": 0,
       "analysis": {
@@ -1319,7 +1319,7 @@
       }
     },
     {
-      "name": "Kuala Lumpur Rovers F.C.",
+      "name": "Kinabalu Jaguar F.C.",
       "kind": "football_club",
       "sources": [
         "wikidata"
@@ -1344,7 +1344,7 @@
       }
     },
     {
-      "name": "Kinabalu Jaguar F.C.",
+      "name": "Kuala Lumpur Rovers F.C.",
       "kind": "football_club",
       "sources": [
         "wikidata"
