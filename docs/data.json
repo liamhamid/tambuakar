@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-19 02:54 UTC",
+  "generated_at": "2026-08-20 02:56 UTC",
   "kpis": {
     "entities": 124,
     "deals": 0,
@@ -10,7 +10,6 @@
     "curated_games",
     "google_trends",
     "wikidata",
-    "wikidata_games",
     "wikipedia_games"
   ],
   "entities": [
@@ -769,13 +768,13 @@
       }
     },
     {
-      "name": "MPPJ Selangor FC",
+      "name": "PLUS FC",
       "kind": "football_club",
       "sources": [
         "wikidata"
       ],
       "country": "Malaysia",
-      "founded": "1992",
+      "founded": "2000",
       "news": [],
       "deals": 0,
       "analysis": {
@@ -794,13 +793,13 @@
       }
     },
     {
-      "name": "PLUS FC",
+      "name": "MPPJ Selangor FC",
       "kind": "football_club",
       "sources": [
         "wikidata"
       ],
       "country": "Malaysia",
-      "founded": "2000",
+      "founded": "1992",
       "news": [],
       "deals": 0,
       "analysis": {
@@ -1069,13 +1068,13 @@
       }
     },
     {
-      "name": "Shahzan Muda FC",
+      "name": "Pos Malaysia FC",
       "kind": "football_club",
       "sources": [
         "wikidata"
       ],
       "country": "Malaysia",
-      "founded": "",
+      "founded": "2008",
       "news": [],
       "deals": 0,
       "analysis": {
@@ -1144,13 +1143,13 @@
       }
     },
     {
-      "name": "Pos Malaysia FC",
+      "name": "Shahzan Muda FC",
       "kind": "football_club",
       "sources": [
         "wikidata"
       ],
       "country": "Malaysia",
-      "founded": "2008",
+      "founded": "",
       "news": [],
       "deals": 0,
       "analysis": {
@@ -1195,6 +1194,31 @@
     },
     {
       "name": "Felcra F.C.",
+      "kind": "football_club",
+      "sources": [
+        "wikidata"
+      ],
+      "country": "Malaysia",
+      "founded": "",
+      "news": [],
+      "deals": 0,
+      "analysis": {
+        "sentiment": {
+          "label": "none",
+          "score": 0.0,
+          "pos": 0,
+          "neg": 0
+        },
+        "momentum": {
+          "score": 24,
+          "trend": "flat",
+          "buzz": 0,
+          "news": 0
+        }
+      }
+    },
+    {
+      "name": "Semarak F.C.",
       "kind": "football_club",
       "sources": [
         "wikidata"
@@ -1294,7 +1318,7 @@
       }
     },
     {
-      "name": "Semarak F.C.",
+      "name": "Kuala Lumpur Rovers F.C.",
       "kind": "football_club",
       "sources": [
         "wikidata"
@@ -1344,31 +1368,6 @@
       }
     },
     {
-      "name": "Kuala Lumpur Rovers F.C.",
-      "kind": "football_club",
-      "sources": [
-        "wikidata"
-      ],
-      "country": "Malaysia",
-      "founded": "",
-      "news": [],
-      "deals": 0,
-      "analysis": {
-        "sentiment": {
-          "label": "none",
-          "score": 0.0,
-          "pos": 0,
-          "neg": 0
-        },
-        "momentum": {
-          "score": 24,
-          "trend": "flat",
-          "buzz": 0,
-          "news": 0
-        }
-      }
-    },
-    {
       "name": "Perlis FA State Football Team",
       "kind": "football_club",
       "sources": [
@@ -1387,31 +1386,6 @@
         },
         "momentum": {
           "score": 24,
-          "trend": "flat",
-          "buzz": 0,
-          "news": 0
-        }
-      }
-    },
-    {
-      "name": "Betaria FC",
-      "kind": "football_club",
-      "sources": [
-        "wikidata"
-      ],
-      "country": "Malaysia",
-      "founded": "2003",
-      "news": [],
-      "deals": 0,
-      "analysis": {
-        "sentiment": {
-          "label": "none",
-          "score": 0.0,
-          "pos": 0,
-          "neg": 0
-        },
-        "momentum": {
-          "score": 19,
           "trend": "flat",
           "buzz": 0,
           "news": 0
@@ -1444,13 +1418,13 @@
       }
     },
     {
-      "name": "Johor MBJB FC",
+      "name": "Betaria FC",
       "kind": "football_club",
       "sources": [
         "wikidata"
       ],
       "country": "Malaysia",
-      "founded": "2007",
+      "founded": "2003",
       "news": [],
       "deals": 0,
       "analysis": {
@@ -1476,6 +1450,31 @@
       ],
       "country": "Malaysia",
       "founded": "2000",
+      "news": [],
+      "deals": 0,
+      "analysis": {
+        "sentiment": {
+          "label": "none",
+          "score": 0.0,
+          "pos": 0,
+          "neg": 0
+        },
+        "momentum": {
+          "score": 19,
+          "trend": "flat",
+          "buzz": 0,
+          "news": 0
+        }
+      }
+    },
+    {
+      "name": "Melodi Jaya Sports Club",
+      "kind": "football_club",
+      "sources": [
+        "wikidata"
+      ],
+      "country": "Malaysia",
+      "founded": "2006",
       "news": [],
       "deals": 0,
       "analysis": {
