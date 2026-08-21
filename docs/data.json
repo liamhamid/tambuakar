@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-20 02:56 UTC",
+  "generated_at": "2026-08-21 03:00 UTC",
   "kpis": {
     "entities": 124,
     "deals": 0,
@@ -10,6 +10,7 @@
     "curated_games",
     "google_trends",
     "wikidata",
+    "wikidata_games",
     "wikipedia_games"
   ],
   "entities": [
@@ -368,6 +369,31 @@
       }
     },
     {
+      "name": "Kuching City F.C.",
+      "kind": "football_club",
+      "sources": [
+        "wikidata"
+      ],
+      "country": "Malaysia",
+      "founded": "2015",
+      "news": [],
+      "deals": 0,
+      "analysis": {
+        "sentiment": {
+          "label": "none",
+          "score": 0.0,
+          "pos": 0,
+          "neg": 0
+        },
+        "momentum": {
+          "score": 44,
+          "trend": "flat",
+          "buzz": 0,
+          "news": 0
+        }
+      }
+    },
+    {
       "name": "Selangor F.C. U-23",
       "kind": "football_club",
       "sources": [
@@ -393,38 +419,13 @@
       }
     },
     {
-      "name": "Kuching City F.C.",
+      "name": "Perlis FA",
       "kind": "football_club",
       "sources": [
         "wikidata"
       ],
       "country": "Malaysia",
-      "founded": "2015",
-      "news": [],
-      "deals": 0,
-      "analysis": {
-        "sentiment": {
-          "label": "none",
-          "score": 0.0,
-          "pos": 0,
-          "neg": 0
-        },
-        "momentum": {
-          "score": 42,
-          "trend": "flat",
-          "buzz": 0,
-          "news": 0
-        }
-      }
-    },
-    {
-      "name": "Polis Di-Raja Malaysia FA",
-      "kind": "football_club",
-      "sources": [
-        "wikidata"
-      ],
-      "country": "Malaysia",
-      "founded": "",
+      "founded": "1963",
       "news": [],
       "deals": 0,
       "analysis": {
@@ -443,13 +444,13 @@
       }
     },
     {
-      "name": "Perlis FA",
+      "name": "Polis Di-Raja Malaysia FA",
       "kind": "football_club",
       "sources": [
         "wikidata"
       ],
       "country": "Malaysia",
-      "founded": "1963",
+      "founded": "",
       "news": [],
       "deals": 0,
       "analysis": {
@@ -1068,6 +1069,56 @@
       }
     },
     {
+      "name": "Shahzan Muda FC",
+      "kind": "football_club",
+      "sources": [
+        "wikidata"
+      ],
+      "country": "Malaysia",
+      "founded": "",
+      "news": [],
+      "deals": 0,
+      "analysis": {
+        "sentiment": {
+          "label": "none",
+          "score": 0.0,
+          "pos": 0,
+          "neg": 0
+        },
+        "momentum": {
+          "score": 24,
+          "trend": "flat",
+          "buzz": 0,
+          "news": 0
+        }
+      }
+    },
+    {
+      "name": "Universiti Sains Malaysia Staff F.C.",
+      "kind": "football_club",
+      "sources": [
+        "wikidata"
+      ],
+      "country": "Malaysia",
+      "founded": "2008",
+      "news": [],
+      "deals": 0,
+      "analysis": {
+        "sentiment": {
+          "label": "none",
+          "score": 0.0,
+          "pos": 0,
+          "neg": 0
+        },
+        "momentum": {
+          "score": 24,
+          "trend": "flat",
+          "buzz": 0,
+          "news": 0
+        }
+      }
+    },
+    {
       "name": "Pos Malaysia FC",
       "kind": "football_club",
       "sources": [
@@ -1143,82 +1194,7 @@
       }
     },
     {
-      "name": "Shahzan Muda FC",
-      "kind": "football_club",
-      "sources": [
-        "wikidata"
-      ],
-      "country": "Malaysia",
-      "founded": "",
-      "news": [],
-      "deals": 0,
-      "analysis": {
-        "sentiment": {
-          "label": "none",
-          "score": 0.0,
-          "pos": 0,
-          "neg": 0
-        },
-        "momentum": {
-          "score": 24,
-          "trend": "flat",
-          "buzz": 0,
-          "news": 0
-        }
-      }
-    },
-    {
-      "name": "Universiti Sains Malaysia Staff F.C.",
-      "kind": "football_club",
-      "sources": [
-        "wikidata"
-      ],
-      "country": "Malaysia",
-      "founded": "2008",
-      "news": [],
-      "deals": 0,
-      "analysis": {
-        "sentiment": {
-          "label": "none",
-          "score": 0.0,
-          "pos": 0,
-          "neg": 0
-        },
-        "momentum": {
-          "score": 24,
-          "trend": "flat",
-          "buzz": 0,
-          "news": 0
-        }
-      }
-    },
-    {
       "name": "Felcra F.C.",
-      "kind": "football_club",
-      "sources": [
-        "wikidata"
-      ],
-      "country": "Malaysia",
-      "founded": "",
-      "news": [],
-      "deals": 0,
-      "analysis": {
-        "sentiment": {
-          "label": "none",
-          "score": 0.0,
-          "pos": 0,
-          "neg": 0
-        },
-        "momentum": {
-          "score": 24,
-          "trend": "flat",
-          "buzz": 0,
-          "news": 0
-        }
-      }
-    },
-    {
-      "name": "Semarak F.C.",
       "kind": "football_club",
       "sources": [
         "wikidata"
@@ -1294,6 +1270,31 @@
     },
     {
       "name": "Northern Lions F.C.",
+      "kind": "football_club",
+      "sources": [
+        "wikidata"
+      ],
+      "country": "Malaysia",
+      "founded": "",
+      "news": [],
+      "deals": 0,
+      "analysis": {
+        "sentiment": {
+          "label": "none",
+          "score": 0.0,
+          "pos": 0,
+          "neg": 0
+        },
+        "momentum": {
+          "score": 24,
+          "trend": "flat",
+          "buzz": 0,
+          "news": 0
+        }
+      }
+    },
+    {
+      "name": "Semarak F.C.",
       "kind": "football_club",
       "sources": [
         "wikidata"
@@ -1443,13 +1444,13 @@
       }
     },
     {
-      "name": "MK Land FC",
+      "name": "Tumpat FA",
       "kind": "football_club",
       "sources": [
         "wikidata"
       ],
       "country": "Malaysia",
-      "founded": "2000",
+      "founded": "2012",
       "news": [],
       "deals": 0,
       "analysis": {
@@ -1468,13 +1469,13 @@
       }
     },
     {
-      "name": "Melodi Jaya Sports Club",
+      "name": "PB Melayu Kedah",
       "kind": "football_club",
       "sources": [
         "wikidata"
       ],
       "country": "Malaysia",
-      "founded": "2006",
+      "founded": "2012",
       "news": [],
       "deals": 0,
       "analysis": {
